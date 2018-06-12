@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+#include <gtkmm/main.h>
+#include "${1:/* header */}"
+
+int main(int argc, char *argv[])
+{
+	Gtk::Main kit (argc, argv);
+
+	${2:/* Name Class */} window;
+
+	Gtk::Main::run(window);
+
+	return 0;
+}
+]]></content>
+	<description>Main Gtkmm Window</description>
+	<tabTrigger>main</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

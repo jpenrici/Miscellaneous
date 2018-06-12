@@ -1,0 +1,8 @@
+
+{
+    "cmd": ["javac $file_name && java $file_base_name"],
+    "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+    "path": "/usr/bin/",
+    "selector": "source.java",
+    "shell": true
+}

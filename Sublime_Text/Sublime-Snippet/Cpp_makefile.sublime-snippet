@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+# Makefile
+
+${1:program} : ${1:program}.o ${2:object}.o
+	g++ -g -Wall -o ${1:program} ${1:program}.o ${2:object}.o `pkg-config gtkmm-3.0 --cflags --libs` && \
+	/bin/true && (./${1:program} &)
+
+${1:program}.o : ${1:program}.cpp ${2:object}.hpp
+	g++ -g -Wall -c ${1:program}.cpp `pkg-config gtkmm-3.0 --cflags --libs`
+
+${2:object}.o : ${2:object}.cpp ${2:object}.hpp
+	g++ -g -Wall -c ${2:object}.cpp `pkg-config gtkmm-3.0 --cflags --libs`
+
+clean:
+	rm -f ${1:program} ${1:program}.o ${2:object}.o
+]]></content>
+	<description>makefile base</description>
+	<tabTrigger>make</tabTrigger>
+</snippet>

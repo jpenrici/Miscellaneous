@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+#include "${1:/* header */}"
+#include <gtkmm/application.h>
+
+int main(int argc, char *argv[])
+{
+	auto app = Gtk::Application::create(argc, argv, "${3:/* Title Window */}");
+
+	${2:/* Name Class */} window;
+
+	return app->run(window);
+}
+]]></content>
+	<description>Main Gtkmm Application</description>
+	<tabTrigger>main</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

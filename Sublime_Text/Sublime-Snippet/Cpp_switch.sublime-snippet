@@ -1,0 +1,13 @@
+<snippet>
+	<description>switch-case</description>
+	<content><![CDATA[switch (${1:})
+{
+	case ${2:}:
+		${3:};
+		break;
+	default:
+		${4:}
+}]]></content>
+	<tabTrigger>switch</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

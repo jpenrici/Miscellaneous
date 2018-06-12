@@ -1,0 +1,6 @@
+<snippet>
+	<description>std::endl</description>
+	<content><![CDATA[std::cout << "${1:}" << std::endl;]]></content>
+	<tabTrigger>std::cout</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

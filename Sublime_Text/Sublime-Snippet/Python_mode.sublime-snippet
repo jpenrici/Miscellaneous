@@ -1,0 +1,8 @@
+<snippet>
+	<description>Mode Python</description>
+    <content><![CDATA[
+# -*- Mode: Python; coding: utf-8; indent-tabs-mpythoode: nil; tab-width: 4 -*-
+]]></content>
+    <tabTrigger>Mode</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

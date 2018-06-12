@@ -1,0 +1,6 @@
+<snippet>
+	<description>endline</description>
+	<content><![CDATA[cout << "${1:}" << '\n';]]></content>
+	<tabTrigger>cout</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

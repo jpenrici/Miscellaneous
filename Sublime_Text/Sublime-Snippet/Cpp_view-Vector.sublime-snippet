@@ -1,0 +1,12 @@
+<snippet>
+	<description>view vector</description>
+	<content><![CDATA[template<typename T>
+void view_vector(std::vector<T> v)
+{
+	for(int i = 0; i < v.size() - 1; ++i)
+		std::cout << i << char(32);
+	std::cout << v[v.size() - 1] << '\n';
+}]]></content>
+	<tabTrigger>vector</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

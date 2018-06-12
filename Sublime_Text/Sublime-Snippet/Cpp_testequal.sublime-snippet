@@ -1,0 +1,10 @@
+<snippet>
+	<description>CodeWars</description>
+	<content><![CDATA[void testequal(${1:type } ans, ${2:type } sol)
+{
+	std::cout << "ans: " << ans << "\nsol: " << sol << '\n'
+			  << std::boolalpha << (ans == sol) << '\n';
+}]]></content>
+	<tabTrigger>testequal(type, type)</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>
