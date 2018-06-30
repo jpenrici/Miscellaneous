@@ -1,0 +1,15 @@
+<snippet>
+	<description>For(3 Loops)</description>
+	<content><![CDATA[for (${1:/*type*/} ${2:i} = 0; ${2:i} < ${3:/*Value*/}; ++${2:i})
+{
+	for (${1:/*type*/} ${4:j} = 0; ${4:j} < ${5:/*Value*/}; ++${4:j})
+	{
+		for (${1:/*type*/} ${6:k} = 0; ${6:k} < ${7:/*Value*/}; ++${6:k})
+		{
+			${8:/*Code*/}
+		}
+	}
+}]]></content>
+	<tabTrigger>for</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>
