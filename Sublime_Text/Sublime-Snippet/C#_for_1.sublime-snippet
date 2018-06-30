@@ -1,0 +1,12 @@
+<snippet>
+	<description>For(2 Loops)</description>
+	<content><![CDATA[for (${1:/*type*/} ${2:i} = 0; ${2:i} < ${3:/*Value*/}; ++${2:i})
+{
+	for (${1:/*type*/} ${4:j} = 0; ${4:j} < ${5:/*Value*/}; ++${4:j})
+	{
+		${6:/*Code*/}
+	}
+}]]></content>
+	<tabTrigger>for</tabTrigger>
+	<scope>source.cs</scope>
+</snippet>
