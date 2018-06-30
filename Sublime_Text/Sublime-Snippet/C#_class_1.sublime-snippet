@@ -1,0 +1,14 @@
+<snippet>
+	<description>Class, Constuctor and Destructor</description>
+	<content><![CDATA[${1:public} class ${2:ClassName} 
+{
+	public ${2:ClassName}()
+	{
+		// Constuctor
+	}
+
+	~${2:ClassName}(){}  // Destructor 
+}]]></content>
+	<tabTrigger>class</tabTrigger>
+	<scope>source.cs</scope>
+</snippet>
