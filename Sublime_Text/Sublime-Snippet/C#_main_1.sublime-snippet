@@ -1,0 +1,11 @@
+<snippet>
+	<description>static void Main</description>
+    <content><![CDATA[static void Main(string[] args)
+{
+    ${1:/*Code C#*/}
+    	
+    Console.ReadKey();
+}]]></content>
+    <tabTrigger>main</tabTrigger>
+    <scope>source.cs</scope>
+</snippet>
