@@ -1,0 +1,6 @@
+<snippet>
+	<description>Console.WriteLine</description>
+    <content><![CDATA[Console.WriteLine("${1:/*Text*/}");]]></content>
+    <tabTrigger>Console</tabTrigger>
+    <scope>source.cs</scope>
+</snippet>
