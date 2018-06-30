@@ -1,0 +1,17 @@
+<snippet>
+	<description>static void Main</description>
+    <content><![CDATA[namespace ${1:/*Namespace*/}
+{
+	class ${2:/*class*/}
+	{
+		static void Main(string[] args)
+		{
+			${3:/* Code C# */}
+
+			// Console.ReadKey();
+		}
+	}
+}]]></content>
+    <tabTrigger>namespace</tabTrigger>
+    <scope>source.cs</scope>
+</snippet>
