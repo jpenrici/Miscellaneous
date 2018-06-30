@@ -1,0 +1,6 @@
+<snippet>
+	<description>Console.ReadKey()</description>
+    <content><![CDATA[Console.ReadKey()]]></content>
+    <tabTrigger>Console</tabTrigger>
+    <scope>source.cs</scope>
+</snippet>
