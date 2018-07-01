@@ -1,0 +1,15 @@
+<snippet>
+	<description>public method</description>
+    <content><![CDATA[namespace ${1:/*Namespace*/}
+{
+	class ${2:/*class*/}
+	{
+		public ${3:/*ReturnType*/} ${4:/*MethodName*/}(${5:/*Parameters*/}) 
+		{
+			${6:/* Code C# */}
+		}
+	}
+}]]></content>
+    <tabTrigger>namespace</tabTrigger>
+    <scope>source.cs</scope>
+</snippet>

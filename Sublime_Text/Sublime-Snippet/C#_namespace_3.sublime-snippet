@@ -1,0 +1,22 @@
+<snippet>
+	<description>public method and Main</description>
+    <content><![CDATA[namespace ${1:/*Namespace*/}
+{
+	class ${2:/*class*/}
+	{
+		public ${3:/*ReturnType*/} ${4:/*MethodName*/}(${5:/*Parameters*/}) 
+		{
+			${6:/* Code C# */}
+		}
+
+		static void Main(string[] args)
+		{
+			${7:/* Code C# */}
+
+			// Console.ReadKey();
+		}
+	}
+}]]></content>
+    <tabTrigger>namespace</tabTrigger>
+    <scope>source.cs</scope>
+</snippet>
