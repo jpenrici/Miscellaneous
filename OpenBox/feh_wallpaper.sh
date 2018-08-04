@@ -5,10 +5,10 @@ cd $PATH_WALLPAPERS
 
 TIME_STEP=8m
 DATE=$(date +%Y-%m-%d)
-HOURS=$(date +%H:%M:%S)
+HOUR=$(date +%H:%M:%S)
 LOG="/tmp/feh_wallpaper-log"
 
-echo "feh_wallpaper.sh : $DATE $HOURS" > $LOG
+echo "feh_wallpaper.sh : $DATE $HOUR" > $LOG
 wallpapers=($(ls | grep '.jpg$'))
 elements=${#wallpapers[@]}
 
