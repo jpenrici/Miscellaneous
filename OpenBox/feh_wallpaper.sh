@@ -3,24 +3,26 @@
 PATH_WALLPAPERS="$HOME/WALLPAPER"
 cd $PATH_WALLPAPERS
 
-TIME_STEP=10m
+TIME_STEP=8m
 DATE=$(date +%Y-%m-%d)
+HOURS=$(date +%H:%M:%S)
 LOG="/tmp/feh_wallpaper-log"
 
-echo "feh_wallpaper.sh : $DATE" > $LOG
+echo "feh_wallpaper.sh : $DATE $HOURS" > $LOG
 wallpapers=($(ls | grep '.jpg$'))
+elements=${#wallpapers[@]}
 
 while [[ true ]]; do
-    for ((i = 0; i < ${#wallpapers[@]}; ++i))
-    do
-        j=$(( ${#wallpapers[@]} - $i - 1))
-        echo "${wallpapers[$i]} ---- ${wallpapers[$j]}" >> $LOG
 
-        #   wallpepar ->        Monitor 1        Monitor 2      #
-        exec feh --bg-scale ${wallpapers[$i]} ${wallpapers[$j]} &
+	i=$(( $RANDOM % $elements ))
+	j=$(( $elements - $i ))
+
+    echo "${wallpapers[$i]} ---- ${wallpapers[$j]}" >> $LOG
+
+    #   wallpepar ->        Monitor 1        Monitor 2      #
+    exec feh --bg-scale ${wallpapers[$i]} ${wallpapers[$j]} &
         
-        sleep $TIME_STEP
-    done
+    sleep $TIME_STEP
 done
 
 # Debian 9 - OpenBox
