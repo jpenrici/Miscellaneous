@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# check arguments
+if [ "$#" -ne 1 ]; then
+    echo "usage ./run <filename.cpp or filename.cc>"
+    exit 0
+fi
+
+# check file extension
+file=$1
+name=${file%.*}
+extension=${file: -4}
+if [ $extension != ".cpp" ] && [ $extension != ".cc" ]; then
+    echo "usage filename.cpp or filename.cc"
+    exit 0
+fi
+
+echo "---------------------------------------------------------------------"
+echo "compiling $file ..."
+
+# check old executable
+if [ -f "$name" ]; then
+    echo "remove $name ..."
+    rm "$name"
+fi
+
+# check CMakeLists.txt
+if [ ! -f "CMakeLists.txt" ]; then
+    echo "create file CMakeLists.txt ..."
+    echo "cmake_minimum_required(VERSION 2.8)" > CMakeLists.txt
+    echo "project( $name )" >> CMakeLists.txt
+    echo "find_package( OpenCV REQUIRED )" >> CMakeLists.txt
+    echo "add_executable( $name $file )" >> CMakeLists.txt
+    echo "target_link_libraries( $name \${OpenCV_LIBS} )" >> CMakeLists.txt
+    echo "CMakeLists.txt ... ok"
+else
+    echo "CMakeLists.txt ... ok"
+fi
+
+# check build directory
+if [ ! -d "build" ];then
+    echo "create build directory ..."
+    mkdir "build"
+fi
+
+path=$(pwd)
+cd "./build"
+
+# cmake
+if [ ! -f "Makefile" ]; then
+    echo "cmake CMakeLists.txt ..."
+    echo "---------------------------- cmake ----------------------------------"
+    cmake CMakeLists.txt ..
+    echo "---------------------------------------------------------------------"
+fi
+
+# make
+if [ -f "Makefile" ]; then
+    echo "make ..."
+    echo "---------------------------- make -----------------------------------"
+    make
+    echo "---------------------------------------------------------------------"
+fi
+
+# copy and run executable
+if [ -f "$name" ]; then
+    echo "copy $name to $path ..."
+    cp $name $path
+    cd $path
+    echo "run $name ..."
+    ./$name &
+else
+    echo "\"$name\" not found. check make!"
+fi
+
+echo "script fineshed!"
+echo "---------------------------------------------------------------------"
+echo ""
+exit 0
