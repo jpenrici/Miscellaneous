@@ -1,5 +1,5 @@
 <snippet>
-	<description>endline</description>
+	<description>endline_'\n'</description>
 	<content><![CDATA[std::cout << "${1:}" << '\n';]]></content>
 	<tabTrigger>std::cout</tabTrigger>
 	<scope>source.c++</scope>
