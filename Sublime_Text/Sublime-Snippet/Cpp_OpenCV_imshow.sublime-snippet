@@ -1,0 +1,6 @@
+<snippet>
+	<description>inshow</description>
+	<content><![CDATA[imshow("${1:filename.extension}", ${2:mat image});]]></content>
+	<tabTrigger>imshow</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,6 @@
+{
+  "cmd": ["xfce4-terminal -e 'bash -c \"python3.6 -u ${file};echo;echo Press ENTER to exit; read line; rm ${file_path}/${file_base_name}.pyc; exit;\"'"],"shell": true,
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "working_dir": "${file_path}",
+  "selector": "source.python"    
+}

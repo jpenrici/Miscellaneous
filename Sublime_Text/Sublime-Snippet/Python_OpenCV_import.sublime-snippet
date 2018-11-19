@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[import numpy as np
+import cv2 as cv
+
+]]></content>
+    <tabTrigger>import cv2, numpy</tabTrigger>
+    <scope>source.python</scope>
+</snippet>

@@ -1,0 +1,30 @@
+<snippet>
+	<description>OpenCV basic scope</description>
+	<content><![CDATA[//#include "opencv2/photo.hpp"		// computational photography
+#include "opencv2/imgproc.hpp"		// image processing
+#include "opencv2/imgcodecs.hpp"	// image I/O
+#include "opencv2/highgui.hpp"		// high level GUI and Media
+#include "opencv2/core.hpp"			// core functionality
+#include <iostream>
+
+using namespace std;
+using namespace cv;
+
+int main (int argc, char** argv)
+{
+	Mat src = imread("${1:/*path image*/}");
+	
+	if(src.empty()) {
+        cout << "could not open or find the image!\n";
+        return EXIT_FAILURE;
+	}
+
+
+	waitKey(0);
+
+	return 0;
+}
+]]></content>
+	<tabTrigger>OpenCV</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+	<description>namedWindow</description>
+	<content><![CDATA[namedWindow("${1:}", ${2:WINDOW_AUTOSIZE});]]></content>
+	<tabTrigger>namedWindow</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>
