@@ -1,0 +1,11 @@
+<snippet>
+	<description>view vector - iterator</description>
+	<content><![CDATA[template<typename T>
+void view_vector(std::vector<T> v)
+{
+	std::copy(v.begin(), v.end() - 1, std::ostream_iterator<T>(std::cout, " "));
+	if (!v.empty()) std::cout << v.back() << '\n';
+}]]></content>
+	<tabTrigger>vector</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>
