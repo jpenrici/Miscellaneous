@@ -1,6 +1,7 @@
 /*
 ================================================================================
 Objetivo: 
+		Ordenação pelo método de Inserção Direta.
 Pratica:
 		Tipos, Variáveis, Operadores
 		Estrutura de Decisão

@@ -10,11 +10,6 @@ Pratica:
 		Tipos, Variáveis, Operadores
 		Estrutura de Decisão
 		Estrutura de Repetição
-		Procedimentos
-		Funções
-		Ponteiros
-		Vetores, Matrizes
-		Bibliotecas
 ================================================================================		
 */  
 programa
@@ -55,7 +50,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 780; 
+ * @POSICAO-CURSOR = 636; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

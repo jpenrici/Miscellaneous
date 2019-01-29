@@ -1,6 +1,7 @@
 /*
 ================================================================================
 Objetivo: 
+		Ordenção pelo método da Bolha.
 Pratica:
 		Tipos, Variáveis, Operadores
 		Estrutura de Decisão

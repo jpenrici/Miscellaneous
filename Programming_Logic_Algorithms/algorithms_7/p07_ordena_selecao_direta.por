@@ -1,6 +1,7 @@
 /*
 ================================================================================
 Objetivo: 
+		Ordenação pelo método de Seleção Direta.
 Pratica:
 		Tipos, Variáveis, Operadores
 		Estrutura de Decisão

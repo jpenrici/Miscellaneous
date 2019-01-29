@@ -1,6 +1,7 @@
 /*
 ================================================================================
 Objetivo: 
+		Pesquisa (Busca) Binária.
 Pratica:
 		Tipos, Variáveis, Operadores
 		Estrutura de Decisão
@@ -20,17 +21,17 @@ programa {
 	inteiro tamanho_vetor = u.numero_elementos(vetor_inteiros)
 
 	funcao inteiro busca_binaria(inteiro x) {
-		inteiro inicio = 0				// aponta para o inicio do vetor
-		inteiro fim = tamanho_vetor - 1 	// aponta para o último do vetor
-		inteiro meio = (inicio + fim) / 2
+		inteiro pos_inicial = 0				// aponta para o inicio do vetor
+		inteiro pos_final = tamanho_vetor - 1 	// aponta para o último do vetor
+		inteiro meio = (pos_inicial + pos_final) / 2
 
-		enquanto((vetor_inteiros[meio] != x) e (fim >= inicio)) {
+		enquanto((vetor_inteiros[meio] != x) e (pos_final >= pos_inicial)) {
 			se(vetor_inteiros[meio] > x) {
-				fim = meio + 1
+				pos_final = meio + 1
 			} senao {
-				inicio = meio + 1
+				pos_inicial = meio + 1
 			}
-			meio = (inicio + fim) / 2
+			meio = (pos_inicial + pos_final) / 2
 		}
 
 		se(vetor_inteiros[meio] == x) {
@@ -72,7 +73,7 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 824; 
+ * @POSICAO-CURSOR = 249; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

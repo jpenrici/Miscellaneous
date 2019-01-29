@@ -20,17 +20,17 @@ def lista_arquivos(caminho_diretorio):
 	      lista +=[os.path.join(diretorio, arquivo)]
 	return lista
 
-def ler_arquivo(caminho_diretorio):
+def ler_arquivo(caminho_arquivo):
 	texto=[]
-	if os.path.exists(caminho_diretorio):
-		with open(caminho_diretorio) as arquivo:
+	if os.path.exists(caminho_arquivo):
+		with open(caminho_arquivo) as arquivo:
 			for linha in arquivo:
 				texto+=[linha]
 	return texto
 
-def exibir_detalhes(caminho_diretorio):
+def exibir_detalhes(caminho_arquivo):
 	exibir = False
-	texto = ler_arquivo(caminho_diretorio)
+	texto = ler_arquivo(caminho_arquivo)
 	for linha in texto:
 		if linha[0] == "=":
 			exibir = not exibir
