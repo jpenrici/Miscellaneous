@@ -2,7 +2,10 @@
 
 '''
 ================================================================================
-Tipagem dinâmica
+Objetivo:
+		Observar a tipagem dinâmica.
+Pratica:
+		Tipos, Variáveis, Constantes e Operadores
 ================================================================================
 '''
 
@@ -36,3 +39,27 @@ print ('5.0 / 2 + 3 = ', 5.0 / 2 + 3)
 print("\nInteiros em outra base")
 print ("int('20', 8)  =", int('20', 8)) # base 8
 print ("int('20', 16) =", int('20', 16)) # base 16
+
+'''
+Output:
+
+Tipagem Dinâmica
+valor = 2019       <class 'int'>
+valor = 2019.2020  <class 'float'>
+valor = True       <class 'bool'>
+valor = 'A'        <class 'str'>
+valor = "2019"     <class 'str'>
+
+Convertendo de real para inteiro
+int(3.14) =  3
+
+Convertendo de inteiro para real
+float(1000) = 1000.0
+
+Calculo entre inteiro e real resulta em real
+5.0 / 2 + 3 =  5.5
+
+Inteiros em outra base
+int('20', 8)  = 16
+int('20', 16) = 32
+'''
