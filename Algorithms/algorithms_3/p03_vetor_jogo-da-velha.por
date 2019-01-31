@@ -45,7 +45,6 @@ programa
 			{0, 3, 6}, {1, 4, 7}, {2, 5, 8},
 			// diagonal
 			{0, 4, 8}, {2, 4, 6}
-
 		}
 
 		// inicialização
@@ -129,7 +128,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1882; 
+ * @POSICAO-CURSOR = 1310; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
