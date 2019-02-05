@@ -1,4 +1,7 @@
 algoritmo "Torre de Hanoi"
+//
+// encoding='ISO-8859-1'
+//
 //==============================================================================
 //Objetivo:
 //         Torre de Hanói é um "quebra-cabeça" que consiste em uma base contendo
