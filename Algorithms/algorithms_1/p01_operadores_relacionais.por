@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo:
-		Operações relacionais
+		Operadores condicionais.
 Pratica:
 		Tipos, Variáveis, Constantes e Operadores
 		Estruturas de Decisão

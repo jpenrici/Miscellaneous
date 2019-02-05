@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo:
-		Declaração de variáveis e constantes
+		Declaração de variáveis e constantes.
 Pratica:
 		Tipos, Variáveis, Constantes
 ================================================================================		

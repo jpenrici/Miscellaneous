@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo:
-		Uso de operadores lógicos
+		Uso de operadores lógicos.
 Pratica:
 		Tipos, Variáveis, Constantes e Operadores
 		Estruturas de Decisão

@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo:
-		Simples utilização de vetores
+		Simples utilização de vetores.
 		Exibir o maior e menor número sem ordenar ou pesquisar o vetor.
 Pratica:
 		Tipos, Variáveis, Operadores

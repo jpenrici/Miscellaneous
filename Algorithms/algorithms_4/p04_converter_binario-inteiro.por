@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo:
-		Converter número binário em inteiro
+		Converter número binário em inteiro.
 Pratica:
 		Tipos, Variáveis, Operadores
 		Estrutura de Decisão

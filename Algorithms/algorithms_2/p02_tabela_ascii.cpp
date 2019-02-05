@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo: 
-		Exibir os caracteres imprimíveis do código ASCII
+		Exibir os caracteres imprimíveis do código ASCII.
 Pratica:
 		Tipos do C++
 ================================================================================		

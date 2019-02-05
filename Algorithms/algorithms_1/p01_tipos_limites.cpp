@@ -4,7 +4,7 @@ Objetivo:
 		Verificar a capacidade numérica de cada tipo com sinal e sem sinal.
 Pratica:
 		Tipos do C++
-		Variáveis, Constantes
+		Tipos, Variáveis e Constantes
 		Bibliotecas
 ================================================================================		
 */

@@ -1,8 +1,8 @@
 /*
 ================================================================================
 Objetivo:
-		Operações aritméticas simples
-		Uso de operador % (módulo ou resto)
+		Operações aritméticas simples.
+		Uso de operador % (módulo ou resto).
 Pratica:
 		Tipos, Variáveis, Constantes e Operadores
 		Estruturas de Decisão

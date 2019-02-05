@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo:
-		Demonstrar a diferença entre "Enquanto-Faça" e "Faça-Enquanto"
+		Demonstrar a diferença entre "Enquanto-Faça" e "Faça-Enquanto".
 Pratica:
 		Tipos, Variáveis, Operadores
 		Estrutura de Repetição

@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo:
-		Exemplificar um menu para terminal
+		Exemplificar um menu para terminal.
 Pratica:
 		Tipos, Variáveis, Operadores
 		Estrutura de Decisão (Caso se)

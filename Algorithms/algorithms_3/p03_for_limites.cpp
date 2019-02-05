@@ -67,7 +67,7 @@ int main()
 	cout << "\ni = " << i << "\n";
 
 	// a partir deste ponto ocorrem erros de acesso a memória
-	// sem causar um erro de compilação, tão pouco, de execução
+	// sem causar um erro de compilação, tão pouco, de execução.
 	cout << "\nfor (i = 0; i <= MAX; i++) {...}\n";
 	for (i = 0; i <= MAX; i++)
 	{

@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo:
-		Fórmula de Bhaskara
+		Fórmula de Bhaskara.
 		Calcular as raízes da equação do segundo grau ax^2 − bx + c = 0.
 Pratica:
 		Tipos, Variáveis, Constantes e Operadores

@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo:
-		Operações aritméticas simples
+		Operações aritméticas simples.
 Pratica:
 		Tipos, Variáveis, Constantes e Operadores
 		Estruturas de Decisão

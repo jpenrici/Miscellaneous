@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo: 
-		Verificar as características de cada código ASCII
+		Verificar as características de cada código ASCII.
 
 Pratica:
 		Tipos do C/C++

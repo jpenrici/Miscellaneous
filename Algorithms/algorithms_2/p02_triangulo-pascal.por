@@ -1,7 +1,18 @@
 /*
 ================================================================================
 Objetivo:
-		Triângulo de Pascal		
+		Triângulo de Pascal, que é um triângulo numérico infinito formado por
+		números binomiais.
+		Onde cada número é igual à soma do número imediatamente acima e do
+		antecessor do número de cima.
+
+                        1 
+                      1   1 
+                    1   2   1 
+                 1    3   3   1 
+               1   [4] [6]  4   1 
+             1   5   =10  10  5   1
+
 Pratica:
 		Tipos, Variáveis, Operadores
 		Estrutura de Decisão
@@ -30,6 +41,8 @@ programa
 }
 
 /*
+Output:
+
 1 
 1 1 
 1 2 1 

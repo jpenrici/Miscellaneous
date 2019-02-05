@@ -1,7 +1,7 @@
 /*
 ================================================================================
 Objetivo: 
-		Boas vindas ao C++
+		Boas vindas ao C++.
 Pratica:
 		Comandos de Saída de Dados
 		Compilação no terminal
