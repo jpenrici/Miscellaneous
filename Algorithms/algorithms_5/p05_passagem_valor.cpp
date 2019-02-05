@@ -28,11 +28,11 @@ int main()
 	cout << "Função Principal" << endl;
 	cout << "variavel  = " << variavel << endl;
 	cout << "&variavel = " << &variavel << endl;
-	cout << "===========================" << endl;
+	cout << "---------------------------" << endl;
 
 	cout << "Função 1" << endl;	
 	funcao_1(variavel);
-	cout << "===========================" << endl;
+	cout << "---------------------------" << endl;
 
 	cout << "Função Principal" << endl;
 	cout << "variavel = " << variavel << endl;
@@ -44,12 +44,12 @@ int main()
 Função Principal
 variavel  = 2019
 &variavel = 0xbff310fc
-===========================
+---------------------------
 Função 1
 valor  = 2019
 &valor = 0xbff310e0
 valor = 1980
-===========================
+---------------------------
 Função Principal
 variavel = 2019
 */
