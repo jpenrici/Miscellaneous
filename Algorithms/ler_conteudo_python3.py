@@ -13,6 +13,8 @@ Detalhes:
 
 Por questão de codificação dos caracteres os arquivos do VisuAlg recebem
 tratamento especial.
+
+Executar com: python3 ler_conteudo_python3.py
 ================================================================================
 '''
 
@@ -26,7 +28,7 @@ def lista_arquivos(caminho_diretorio):
 		   for arquivo in arquivos:
 		      lista += [os.path.join(diretorio, arquivo)]
 	except Exception:
-		print("Erro: falha ao ler arquivo!")	      
+		pass	      
 	return lista
 
 def ler_arquivo(caminho_arquivo, tipo='UTF-8'):
@@ -37,17 +39,29 @@ def ler_arquivo(caminho_arquivo, tipo='UTF-8'):
 				for linha in arquivo:
 					texto += [linha]
 	except Exception:
-		print("Erro: falha ao ler arquivo!")
+		pass
 	return texto
 
 def exibir_detalhes(caminho_arquivo):
-	extensao = (caminho_arquivo.split('/')[-1]).split('.')[-1]
-	if (extensao != "por" and extensao != "cpp" and
-		extensao != "py"  and extensao != "alg"):
-		return
+	global filtro
+	auxiliar = caminho_arquivo.split('/')
+	extensao = auxiliar[-1].split('.')[-1]
+
+	# exibir todos os arquivos
+	if (filtro == "*"):
+		print(auxiliar[-1])
+		return False 
+
+	# exibir somente o arquivo de extensão escolhida
+	if (extensao != filtro):
+		return False
+
+	print("dir: " + auxiliar[-2])
+	print("arq: " + auxiliar[-1] + "\n")		
+
 	exibir = False
 	if (extensao == "alg"):
-		texto = ler_arquivo(caminho_arquivo, 'ISO-8859-1')
+		texto = ler_arquivo(caminho_arquivo, "ISO-8859-1")
 	else:
 		texto = ler_arquivo(caminho_arquivo)
 	for linha in texto:
@@ -60,19 +74,32 @@ def exibir_detalhes(caminho_arquivo):
 			if (linha[:2] == "//"):
 				linha = linha.replace("//", "")
 			print(linha)
+	return True
 
 def informar(caminho_diretorio):
 	arquivos = lista_arquivos(caminho_diretorio)
 	arquivos.sort()
 	separador = 80 * '*'
 	for arquivo in arquivos:
-		temp = arquivo.split('/')
-		print(temp[-1])
-		exibir_detalhes(arquivo)
-		print(separador)
+		if (exibir_detalhes(arquivo)):
+			print(separador)
 
 def main():
-	informar(".")  # ler diretório atual
+	informar(path)
 
 if __name__ == '__main__':
+
+	# filtro padrão, somente exibe arquivos
+	filtro = "*"
+	path = "."
+
+	# parâmetros de entrada em linha de comando
+	for param in sys.argv :
+		if param == "--por": filtro = "por"
+		if param == "--c++": filtro = "cpp"
+		if param == "--py" : filtro = "py"
+		if param == "--alg": filtro = "alg"
+		if param[:5] == "path=":
+			path = param.replace("path=", "")
+
 	main()

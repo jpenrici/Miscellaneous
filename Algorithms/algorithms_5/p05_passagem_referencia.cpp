@@ -30,7 +30,7 @@ int main()
 	cout << "&variavel = " << &variavel << endl;
 	cout << "---------------------------" << endl;
 
-	cout << "Função 1" << endl;	
+	cout << "Procediemto de passagem por referência." << endl;	
 	funcao_1(variavel);
 	cout << "---------------------------" << endl;
 
@@ -43,11 +43,11 @@ int main()
 /*
 Função Principal
 variavel  = 2019
-&variavel = 0xbfb078ec
+&variavel = 0xbf91b66c
 ---------------------------
-Função 1
+Procediemto de passagem por referência.
 referencia  = 2019
-&referencia = 0xbfb078ec
+&referencia = 0xbf91b66c
 referencia = 1980
 ---------------------------
 Função Principal
