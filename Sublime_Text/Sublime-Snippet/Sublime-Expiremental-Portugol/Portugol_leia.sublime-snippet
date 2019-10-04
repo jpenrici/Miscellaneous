@@ -1,0 +1,6 @@
+<snippet>
+	<description>leia</description>
+	<content><![CDATA[leia("${0: /* variável de entrada */}")]]></content>
+	<tabTrigger>leia</tabTrigger>
+	<scope>source.por</scope>
+</snippet>

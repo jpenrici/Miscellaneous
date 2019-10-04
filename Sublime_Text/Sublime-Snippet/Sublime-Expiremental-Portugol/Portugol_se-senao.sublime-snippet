@@ -1,0 +1,11 @@
+<snippet>
+	<description>se-senao</description>
+	<content><![CDATA[se (${1:/* condição */})
+{
+	${2:/* instruções */}
+} senao {
+	${3:/* instruções */}
+}]]></content>
+	<tabTrigger>se</tabTrigger>
+	<scope>source.por</scope>
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+	<description>enquanto</description>
+	<content><![CDATA[enquanto (${1:/* condição */})
+{
+	${2:/* instruções */}
+}]]></content>
+	<tabTrigger>enquanto</tabTrigger>
+	<scope>source.por</scope>
+</snippet>

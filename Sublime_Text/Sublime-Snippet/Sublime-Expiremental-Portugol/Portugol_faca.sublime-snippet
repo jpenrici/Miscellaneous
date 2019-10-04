@@ -1,0 +1,8 @@
+<snippet>
+	<description>faca-enquanto</description>
+	<content><![CDATA[faca {
+	${1:/* instruções */}
+} enquanto (${0:/* condição */})]]></content>
+	<tabTrigger>faca</tabTrigger>
+	<scope>source.por</scope>
+</snippet>

@@ -1,0 +1,12 @@
+<snippet>
+	<description>para(2 Loops)</description>
+	<content><![CDATA[para (${1:/* tipo */} ${2:i} = ${3:/* valor inicial */}; ${2:i} < ${4:/* valor inicial */}; ${5:++}${2:i})
+{
+	para (${1:/* tipo */} ${6:j} = ${7:/* valor inicial */}; ${6:j} < ${8:/* valor inicial */}; ${9:++}${6:j})
+	{
+		${10:/* instruções */}
+	}
+}]]></content>
+	<tabTrigger>para</tabTrigger>
+	<scope>source.por</scope>
+</snippet>

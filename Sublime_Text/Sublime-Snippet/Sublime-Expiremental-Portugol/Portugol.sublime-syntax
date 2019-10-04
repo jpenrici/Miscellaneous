@@ -1,0 +1,107 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+file_extensions:
+  - por
+scope: source.por
+
+variables:
+  control_keywords: 'programa|funcao|retorne|se|senao|escolha|caso|contrario|para|faca|enquanto'
+  basic_types: 'inteiro|real|logico|caracter|cadeia'
+
+contexts:
+
+  prototype:
+    - include: comments
+
+  main:
+    - include: keywords
+    - include: types
+    - include: numbers
+    - include: operators
+    - include: strings
+    - include: string_escaped_char
+
+  keywords:
+    - match: \b({{control_keywords}})\b
+      scope: keyword.control.c
+
+  types:
+    - match: \b({{basic_types}})\b
+      scope: storage.type.c
+
+  numbers:
+    - match: '\b((0(x|X)[0-9a-fA-F]*(\.[0-9a-fA-F]+p-?\d+)?)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)([fF]|(l{1,2}|L{1,2})[uU]?|[uU](l{0,2}|L{0,2}))?\b'
+      scope: constant.numeric.c
+
+  operators:
+    - match: (?:\+\+|--)
+      scope: keyword.operator.arithmetic.c
+    - match: \+\=|-\=|\*\=|/\=|%\=|&\=|\|\=|\^\=|>>\=|<<\=
+      scope: keyword.operator.assignment.augmented.c
+    - match: <\=|>\=|\=\=|<|>|\!\=
+      scope: keyword.operator.comparison.c
+    - match: \+|\-|/|%|\||\^|~|!
+      scope: keyword.operator.arithmetic.c
+    - match: \=
+      scope: keyword.operator.assignment.c
+
+  strings:
+    - match: '(L|u8|u|U)?(")'
+      captures:
+        1: storage.type.string.c
+        2: punctuation.definition.string.begin.c
+      push:
+        - meta_scope: string.quoted.double.c
+        - match: '"'
+          scope: punctuation.definition.string.end.c
+          pop: true
+        - include: string_escaped_char
+        - include: string_placeholder
+    - match: "(L|u8|u|U)?(')"
+      captures:
+        1: storage.type.string.c
+        2: punctuation.definition.string.begin.c
+      push:
+        - meta_scope: string.quoted.single.c
+        - match: "'"
+          scope: punctuation.definition.string.end.c
+          pop: true
+        - include: string_escaped_char
+
+  string_escaped_char:
+    - match: '(\\)$\n'
+      captures:
+        1: punctuation.separator.continuation.c
+    - match: \\(?:\\|[abefnrtv\'"?]|[0-3][0-9]{0,2}|[4-7][0-9]?|x[a-fA-F0-9]+|u[a-fA-F0-9]{4}|U[a-fA-F0-9]{8})
+      scope: constant.character.escape.c
+    - match: \\.
+      scope: invalid.illegal.unknown-escape.c
+
+  comments:
+    - match: ^/\* =(\s*.*?)\s*= \*/$\n?
+      scope: comment.block.c
+      captures:
+        1: meta.toc-list.banner.block.c
+    - match: /\*
+      scope: punctuation.definition.comment.c
+      push:
+        - meta_scope: comment.block.c
+        - match: \*/
+          scope: punctuation.definition.comment.c
+          pop: true
+    - match: \*/(?!\*)
+      scope: invalid.illegal.stray-comment-end.c
+    - match: ^// =(\s*.*?)\s*=\s*$\n?
+      scope: comment.line.banner.c
+      captures:
+        1: meta.toc-list.banner.line.c
+    - match: //
+      scope: punctuation.definition.comment.c
+      push:
+        - meta_scope: comment.line.double-slash.c
+        - match: '(\\)$\n'
+          captures:
+            1: punctuation.separator.continuation.c
+        - match: \n
+          pop: true

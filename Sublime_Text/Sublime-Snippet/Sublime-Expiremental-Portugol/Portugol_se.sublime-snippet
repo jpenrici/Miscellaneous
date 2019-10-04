@@ -1,0 +1,9 @@
+<snippet>
+	<description>se</description>
+	<content><![CDATA[se (${1:/* condição */})
+{
+	${2:/* instruções */}
+}]]></content>
+	<tabTrigger>se</tabTrigger>
+	<scope>source.por</scope>
+</snippet>

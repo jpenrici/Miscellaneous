@@ -1,0 +1,13 @@
+<snippet>
+	<description>escolha</description>
+	<content><![CDATA[escolha (${1: /* condição */})
+{
+	caso ${2: /* opção */}:
+		${3: /* instrução para opção */};
+		pare;
+	caso contrario:
+		${4: /* instrução padrão */}
+}]]></content>
+	<tabTrigger>escolha</tabTrigger>
+	<scope>source.por</scope>
+</snippet>

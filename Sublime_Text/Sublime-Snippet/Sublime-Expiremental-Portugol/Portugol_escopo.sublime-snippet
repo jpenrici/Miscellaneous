@@ -1,0 +1,12 @@
+<snippet>
+	<description>Portugol escopo</description>
+	<content><![CDATA[programa
+{
+	funcao inicio()
+	{
+		${0:/* code */}
+	}
+}]]></content>
+	<tabTrigger>programa</tabTrigger>
+	<scope>source.por</scope>
+</snippet>
