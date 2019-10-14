@@ -23,15 +23,15 @@ void view_vector(vector<T> v)
 }
 
 template<typename T>
-void view_frequency(std::vector<T> v)
+void view_frequency(vector<T> v)
 {
 	switch (v.size())
 	{
 		case 0:
-			std::cout << "vector empty\n";
+			cout << "vector empty\n";
 			break;
 		case 1:
-			std::cout << v[0] << " : 1\n";
+			cout << v[0] << " : 1\n";
 			break;
 		default:
 			vector<T> u;
