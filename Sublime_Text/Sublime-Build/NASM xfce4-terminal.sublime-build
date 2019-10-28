@@ -1,0 +1,6 @@
+{
+  "cmd": ["bash", "-c", "nasm -f elf '${file}' && ld -m elf_i386 -s -o '${file_path}/${file_base_name}' ${file_base_name}.o && xfce4-terminal -e 'bash -c \"${file_path}/${file_base_name};echo;echo;echo NASM: Compilation and linking completed.;echo Press ENTER to continue.; read line; rm ${file_path}/${file_base_name} ${file_path}/${file_base_name}.o; exit; exec bash\"'"],
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "working_dir": "${file_path}",
+  "selector": "source.asm"
+}
