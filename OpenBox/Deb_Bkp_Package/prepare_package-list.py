@@ -2,7 +2,7 @@
 
 '''
 Objetivo:
-	Preparar lista de read_list para reinstalação.
+	Preparar lista de pacotes para reinstalação.
 '''	
 
 import os, sys
