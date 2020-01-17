@@ -12,16 +12,16 @@ OUTPUT = "package_list_reinstall"
 DELIM = "\t"
 
 def load(path):
-	list = []
+	l = []
 	try:
 		f = open(path)
 		for line in f:
-			list += [line.replace("\n", "")]
+			l += [line.replace("\n", "")]
 		f.close()
 	except Exception:
 		print("error ... " + path)
 		exit(0)		      
-	return list
+	return l
 
 def save(path, txt):
 	try:
@@ -32,10 +32,10 @@ def save(path, txt):
 		print("error ... " + path)
 		exit(0)	
 
-def read_list(list):
+def read_list(l):
 	txt = ""
 	char = 'a'
-	for i in list:
+	for i in l:
 		if (i[0] == '#' or i[0] == '-'):
 			continue
 		if (i[0] == char):
@@ -46,8 +46,8 @@ def read_list(list):
 	return txt
 
 def main():
-	list = load(INPUT)
-	txt = read_list(list)
+	l = load(INPUT)
+	txt = read_list(l)
 	print(txt)
 	save(OUTPUT, txt)
 
