@@ -1,0 +1,654 @@
+Carro
+idCarro;nomeCarro;marcaCarro
+1;Adamo;AC2000
+2;Adamo;CRX
+3;Adamo;GT
+4;Adamo;GT-2
+5;Adamo;GTL
+6;Adamo;GTM
+7;Adamo;GTM C2
+8;Agrale;Marruá
+9;Aldee;GT 1.8 Street
+10;Aldee;Spyder
+11;Alfa Romeo;Alfa Romeo 2000
+12;Alfa Romeo;2300 03
+13;Alfa Romeo;2300 Executivo
+14;Alfa Romeo;2300 B
+15;Alfa Romeo;2300 Ti
+16;Alfa Romeo;2300 Rio
+17;Alfa Romeo;2300 SL 
+18;Alfa Romeo;2300 Ti 4
+19;Alfa Romeo;2300 Álcool Ti
+20;Americar;XKCoupe
+21;Americar;XK120 
+22;Americar;Cobra
+23;Americar;GT40
+24;Avallone;A 11 Avallone
+25;Avallone;TF 6R
+26;Avallone;Fusca Cabriolet
+27;Avallone;Limosine Monza 
+28;Avallone;A 52 
+29;Avallone;Avallone Presidencial 
+30;Audi;A3
+31;Audi;A3 Sedan
+32;Audi;Q3 
+33;Audi;TT
+34;Audi;A1
+35;Audi;R8
+36;Audi;A4
+37;Audi;A5
+38;Audi;A6
+39;Audi;A7
+40;Audi;Q5
+41;Audi;Q7
+42;Audi;Senna
+43;Aurora;122 C 
+44;Bianco;Bianco S
+45;Bianco;Bianco Série 2
+46;Bianco;Bianco Tarpan
+47;Bianco;Bianco Tarpan TS
+48;BMW;Série 1
+49;BMW;Série 3
+50;BMW;X1
+51;BMW;X3 
+52;BMW;X4
+53;BMW;Z3
+54;BMW;Z4
+55;BMW;Série 2
+56;BMW;Série 4
+57;BMW;Série 5
+58;BMW;Série 7
+59;BMW;Série 8
+60;BMW;X2
+61;BMW;X5
+62;BMW;X6
+63;BMW;M2 Competition
+64;BMW;M3 Sedã
+65;BMW;M4 Coupé
+66;BMW;M5
+67;BMW;X6M
+68;Bola;Fera XK
+69;Brasinca;4200 GT
+70;Brasinca;4200 GTS[
+71;Cadillac;DeVille
+72;Cadillac;Eldorado
+73;CBP;Super 90
+74;CBP;Spyder 550
+75;CBP;911 Carrera
+76;CBP;MG MGA
+77;CBP;EJ 1
+78;CBT;CBT Javali 4x2
+79;CBT;CBT Javali 4x4
+80;CBT;CBT Javali 4x4 (turbo)
+81;Chamonix;Roadster 356
+82;Chamonix;Speedster 356 
+83;Chamonix;Spyder 550 R 
+84;Chamonix;Spyder 550 S
+85;Chamonix;Spyder 550 S L.M.
+86;Chamonix;Super 90
+87;Chery;Arrizzo 5
+88;Chery;Celer
+89;Chery;QQ
+90;Chery;Tiggo 2
+91;Chery;Tiggo 7
+92;Chery;Face
+93;Chery;Cielo
+94;Chevrolet;A-10
+95;Chevrolet;A-20 
+96;Chevrolet;Alvorada
+97;Chevrolet;Amazona
+98;Chevrolet;Astra
+99;Chevrolet;Blazer
+100;Chevrolet;Bonanza
+101;Chevrolet;C-10
+102;Chevrolet;C-14 
+103;Chevrolet;C-1416
+104;Chevrolet;C-15 
+105;Chevrolet;C-20
+106;Chevrolet;Camaro
+107;Chevrolet;Caravan
+108;Chevrolet;Celta
+109;Chevrolet;Chevette Hatch
+110;Chevrolet;Chevette
+111;Chevrolet;Chevette Junior
+112;Chevrolet;Chevy 500
+113;Chevrolet;Cobalt
+114;Chevrolet;Corisco
+115;Chevrolet;Corsa
+116;Chevrolet;Corsa Sedan
+117;Chevrolet;Corsa Sedan Classic
+118;Chevrolet;Corsa Pick-up
+119;Chevrolet;Corsa Wagon
+120;Chevrolet;Cruze
+121;Chevrolet;Cruze Sport6
+122;Chevrolet;D-10 
+123;Chevrolet;D-20
+124;Chevrolet;Ipanema
+125;Chevrolet;Kadett
+126;Chevrolet;Kadett Conversível
+127;Chevrolet;Marajó
+128;Chevrolet;Meriva 
+129;Chevrolet;Montana
+130;Chevrolet;Monza Sedan
+131;Chevrolet;Monza Hatch
+132;Chevrolet;Omega
+133;Chevrolet;Onix
+134;Chevrolet;Opala Coupe
+135;Chevrolet;Opala
+136;Chevrolet;Prisma
+137;Chevrolet;Silverado
+138;Chevrolet;S10
+139;Chevrolet;Spin
+140;Chevrolet;Suprema
+141;Chevrolet;TrailBlazer
+142;Chevrolet;Vectra
+143;Chevrolet;Vectra
+144;Chevrolet;Veraneio
+145;Chevrolet;Zafira
+146;Chevrolet;Equinox
+147;Chrysler/Dodge;1800
+148;Chrysler/Dodge;Charger
+149;Chrysler/Dodge;Dakota
+150;Chrysler/Dodge;Dart Sedã
+151;Chrysler/Dodge;Dart Coupe
+152;Chrysler/Dodge;LeBaron
+153;Chrysler/Dodge;Magnum
+154;Chrysler/Dodge;Polara
+155;Chrysler/Dodge;Journey
+156;Chrysler/Dodge;Durango
+157;Chrysler/Dodge;Town & Country
+158;Chrysler/Dodge;300
+159;Chrysler/Dodge;PT Cruiser
+160;Chrysler/Dodge;Caravan
+161;Chrysler/Dodge;Grand Caravan
+162;Chrysler/Dodge;Stratus
+163;Citroën;Aircross
+164;Citroën;C3
+165;Citroën;C4
+166;Citroën;Xsara Picasso
+167;Citroën;DS3
+168;Citroën;Xantia
+169;Citroën;C5 2001
+170;Citroën;C4 Pallas
+171;Citroën;C4 Lounge
+172;Citroën;DS5
+173;Citroën;C3 Picasso
+174;Citroën;XM
+175;Concorde;Concorde
+176;Corona;Dardo F 1.3
+177;Cross Lander;CL-244
+178;Cross Lander;CL-330
+179;Daewoo;Espero
+180;Daewoo;Nubira
+181;Daewoo;Lanos
+182;Dankar;Squalo
+183;Dankar;Julia
+184;DKW-Vemag;Belcar
+185;DKW-Vemag;Caiçara 
+186;DKW-Vemag;Camioneta
+187;DKW-Vemag;Candango
+188;DKW-Vemag;F-91 Universal
+189;DKW-Vemag;Fissore
+190;DKW-Vemag;Grande
+191;DKW-Vemag;Pracinha
+192;DKW-Vemag;Vemaguet
+193;Edra;Rancho PK
+194;Edra;Rancho TT
+195;Edra;GT e GT-R
+196;Edra;Mog 
+197;Edra;Aris
+198;Emis;Art
+199;Engerauto;Topazzio
+200;Engesa;EE-12
+201;Engesa;EE-34
+202;Engesa;4
+203;Envemo;Camper
+204;Envemo;Super 90
+205;Envemo;Super 90 Cabriolet
+206;Envesa;Envesa 4
+207;Farus;ML-929
+208;Farus;TS 
+209;Farus;Beta
+210;Farus;Beta Cabriolet
+211;Farus;Quadro
+212;Fiat;147
+213;Fiat;Argo
+214;Fiat;Brava
+215;Fiat;Bravo
+216;Fiat;City
+217;Fiat;Doblò
+218;Fiat;Ducato
+219;Fiat;Elba
+220;Fiat;Fiorino
+221;Fiat;Idea
+222;Fiat;Linea
+223;Fiat;Marea
+224;Fiat;Marea Weekend
+225;Fiat;Mobi
+226;Fiat;Oggi
+227;Fiat;Palio
+228;Fiat;Weekend/Palio Weekend
+229;Fiat;Panorama
+230;Fiat;Prêmio
+231;Fiat;Punto
+232;Fiat;Siena/Grand Siena
+233;Fiat;Spazio
+234;Fiat;Stilo
+235;Fiat;Strada
+236;Fiat;Tempra
+237;Fiat;Tipo
+238;Fiat;Toro
+239;Fiat;Uno/Mille
+240;Fiat;Coupé
+241;Fiat;500
+242;FNM;2000 JK
+243;FNM;2150 JK
+244;FNM;Onça
+245;FNM;Fúria GT
+246;Ford;Belina 
+247;Ford;Belina II
+248;Ford;Corcel
+249;Ford;Corcel II
+250;Ford;Courier
+251;Ford;Courier Van
+252;Ford;Del Rey
+253;Ford;Del Rey Scala 
+254;Ford;EcoSport
+255;Ford;Escort
+256;Ford;Escort SW
+257;Ford;Escort conversível
+258;Ford;F-100
+259;Ford;F-1000
+260;Ford;F-250
+261;Ford;F-75
+262;Ford;Fiesta
+263;Ford;Focus
+264;Ford;Jeep
+265;Ford;Galaxie 500
+266;Ford;Galaxie
+267;Ford;Ka
+268;Ford;Ka+
+269;Ford;LTD
+270;Ford;LTD Landau
+271;Ford;Maverick
+272;Ford;Mustang
+273;Ford;Mondeo
+274;Ford;Pampa
+275;Ford;Royale
+276;Ford;Rural
+277;Ford;Verona
+278;Ford;Versailles
+279;Ford;Fusion
+280;Ford;Edge
+281;Furglass;Furglaine
+282;Geely;EC7 
+283;Geely;GC2
+284;Glaspac;Cobra 
+285;GMC;3500 HD
+286;Grancar;Futura
+287;Gurgel;Ipanema
+288;Gurgel;Bugato
+289;Gurgel;Xavante XT
+290;Gurgel;Xavante XTR
+291;Gurgel;Xavante XTC
+292;Gurgel;X-10
+293;Gurgel;X-20
+294;Gurgel;X-12
+295;Gurgel;Tocantins
+296;Gurgel;X-15
+297;Gurgel;G-15
+298;Gurgel;Itaipu
+299;Gurgel;Itaipu E-400
+300;Gurgel;Itaipu E-500
+301;Gurgel;G-800
+302;Gurgel;XEF
+303;Gurgel;Carajás
+304;Gurgel;BR-800
+305;Gurgel;Motomachine
+306;Gurgel;Supermini
+307;Hofstetter;Hofstetter
+308;Honda;City
+309;Honda;Civic
+310;Honda;Fit
+311;Honda;CR-V
+312;Honda;HR-V 
+313;Honda;WR-V
+314;Hyundai;Creta
+315;Hyundai;HB20 
+316;Hyundai;HB20S
+317;Hyundai;HB20X
+318;Hyundai;ix20
+319;Hyundai;ix35
+320;Hyundai;Tucson
+321;Hyundai;Azera
+322;Hyundai;Veloster
+323;Hyundai;Santa Fe
+324;Hyundai;Veracruz
+325;Hyundai;Genesis
+326;Hyundai;Elantra
+327;IBAP;Democrata
+328;Inbrave;Swing
+329;Ita;Lassale
+330;JAC;T5
+331;JAC;T40 
+332;JAC;JAC J3
+333;JAC;JAC J3 Turin
+334;JAC;JAC J6
+335;JAC;JAC J5
+336;JAC;JAC J2 
+337;JAC;IEV 40
+338;JAC;T80
+339;JAC;T50
+340;Jeep;Compass
+341;Jeep;Renegade
+342;Jeep;Cherokee
+343;Jeep;Grand Cherokee
+344;Jeep;Wrangler
+345;JPX;Montez
+346;Kia;Kia Picanto
+347;Kia;Kia Morning
+348;Kia;Kia Cadenza
+349;Kia;Kia K7
+350;Kia;Kia Cerato
+351;Kia;Kia Forte
+352;Kia;Kia Cerato Koup
+353;Kia;Kia Koup
+354;Kia;Kia Forte Koup
+355;Kia;Kia Sportage
+356;Kia;Kia Carens 
+357;Kia;Kia Rondo
+358;Kia;Kia Sorento
+359;Kia;Kia Carnival
+360;Kia;Kia Sedona
+361;Kia;Kia Bongo
+362;Kia;Kia Mohave
+363;Kia;Kia Borrego
+364;Kia;Kia Soul
+365;Kia;Kia Optima
+366;Kia;Kia Quoris
+367;Kia;Kia Stinger
+368;Lada;VAZ- 2105 (Laika)
+369;Lada;VAZ- 2104 (Laika Station Wagon)
+370;Lada;VAZ- 2108 (Samara)
+371;Lada;VAZ- 2121 (Niva)
+372;L'Automobile/L'Auto Craft;Ventura
+373;L'Automobile/L'Auto Craft;Ventura conversível
+374;L'Automobile/L'Auto Craft;Ventura II 
+375;L'Automobile/L'Auto Craft;Sabre
+376;Lafer;MP TD
+377;Lafer;MP LL
+378;Lafer;MP TI
+379;Land Rover;Range Rover Evoque
+380;Land Rover;Range Rover
+381;Land Rover;Range Rover Sport
+382;Land Rover;Land Rover Defender
+383;Land Rover;Land Rover Vogue
+384;Land Rover;Land Rover Autobiography
+385;Land Rover;Land Rover Velar
+386;Land Rover;Land Rover Discovery
+387;Lexus;ES
+388;Lexus;LS
+389;Lexus;UX
+390;Lexus;NX
+391;Lexus;RX
+392;Lexus;CT
+393;Lexus;LC
+394;LHM;Phoenix
+395;LHM;Ítala
+396;Lifan;X60
+397;Lifan;320
+398;Lifan;530
+399;Lifan;X80
+400;Lincoln;Continental
+401;Lincoln;Town Car
+402;Lobini;H1
+403;Lobini;R
+404;Lorena;Lorena GT
+405;Lorena;Lorena RM
+406;Lorena;Lorena GT-L 
+407;Macan;Gurgel 1200 
+408;Mahindra;MUV
+409;Mahindra;Mahindra Pick-up
+410;Mahindra;Scorpio
+411;Mahindra;SUV
+412;Malzoni;Malzoni I
+413;Malzoni;Malzoni II
+414;Malzoni;Malzoni III
+415;Malzoni;GT Malzoni
+416;Malzoni;GT Malzoni II (Malzoni GTM)
+417;Malzoni;GT Malzoni II (Malzoni GTM) conversível
+418;Matra Veículos;Matra Pick-up
+419;Megastar Veículos;Emme
+420;Mercedes-Benz;Classe A
+421;Mercedes-Benz;Classe C 
+422;Mercedes-Benz;CLC 200
+423;Mercedes-Benz;GLA
+424;Mercedes-Benz;CLA
+425;Mercedes-Benz;Classe E
+426;Mercedes-Benz;Classe S
+427;Mercedes-Benz;GLC
+428;Mercedes-Benz;GLE
+429;Mercedes-Benz;GLS
+430;Mercedes-Benz;SLC
+431;Mercedes-Benz;Classe G
+432;Mercedes-Benz;SLK
+433;Mercedes-Benz;Classe GLK
+434;Mercedes-Benz;Classe CLK
+435;Mercedes-Benz;Classe M
+436;Mini;Countryman
+437;Mini;Cooper
+438;Mirage;Mirage GT
+439;Mitsubishi;ASX
+440;Mitsubishi;L200
+441;Mitsubishi;Lancer
+442;Mitsubishi;Pajero TR4
+443;Mitsubishi;Pajero
+444;Mitsubishi;Eclipse
+445;Miura;Sport
+446;Miura;Sport II 
+447;Miura;MTS
+448;Miura;Targa
+449;Miura;Spider
+450;Miura;Kabrio
+451;Miura;Saga
+452;Miura;787
+453;Miura;X8
+454;Miura;Saga II
+455;Miura;Top Sport
+456;Miura;X11
+457;Miura;BG-Truck CD
+458;Monarca;Monarca
+459;NBM;Jornada
+460;NBM;Spirit
+461;Nissan;Frontier
+462;Nissan;Grand Livina
+463;Nissan;Kicks
+464;Nissan;Livina
+465;Nissan;March
+466;Nissan;Sentra 
+467;Nissan;Versa
+468;Nissan;Leaf
+469;Nobre;Alpini G 59 Grand Prix
+470;Obvio!;828
+471;PAG/Dacon;828
+472;PAG/Dacon;Nick
+473;Peugeot;206
+474;Peugeot;504 Pickup Diesel
+475;Peugeot;206 SW
+476;Peugeot;207
+477;Peugeot;207 Passion
+478;Peugeot;207 SW
+479;Peugeot;208
+480;Peugeot;2008
+481;Peugeot;Hoggar
+482;Peugeot;408
+483;Peugeot;3008
+484;Peugeot;5008
+485;Peugeot;307
+486;Peugeot;405
+487;Peugeot;205
+488;Peugeot;106
+489;Peugeot;306
+490;Peugeot;406
+491;Peugeot;407
+492;Peugeot;RCZ
+493;Peugeot;2008
+494;Polystilo;WM II
+495;Polystilo;Savana
+496;Puma;GT (DKW) 
+497;Puma;GT (VW)
+498;Puma;GT4R
+499;Puma;Puma P8
+500;Puma;Puma Spyder
+501;Puma;GTE
+502;Puma;GTS
+503;Puma;GTB
+504;Puma;GTB S2
+505;Puma;GTB S3
+506;Puma;GTB S4
+507;Puma;P-018
+508;Puma;GTC
+509;Puma;GTI
+510;Puma;AM1
+511;Puma;AM2
+512;Puma;AM3
+513;Puma;AM4
+514;Puma;AMV
+515;Puma;Puma 7900 (Caminhão)
+516;Py Motors;Equus
+517;Ragge;Califórnia
+518;Renault;Captur
+519;Renault;Clio
+520;Renault;Clio Sedan
+521;Renault;Duster
+522;Renault;Duster Oroch
+523;Renault;Kwid
+524;Renault;Logan
+525;Renault;Mégane Grand Tour
+526;Renault;Mégane Sedan
+527;Renault;Sandero
+528;Renault;Scénic
+529;Renault;Fluence
+530;Romi;Isetta
+531;Saab;9000
+532;Simca;Alvorada
+533;Simca;Chambord
+534;Simca;Emi-Sul
+535;Simca;Esplanada
+536;Simca;GTX
+537;Simca;Jangada
+538;Simca;Presidence
+539;Simca;Rally
+540;Simca;Regente
+541;Simca;Tufão
+542;Santa Matilde;SM Hatch
+543;Santa Matilde;SM Conversível
+544;Santa Matilde;SM Coupé
+545;SEAT;Córdoba
+546;SEAT;Ibiza
+547;SEAT;Inca
+548;SEAT;Vario
+549;Smart;Fortwo
+550;STV;Uirapuru berlineta
+551;STV;Uirapuru cabriolet
+552;Spiller Mattei;Gringo
+553;SR Veículos Especiais;Ibiza
+554;SR Veículos Especiais;Max Sport
+555;SR Veículos Especiais;Max Sport 2
+556;SR Veículos Especiais;Deserter 2
+557;SR Veículos Especiais;Deserter Rally
+558;SR Veículos Especiais;Deserter XK
+559;SR Veículos Especiais;Country XK
+560;Subaru;Impreza
+561;Subaru;Forester
+562;Subaru;WRX
+563;Subaru;Outback
+564;Subaru;XV
+565;Suzuki;Jimny
+566;Suzuki;Grand Vitara
+567;Suzuki;Vitara
+568;Suzuki;Suzuki SX4 S-Cross
+569;SsangYong;XLV
+570;SsangYong;Tivoli
+571;SsangYong;Actyon
+572;SsangYong;Actyon Sports
+573;SsangYong;Korando
+574;SsangYong;Kyron
+575;SsangYong;Rexton
+576;TAC Motors;Stark
+577;Tanger;Lucena
+578;Toyota;Bandeirante 
+579;Toyota;Camry
+580;Toyota;Corolla
+581;Toyota;Etios
+582;Toyota;Fielder
+583;Toyota;Hilux
+584;Toyota;Prius
+585;Toyota;RAV4
+586;Toyota;SW4
+587;Toyota;Yaris
+588;Trimax;Audax
+589;Troller;Pantanal
+590;Troller;T4
+591;Villa;Villa GT
+592;Volvo;XC40
+593;Volvo;XC60
+594;Volvo;XC90
+595;Volvo;V40
+596;Volvo;V60
+597;Volvo;S60
+598;Volvo;S90
+599;Volvo;850
+600;Volvo;C30
+601;Volvo;V50
+602;Volvo;XC70
+603;Volvo;V50
+604;Volvo;C70
+605;Volkswagen;1600
+606;Volkswagen;Apollo
+607;Volkswagen;Brasília
+608;Volkswagen;Fox
+609;Volkswagen;Fusca
+610;Volkswagen;Gol
+611;Volkswagen;Golf
+612;Volkswagen;Jetta
+613;Volkswagen;Karmann Ghia 
+614;Volkswagen;Karmann Ghia Cabriolet
+615;Volkswagen;Karmann Ghia TC
+616;Volkswagen;Kombi
+617;Volkswagen;Logus
+618;Volkswagen;Parati
+619;Volkswagen;Passat
+620;Volkswagen;Pointer 
+621;Volkswagen;Polo
+622;Volkswagen;Polo Classic
+623;Volkswagen;Polo Sedan 
+624;Volkswagen;Quantum
+625;Volkswagen;Santana
+626;Volkswagen;Saveiro 
+627;Volkswagen;SP1
+628;Volkswagen;SP2
+629;Volkswagen;TL
+630;Volkswagen;Up!
+631;Volkswagen;Variant
+632;Volkswagen;Variant II
+633;Volkswagen;Virtus
+634;Volkswagen;Voyage
+635;Volkswagen;Bora
+636;Volkswagen;T-Cross
+637;Volkswagen;Tiguan
+638;Volkswagen;Touareg
+639;WMV;WMV
+640;Willys Overland;1093
+641;Willys Overland;Aero
+642;Willys Overland;Dauphine
+643;Willys Overland;Gordini
+644;Willys Overland;Interlagos
+645;Willys Overland;Itamaraty
+646;Willys Overland;Itamaraty Executivo
+647;Willys Overland;Jeep CJ-5
+648;Willys Overland;Jeep CJ-6 
+649;Willys Overland;Jeep pick-up
+650;Willys Overland;Rural
+651;Willys Overland;Teimoso
+652;Willys Overland;Capeta
