@@ -14,11 +14,10 @@ CREATE TABLE IF NOT EXISTS `Localidade` (
 
 # Tabela `Signo`
 CREATE TABLE IF NOT EXISTS `Signo` (
-  `idSigno` INT NOT NULL,
   `signo` VARCHAR(12) NOT NULL,
   `dataInicial` VARCHAR(15) NOT NULL,
   `dataFinal` VARCHAR(15) NOT NULL,
-  PRIMARY KEY (`idSigno`));
+  PRIMARY KEY (`signo`));
 
 # Tabela `Pessoa`
 CREATE TABLE IF NOT EXISTS `Pessoa` (
@@ -27,10 +26,10 @@ CREATE TABLE IF NOT EXISTS `Pessoa` (
   `dataNascimento` DATE NOT NULL,
   `Localidade_idMapa` INT NOT NULL,
   `estadoCivil` VARCHAR(10) NOT NULL,
-  `Signo_idSigno` INT NOT NULL,
+  `Signo_signo` VARCHAR(12) NOT NULL,
   PRIMARY KEY (`idPessoa`),
   FOREIGN KEY (`Localidade_idMapa`) REFERENCES `Localidade` (`idMapa`),
-  FOREIGN KEY (`Signo_idSigno`) REFERENCES `Signo` (`idSigno`));
+  FOREIGN KEY (`Signo_signo`) REFERENCES `Signo` (`signo`));
 
 # Tabela `Fruta`
 CREATE TABLE IF NOT EXISTS `Fruta` (
