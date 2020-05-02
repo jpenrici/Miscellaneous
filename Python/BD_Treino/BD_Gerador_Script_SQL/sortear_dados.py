@@ -244,9 +244,43 @@ def gerarSQL():
 	sql.gerar("tab_pessoa.csv", "tab_pessoa.sql")
 	sql.gerar("tab_pesquisa.csv", "tab_pesquisa.sql")
 
+def juntarSQL(sequenciaDeArquivos):
+	sql = []
+	for arquivo in sequenciaDeArquivos:
+		arq = dir_sql + arquivo
+		dados = ler_arquivo(arq)
+		sql += [EOL + "### " + arquivo.upper() + " ###" + EOL]
+		sql += dados
+	sql += [EOL + 50 * '#']
+
+	txt = ""
+	for linha in sql:
+		txt += linha + EOL
+
+	salvar_arquivo(dir_sql + "sql_completo.sql", txt)
+	return txt
+
 def main():
 	preparar(marcaCarro="Audi", uf="rj", num_pessoas=10)
 	gerarSQL()
+
+	# Reunir todos os comandos SQL
+	# Importante respeitar a ordem!
+	sequenciaDeArquivos = [
+		# criar banco de dados
+		"bd_treino.sql",
+		# criar tabelas
+		"tab_localidade.sql",
+		"tab_signo.sql",
+		"tab_fruta.sql",
+		 "tab_comida.sql",
+		"tab_carro.sql",
+		"tab_pessoa.sql",
+		"tab_pesquisa.sql"
+		######################
+	]
+	texto = juntarSQL(sequenciaDeArquivos)
+	# print(texto)
 
 if __name__ == '__main__':
 	main()
