@@ -1,38 +1,11 @@
 
-### DB_CREATE_DATABASE.SQL ###
+### BD_TREINO.SQL ###
 
 # Criar Banco de Dados
 CREATE DATABASE `DBTeste`;
 
 # Selecionar BD
 USE `DBTeste`;
-
-### DB_CREATE_TABLE_CARRO.SQL ###
-
-# Tabela `Carro`
-CREATE TABLE IF NOT EXISTS `Carro` (
-  `idCarro` INT NOT NULL,
-  `nomeCarro` VARCHAR(15) NOT NULL,
-  `marcaCarro` VARCHAR(15) NOT NULL,
-  PRIMARY KEY (`idCarro`));
-
-### DB_CREATE_TABLE_COMIDA.SQL ###
-
-# Tabela `Comida`
-CREATE TABLE IF NOT EXISTS `Comida` (
-  `idComida` INT NOT NULL,
-  `nomePrato` VARCHAR(15) NOT NULL,
-  PRIMARY KEY (`idComida`));
-
-### DB_CREATE_TABLE_FRUTA.SQL ###
-
-# Tabela `Fruta`
-CREATE TABLE IF NOT EXISTS `Fruta` (
-  `idFrutas` INT NOT NULL,
-  `nomeFruta` VARCHAR(15) NOT NULL,
-  PRIMARY KEY (`idFrutas`));
-
-### DB_CREATE_TABLE_LOCALIDADE.SQL ###
 
 # Tabela `Localidade`
 CREATE TABLE IF NOT EXISTS `Localidade` (
@@ -42,7 +15,43 @@ CREATE TABLE IF NOT EXISTS `Localidade` (
   `regiao` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`idMapa`));
 
-### DB_CREATE_TABLE_PESQUISA.SQL ###
+# Tabela `Signo`
+CREATE TABLE IF NOT EXISTS `Signo` (
+  `signo` VARCHAR(12) NOT NULL,
+  `dataInicial` VARCHAR(15) NOT NULL,
+  `dataFinal` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`signo`));
+
+# Tabela `Pessoa`
+CREATE TABLE IF NOT EXISTS `Pessoa` (
+  `idPessoa` INT NOT NULL,
+  `nome` VARCHAR(60) NOT NULL,
+  `dataNascimento` DATE NOT NULL,
+  `Localidade_idMapa` INT NOT NULL,
+  `estadoCivil` VARCHAR(10) NOT NULL,
+  `Signo_signo` VARCHAR(12) NOT NULL,
+  PRIMARY KEY (`idPessoa`),
+  FOREIGN KEY (`Localidade_idMapa`) REFERENCES `Localidade` (`idMapa`),
+  FOREIGN KEY (`Signo_signo`) REFERENCES `Signo` (`signo`));
+
+# Tabela `Fruta`
+CREATE TABLE IF NOT EXISTS `Fruta` (
+  `idFrutas` INT NOT NULL,
+  `nomeFruta` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`idFrutas`));
+
+# Tabela `Comida`
+CREATE TABLE IF NOT EXISTS `Comida` (
+  `idComida` INT NOT NULL,
+  `nomePrato` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`idComida`));
+
+# Tabela `Carro`
+CREATE TABLE IF NOT EXISTS `Carro` (
+  `idCarro` INT NOT NULL,
+  `nomeCarro` VARCHAR(15) NOT NULL,
+  `marcaCarro` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`idCarro`));
 
 # Tabela `Pesquisa`
 CREATE TABLE IF NOT EXISTS `Pesquisa` (
@@ -57,30 +66,7 @@ CREATE TABLE IF NOT EXISTS `Pesquisa` (
   FOREIGN KEY (`Frutas_idFrutas`) REFERENCES `Fruta` (`idFrutas`),
   FOREIGN KEY (`Pessoa_idPessoa`) REFERENCES `Pessoa` (`idPessoa`));
 
-### DB_CREATE_TABLE_PESSOA.SQL ###
-
-# Tabela `Pessoa`
-CREATE TABLE IF NOT EXISTS `Pessoa` (
-  `idPessoa` INT NOT NULL,
-  `nome` VARCHAR(60) NOT NULL,
-  `dataNascimento` DATE NOT NULL,
-  `Localidade_idMapa` INT NOT NULL,
-  `estadoCivil` VARCHAR(10) NOT NULL,
-  `Signo_signo` VARCHAR(12) NOT NULL,
-  PRIMARY KEY (`idPessoa`),
-  FOREIGN KEY (`Localidade_idMapa`) REFERENCES `Localidade` (`idMapa`),
-  FOREIGN KEY (`Signo_signo`) REFERENCES `Signo` (`signo`));
-
-### DB_CREATE_TABLE_SIGNO.SQL ###
-
-# Tabela `Signo`
-CREATE TABLE IF NOT EXISTS `Signo` (
-  `signo` VARCHAR(12) NOT NULL,
-  `dataInicial` VARCHAR(15) NOT NULL,
-  `dataFinal` VARCHAR(15) NOT NULL,
-  PRIMARY KEY (`signo`));
-
-### INSERT_LOCALIDADE.SQL ###
+### TAB_LOCALIDADE.SQL ###
 
 INSERT INTO `Localidade`
 	(`idMapa`,`cidade`,`uf`,`regiao`)
@@ -178,7 +164,7 @@ VALUES
 	("91","Vassouras","RJ","Região Sudeste"),
 	("92","Volta Redonda","RJ","Região Sudeste");
 
-### INSERT_SIGNO.SQL ###
+### TAB_SIGNO.SQL ###
 
 INSERT INTO `Signo`
 	(`signo`,`dataInicial`,`dataFinal`)
@@ -196,7 +182,7 @@ VALUES
 	("Sagitário","22 de novembro","21 de dezembro"),
 	("Capricórnio","22 de dezembro","19 de janeiro");
 
-### INSERT_FRUTA.SQL ###
+### TAB_FRUTA.SQL ###
 
 INSERT INTO `Fruta`
 	(`idFrutas`,`nomeFruta`)
@@ -349,7 +335,7 @@ VALUES
 	("146","Zimbro "),
 	("147","Zitrone");
 
-### INSERT_COMIDA.SQL ###
+### TAB_COMIDA.SQL ###
 
 INSERT INTO `Comida`
 	(`idComida`,`nomePrato`)
@@ -461,7 +447,7 @@ VALUES
 	("105","Pé de Moleque"),
 	("106","Broa de milho");
 
-### INSERT_CARRO.SQL ###
+### TAB_CARRO.SQL ###
 
 INSERT INTO `Carro`
 	(`idCarro`,`nomeCarro`,`marcaCarro`)
@@ -480,36 +466,36 @@ VALUES
 	("12","Q7","Audi"),
 	("13","Senna","Audi");
 
-### INSERT_PESSOA.SQL ###
+### TAB_PESSOA.SQL ###
 
 INSERT INTO `Pessoa`
 	(`idPessoa`,`nome`,`dataNascimento`,`Localidade_idMapa`,`estadoCivil`,`Signo_signo`)
 VALUES
-	("1","Rita","1978-2-8","41","divorciado","Aquário"),
-	("2","Miles","2002-4-28","77","casado","Touro"),
-	("3","Davi Lucca","1975-12-6","73","casado","Sagitário"),
-	("4","Miguel","1993-4-7","70","solteiro","Áries"),
-	("5","Milo","1981-4-4","92","casado","Áries"),
-	("6","Vinícius","1986-9-8","31","solteiro","Virgem"),
-	("7","Nilce","1984-11-12","27","solteiro","Escorpião"),
-	("8","Cristiana","1974-9-16","17","casado","Virgem"),
-	("9","Esme","1999-12-10","50","casado","Sagitário"),
-	("10","Luana","1982-3-25","65","casado","Áries");
+	("1","Bruno","1996-11-2","67","solteiro","Escorpião"),
+	("2","Roberta","1976-10-23","78","casado","Escorpião"),
+	("3","Emanuelly","1976-5-13","33","divorciado","Touro"),
+	("4","João Miguel","2000-3-13","86","casado","Peixes"),
+	("5","Hortencia","2000-8-13","74","divorciado","Leão"),
+	("6","Luisa","1986-6-26","47","casado","Câncer"),
+	("7","Joana","2001-7-8","39","solteiro","Câncer"),
+	("8","Clarisse","1991-9-20","28","solteiro","Virgem"),
+	("9","Marco","1987-5-25","25","divorciado","Gêmeos"),
+	("10","Bianca","1972-2-8","5","divorciado","Aquário");
 
-### INSERT_PESQUISA.SQL ###
+### TAB_PESQUISA.SQL ###
 
 INSERT INTO `Pesquisa`
 	(`idPesquisa`,`Comida_idComida`,`Carro_idCarro`,`Frutas_idFrutas`,`Pessoa_idPessoa`)
 VALUES
-	("1","6","10","126","5"),
-	("2","34","1","129","10"),
-	("3","60","1","97","9"),
-	("4","28","12","69","5"),
-	("5","14","4","128","2"),
-	("6","14","3","81","6"),
-	("7","3","6","100","1"),
-	("8","68","12","106","6"),
-	("9","46","4","118","10"),
-	("10","84","7","28","6");
+	("1","37","2","72","3"),
+	("2","64","8","48","9"),
+	("3","7","11","4","3"),
+	("4","79","3","90","7"),
+	("5","97","5","15","10"),
+	("6","105","6","133","6"),
+	("7","47","7","78","3"),
+	("8","26","4","133","7"),
+	("9","106","8","98","2"),
+	("10","59","11","49","7");
 
 ##################################################

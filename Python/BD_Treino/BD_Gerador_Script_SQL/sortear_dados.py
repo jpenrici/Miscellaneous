@@ -236,13 +236,13 @@ def preparar(num_pessoas=MINIMO, uf="", marcaCarro=""):
 
 def gerarSQL():
 	sql = PreparaSQL(dir_saida, dir_sql)
-	sql.gerar("tab_localidade.csv","tab_localidade.sql")
-	sql.gerar("tab_signo.csv", "tab_signo.sql")
-	sql.gerar("tab_fruta.csv", "tab_fruta.sql")
-	sql.gerar("tab_comida.csv", "tab_comida.sql")
-	sql.gerar("tab_carro.csv", "tab_carro.sql")
-	sql.gerar("tab_pessoa.csv", "tab_pessoa.sql")
-	sql.gerar("tab_pesquisa.csv", "tab_pesquisa.sql")
+	sql.gerar("tab_localidade.csv", "insert_localidade.sql")
+	sql.gerar("tab_signo.csv", "insert_signo.sql")
+	sql.gerar("tab_fruta.csv", "insert_fruta.sql")
+	sql.gerar("tab_comida.csv", "insert_comida.sql")
+	sql.gerar("tab_carro.csv", "insert_carro.sql")
+	sql.gerar("tab_pessoa.csv", "insert_pessoa.sql")
+	sql.gerar("tab_pesquisa.csv", "insert_pesquisa.sql")
 
 def juntarSQL(sequenciaDeArquivos):
 	sql = []
@@ -268,15 +268,23 @@ def main():
 	# Importante respeitar a ordem!
 	sequenciaDeArquivos = [
 		# criar banco de dados
-		"bd_treino.sql",
+		"db_create_database.sql",
 		# criar tabelas
-		"tab_localidade.sql",
-		"tab_signo.sql",
-		"tab_fruta.sql",
-		 "tab_comida.sql",
-		"tab_carro.sql",
-		"tab_pessoa.sql",
-		"tab_pesquisa.sql"
+		"db_create_table_carro.sql",
+		"db_create_table_comida.sql",
+		"db_create_table_fruta.sql",
+		"db_create_table_localidade.sql",
+		"db_create_table_pesquisa.sql",
+		"db_create_table_pessoa.sql",
+		"db_create_table_signo.sql",
+		# criar tabelas
+		"insert_localidade.sql",
+		"insert_signo.sql",
+		"insert_fruta.sql",
+		"insert_comida.sql",
+		"insert_carro.sql",
+		"insert_pessoa.sql",
+		"insert_pesquisa.sql"
 		######################
 	]
 	texto = juntarSQL(sequenciaDeArquivos)
