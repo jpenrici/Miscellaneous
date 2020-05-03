@@ -7,6 +7,15 @@ CREATE DATABASE `DBTeste`;
 # Selecionar BD
 USE `DBTeste`;
 
+### DB_CREATE_TABLE_SIGNO.SQL ###
+
+# Tabela `Signo`
+CREATE TABLE IF NOT EXISTS `Signo` (
+  `signo` VARCHAR(12) NOT NULL,
+  `dataInicial` VARCHAR(15) NOT NULL,
+  `dataFinal` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`signo`));
+
 ### DB_CREATE_TABLE_CARRO.SQL ###
 
 # Tabela `Carro`
@@ -16,14 +25,6 @@ CREATE TABLE IF NOT EXISTS `Carro` (
   `marcaCarro` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`idCarro`));
 
-### DB_CREATE_TABLE_COMIDA.SQL ###
-
-# Tabela `Comida`
-CREATE TABLE IF NOT EXISTS `Comida` (
-  `idComida` INT NOT NULL,
-  `nomePrato` VARCHAR(15) NOT NULL,
-  PRIMARY KEY (`idComida`));
-
 ### DB_CREATE_TABLE_FRUTA.SQL ###
 
 # Tabela `Fruta`
@@ -31,6 +32,14 @@ CREATE TABLE IF NOT EXISTS `Fruta` (
   `idFrutas` INT NOT NULL,
   `nomeFruta` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`idFrutas`));
+
+### DB_CREATE_TABLE_COMIDA.SQL ###
+
+# Tabela `Comida`
+CREATE TABLE IF NOT EXISTS `Comida` (
+  `idComida` INT NOT NULL,
+  `nomePrato` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`idComida`));
 
 ### DB_CREATE_TABLE_LOCALIDADE.SQL ###
 
@@ -41,21 +50,6 @@ CREATE TABLE IF NOT EXISTS `Localidade` (
   `uf` VARCHAR(2) NOT NULL,
   `regiao` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`idMapa`));
-
-### DB_CREATE_TABLE_PESQUISA.SQL ###
-
-# Tabela `Pesquisa`
-CREATE TABLE IF NOT EXISTS `Pesquisa` (
-  `idPesquisa` INT NOT NULL,
-  `Comida_idComida` INT NOT NULL,
-  `Carro_idCarro` INT NOT NULL,
-  `Frutas_idFrutas` INT NOT NULL,
-  `Pessoa_idPessoa` INT NOT NULL,
-  PRIMARY KEY (`idPesquisa`, `Pessoa_idPessoa`),
-  FOREIGN KEY (`Comida_idComida`) REFERENCES `Comida` (`idComida`),
-  FOREIGN KEY (`Carro_idCarro`) REFERENCES `Carro` (`idCarro`),
-  FOREIGN KEY (`Frutas_idFrutas`) REFERENCES `Fruta` (`idFrutas`),
-  FOREIGN KEY (`Pessoa_idPessoa`) REFERENCES `Pessoa` (`idPessoa`));
 
 ### DB_CREATE_TABLE_PESSOA.SQL ###
 
@@ -71,14 +65,20 @@ CREATE TABLE IF NOT EXISTS `Pessoa` (
   FOREIGN KEY (`Localidade_idMapa`) REFERENCES `Localidade` (`idMapa`),
   FOREIGN KEY (`Signo_signo`) REFERENCES `Signo` (`signo`));
 
-### DB_CREATE_TABLE_SIGNO.SQL ###
+### DB_CREATE_TABLE_PESQUISA.SQL ###
 
-# Tabela `Signo`
-CREATE TABLE IF NOT EXISTS `Signo` (
-  `signo` VARCHAR(12) NOT NULL,
-  `dataInicial` VARCHAR(15) NOT NULL,
-  `dataFinal` VARCHAR(15) NOT NULL,
-  PRIMARY KEY (`signo`));
+# Tabela `Pesquisa`
+CREATE TABLE IF NOT EXISTS `Pesquisa` (
+  `idPesquisa` INT NOT NULL,
+  `Comida_idComida` INT NOT NULL,
+  `Carro_idCarro` INT NOT NULL,
+  `Frutas_idFrutas` INT NOT NULL,
+  `Pessoa_idPessoa` INT NOT NULL,
+  PRIMARY KEY (`idPesquisa`, `Pessoa_idPessoa`),
+  FOREIGN KEY (`Comida_idComida`) REFERENCES `Comida` (`idComida`),
+  FOREIGN KEY (`Carro_idCarro`) REFERENCES `Carro` (`idCarro`),
+  FOREIGN KEY (`Frutas_idFrutas`) REFERENCES `Fruta` (`idFrutas`),
+  FOREIGN KEY (`Pessoa_idPessoa`) REFERENCES `Pessoa` (`idPessoa`));
 
 ### INSERT_LOCALIDADE.SQL ###
 

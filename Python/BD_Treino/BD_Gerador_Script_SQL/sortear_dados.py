@@ -270,13 +270,13 @@ def main():
 		# criar banco de dados
 		"db_create_database.sql",
 		# criar tabelas
+		"db_create_table_signo.sql",		
 		"db_create_table_carro.sql",
-		"db_create_table_comida.sql",
 		"db_create_table_fruta.sql",
+		"db_create_table_comida.sql",		
 		"db_create_table_localidade.sql",
-		"db_create_table_pesquisa.sql",
 		"db_create_table_pessoa.sql",
-		"db_create_table_signo.sql",
+		"db_create_table_pesquisa.sql",
 		# criar tabelas
 		"insert_localidade.sql",
 		"insert_signo.sql",
