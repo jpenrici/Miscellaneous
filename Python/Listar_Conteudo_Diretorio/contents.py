@@ -8,7 +8,7 @@
   	Ex:		
 		# Lista arquivos de extensão .py no diretório Python
 		# Exibe cabeçalho se header for verdadeiro
-  		python3 contents.py type="py" path="Python" header=True
+  		python3 contents.py type=".py" path="Python" header=True
 
 '''
 
@@ -33,16 +33,16 @@ def percorrer(caminho):
 		pass	    
 	return lista
 
-def listar(caminho=".", tipo="*", header=False):
+def listar(caminho=".", tipo="*", titulo=False):
 	# informações
-	if (header):
+	if (titulo):
 		print("Local : {}".format("atual" if caminho == "." else caminho))
 		print("Listar: {}.\n".format("tudo" if tipo == "*" else tipo))
 
 	# percorrer
 	lista = percorrer(caminho)
 
-	listar
+	# listar
 	txt = ""
 	for d in lista:
 		if (d[0].find("/.") > 0): continue
@@ -61,7 +61,7 @@ if __name__ == '__main__':
 	# padrão
 	caminho = "."
 	tipo = "*"
-	info = True
+	titulo = True
 
 	# parâmetros de entrada em linha de comando
 	for param in sys.argv :
@@ -70,6 +70,6 @@ if __name__ == '__main__':
 		if param[:5] == "path=":
 			caminho = param.replace("path=", "")
 		if param == "header=False":
-			info = False		
+			titulo = False		
 
-	listar(caminho, tipo, info)
+	listar(caminho, tipo, titulo)
