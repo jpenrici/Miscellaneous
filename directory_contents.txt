@@ -192,6 +192,7 @@
     C++ OpenCV gcc.sublime-build
     JavaScript xfce4-terminal.sublime-build
     Bash xfce4-terminal.sublime-build
+    Lua 5.3 xfce4-terminal.sublime-build
    # Sublime-Build-OpenCV_Cmake
       run
       README.md
