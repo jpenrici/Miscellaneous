@@ -2,6 +2,8 @@
 
 Miscellaneous code.
 
+C++, Python, Bash, Portugol, Visualg ...
+
 ### Códigos Diversos
 
 Pequenos códigos para pequenas funcionalidades.
