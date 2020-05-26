@@ -1,8 +1,6 @@
 # Miscellaneous
 
-Miscellaneous code.
-
-C++, Python, Bash, Portugol, Visualg ...
+Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
 
 ### Códigos Diversos
 
