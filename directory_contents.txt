@@ -167,6 +167,10 @@
     csv2vcf.py
     example_in.csv
     example_out.vcf
+  # vcf2csv
+  	vcf2csv.py
+  	example_in.vcf
+  	example_out.csv
   # Listar_Conteudo_Diretorio
     contents_miscellaneous.sh
     contents.py
