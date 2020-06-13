@@ -62,18 +62,18 @@ def text(data):
         output += s;
     return output
 
-def csv2vcf(filename_csv, filename_vsf):
+def csv2vcf(filename_csv, filename_vcf):
     data = csv(filename_csv)
     if (len(data) > 0):
         output = text(data)
-        vcf(filename_vsf, output)
-        print("check " + filename_vsf)
+        vcf(filename_vcf, output)
+        print("check " + filename_vcf)
     else:
         print(filename_csv + " empty")
 
 def main(argv):
     if (len(argv) != 2):
-        print ('python3 csv2vcf.py <inputfile.csv> <outputfile.vcf>')
+        print ('use => python3 csv2vcf.py <inputfile.csv> <outputfile.vcf>')
         exit(0)
     if (argv[0][-3::].upper() != "CSV"):
         print(argv[0] + ": wrong extension")
