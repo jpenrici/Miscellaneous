@@ -22,6 +22,7 @@ Pequenos códigos para pequenas funcionalidades.
    - **BD_Treino:** Gerar SQL para treino de banco de dados.
    - **Excel_Treino:** Gerar CSV para treino de filtragem de dados em planilhas.
    - **csv2vcf:** Faz a conversão de arquivo csv em vcf para exportação de contatos.
+   - **vcf2csv:** Faz a conversão acima, invertida.
    - **Listar_Conteudo_Diretorio:** Lista o conteúdo de arquivos e diretórios.
 
 ### Observação
