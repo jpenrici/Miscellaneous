@@ -73,7 +73,7 @@ def main(argv):
 	if (len(argv) != 2):
 		print ('use => python3 vcf2csv.py <inputfile.vcf> <utputfile.csv>')
 		exit(0)
-	if (argv[0][-3::].upper() != "VCF"):
+	if (argv[0][-4::].upper() != ".VCF"):
 		print(argv[0] + ": wrong extension")
 		exit(0)
 	vcf2csv(argv[0], argv[1])
