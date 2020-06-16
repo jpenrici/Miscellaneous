@@ -145,6 +145,10 @@
         sql_completo.sql
         db_create_table_comida.sql
         insert_fruta.sql
+  # vcf2csv
+    example_in.vcf
+    vcf2csv.py
+    example_out.csv
   # Excel_Treino
     aula_filtro_planilha.py
    # Dados_CSV_exemplos
@@ -163,14 +167,18 @@
    # Dados_preparados
       aula-treino_excel_10000.ods
       aula-treino_excel_10000.csv
+  # vcf_libreOffice
+    example_in.vcf
+    README.md
+    import_vcf.ods
+   # macro_import_vcf
+      vcf2spreadsheet.py
+   # display
+      display_libreOffice.png
   # csv2vcf
     csv2vcf.py
     example_in.csv
     example_out.vcf
-  # vcf2csv
-  	vcf2csv.py
-  	example_in.vcf
-  	example_out.csv
   # Listar_Conteudo_Diretorio
     contents_miscellaneous.sh
     contents.py
@@ -180,6 +188,7 @@
     PHP 7 xfce4-terminal.sublime-build
     C++ OpenGL.sublime-build
     C++17_xfce4-terminal.sublime-build
+    Lua 5.3 xfce4-terminal.sublime-build
     C#_xfce4-terminal.sublime-build
     C++ Octave.sublime-build
     C++ GTK3.sublime-build
@@ -196,7 +205,6 @@
     C++ OpenCV gcc.sublime-build
     JavaScript xfce4-terminal.sublime-build
     Bash xfce4-terminal.sublime-build
-    Lua 5.3 xfce4-terminal.sublime-build
    # Sublime-Build-OpenCV_Cmake
       run
       README.md
