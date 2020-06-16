@@ -24,4 +24,4 @@ Detalhes: [Libreoffice Help](https://help.libreoffice.org/6.3/en-US/text/sbasic/
 
 LibreOffice
 
-![display_libreOffice](https://github.com/jpenrici/vcf_libreOffice/blob/master/VBA_WordSearch/display/display_libreOffice.png)
+![display_libreOffice](https://github.com/jpenrici/Miscellaneous/blob/master/Python/vcf_libreOffice/display/display_libreOffice.png)
