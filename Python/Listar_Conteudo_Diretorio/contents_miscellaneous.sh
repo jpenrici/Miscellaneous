@@ -14,6 +14,7 @@ python3 $local path="Cpp" header=False >> $saida
 python3 $local path="OpenBox" header=False  >> $saida
 python3 $local path="Python" header=False >> $saida
 python3 $local path="Sublime_Text" header=False >> $saida
+python3 $local path="VBA" header=False >> $saida
 
 echo ""
 cat $saida

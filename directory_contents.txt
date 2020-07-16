@@ -261,3 +261,9 @@
       Portugol_enquanto.sublime-snippet
       Portugol_escreva.sublime-snippet
 
+ # VBA
+  # Excel_Train_Macro
+    table_data.xlsm
+    table_config.csv
+    tabCheck.bas
+

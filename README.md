@@ -25,6 +25,8 @@ Pequenos códigos para pequenas funcionalidades.
    - **vcf2csv:** Faz a conversão acima, de forma invertida.
    - **vcf_libreOffice:** Aplicação dos estudos de macro Python no LibreOffice.
    - **Listar_Conteudo_Diretorio:** Lista o conteúdo de arquivos e diretórios.
+5. **VBA**
+   - **Excel_Train_Macro:** Validar tabela usando regras indicadas em arquivo CSV.
 
 ### Observação
 
