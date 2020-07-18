@@ -1,4 +1,4 @@
-Attribute VB_Name = "tabCheck"
+Attribute VB_Name = "check"
 Option Explicit
 
 '*******************************************************************************
@@ -20,15 +20,12 @@ Type Field
     minChar   As Integer
     maxChar   As String
     format    As String
-    condition(1 To 2) As String
 End Type
 
 '*******************
 '*** Constantes ****
 '*******************
 
-Const SPACE As String = " "      ' Espaco de preenchimento a direita
-Const ZERO  As String = "0"      ' Zero de preenchimento a esquerda
 Const DELIM As String = ";"      ' Delimitador CSV
 Const YES As String = "yes"
 Const NO  As String = "no"
@@ -38,7 +35,7 @@ Const CR = 13     ' Carriage Return (vbCr, ASCII 13)
 Const LF = 10     ' Nova linha ou quebra de linha (vbLf, ASCII 10)
 
 ' Arquivo de configuracao
-Const CSVCONFIG As String = "table_config.csv"
+Const CSVCONFIG As String = "config.csv"
 
 '*****************
 '***  Global  ****
@@ -81,9 +78,6 @@ Function config(ByVal path As String) As Boolean
                 data(j).maxChar = entry(6)
                 data(j).numChar = data(j).minChar + data(j).maxChar
                 data(j).format = entry(7)
-                ' Extras
-                data(j).condition(1) = entry(8)
-                data(j).condition(2) = entry(9)
                 Debug.Print "["; j; "]:"; data(j).name
                 j = j + 1
             End If
@@ -132,13 +126,13 @@ Function validate(ByVal wks As String, _
     Wend
     
     ' Analisar
-    For r = row To row + numRow - 1     ' Registros
+    For r = row + 1 To row + numRow - 1 ' Registros
         For c = col To col + numCol - 1 ' Campos
 
             vCell = Cells(r, c).value   ' planilha
             msgError = "Line[" + CStr(r) + "], " + data(c).name _
                        + ":" + EOL + "Expected "
-                
+                       
             ' Esperar preenchimento
             If (vCell = "") Then
                 msgError = msgError + "Fill" + EOL
@@ -197,9 +191,6 @@ Function validate(ByVal wks As String, _
                 Call alert(wks, r, c, msgError, change)
             End If
             
-            'condition(1)
-            'condition(2)
-        
         Next c
     Next r
     
@@ -285,7 +276,7 @@ End Function
 '***** PRINCIPAL *****
 '*********************
 
-Sub tabCheck()
+Sub check()
 
     ' On Error GoTo Attention
     
@@ -304,7 +295,7 @@ Sub tabCheck()
     
     ' Valores teste
     wks = "DADOS"
-    row = 2
+    row = 1
     column = 1
     filename = "logError.txt"
     
@@ -352,5 +343,5 @@ End Sub
 
 Sub reconfigure()
     status = False
-    tabCheck
+    check
 End Sub

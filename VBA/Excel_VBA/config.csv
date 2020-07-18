@@ -1,11 +1,11 @@
-field;numeric;alphabetic;uppercase;date;min_char;max_char;format;conditions_01;conditions_02
-DOCUMENTO;no;yes;yes;no;2;3;no;INDENTIFICADOR<>0;IDADE>=18
-IDENTIFICADOR;yes;yes;no;no;7;11;no;DOCUMENTO<>0;no
-NOME;no;yes;no;no;1;15;no;no;no
-SOBRENOME;no;yes;no;no;1;15;no;no;no
-DATA DE NASCIMENTO;no;no;no;yes;10;10;dd/mm/yyyy;no;no
-IDADE;yes;no;no;no;1;3;no;DATA DE NASCIMENTO<>0;no
-PAIS;no;yes;no;no;1;15;no;no;no
-CIDADE;no;yes;no;no;1;15;no;no;no
-ESTADO;no;yes;no;no;1;15;no;no;no
-UF;no;yes;yes;no;2;2;no;no;no
+field;numeric;alphabetic;uppercase;date;min_char;max_char;format
+DOCUMENTO;no;yes;yes;no;2;3;no
+IDENTIFICADOR;yes;yes;no;no;7;11;no
+NOME;no;yes;no;no;1;15;no
+SOBRENOME;no;yes;no;no;1;15;no
+DATA DE NASCIMENTO;no;no;no;yes;10;10;dd/mm/yyyy
+IDADE;yes;no;no;no;1;3;no
+PAIS;no;yes;no;no;1;15;no
+CIDADE;no;yes;no;no;1;15;no
+ESTADO;no;yes;no;no;1;15;no
+UF;no;yes;yes;no;2;2;no

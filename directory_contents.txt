@@ -263,7 +263,7 @@
 
  # VBA
   # Excel_VBA
-    table_data.xlsm
-    table_config.csv
-    tabCheck.bas
+    data.xlsm
+    config.csv
+    check.bas
 
