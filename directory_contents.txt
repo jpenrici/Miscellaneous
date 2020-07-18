@@ -262,7 +262,7 @@
       Portugol_escreva.sublime-snippet
 
  # VBA
-  # Excel_Train_Macro
+  # Excel_VBA
     table_data.xlsm
     table_config.csv
     tabCheck.bas
