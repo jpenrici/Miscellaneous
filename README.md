@@ -2,32 +2,30 @@
 
 Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
 
-### Códigos Diversos
+[README-pt-BR](https://github.com/jpenrici/blob/master/Miscellaneous/README-pt-BR.md)
 
-Pequenos códigos para pequenas funcionalidades.
-
-### Resumo dos Diretórios
+## Summary
 
 1. **Algorithms**
-   - Algoritmos para auxílio de iniciantes em Lógica de Programação.
-   - Códigos em C++, Python, Portugol e Visualg. 
+   - Algorithms to beginners in Programming Logic.
+   - C ++, Python, Portugol and Visualg codes. 
 2. **Cpp**
-   - Códigos simples.
+   - Simple codes.
 3. **OpenBox**
-   - Arquivos de ajuda para o ambiente OpenBox e Debian.
+   - Help files for the OpenBox and Debian environment.
 4. **Sublime_Text**
    - **Sublime-Build**
    - **Sublime-Snippet**
 5. **Python**
-   - **BD_Treino:** Gerar SQL para treino de banco de dados.
-   - **Excel_Treino:** Gerar CSV para treino de filtragem de dados em planilhas.
-   - **csv2vcf:** Faz a conversão de arquivo csv em vcf para exportação de contatos.
-   - **vcf2csv:** Faz a conversão acima, de forma invertida.
-   - **vcf_libreOffice:** Aplicação dos estudos de macro Python no LibreOffice.
-   - **Listar_Conteudo_Diretorio:** Lista o conteúdo de arquivos e diretórios.
+   - **BD_Treino:** Generate SQL for database training.
+   - **Excel_Treino:** Generate CSV for training data filtering in spreadsheets.
+   - **csv2vcf:** Converts csv file to vcf for exporting contacts.
+   - **vcf2csv:** Make the above conversion, inverted.
+   - **vcf_libreOffice:** Application of Python macro studies in LibreOffice.
+   - **Listar_Conteudo_Diretorio:** Lists the contents of files and directories.
 5. **VBA**
-   - **Excel_VBA:** Validar tabela usando regras indicadas em arquivo CSV.
+   - **Excel_VBA:** Validate table using rules indicated in CSV file.
 
-### Observação
+### Note
 
-A relação de arquivos do repositório pode ser vista no arquivo `directory_contents.txt`.
+The list of files in the repository can be seen in the file `directory_contents.txt`.
