@@ -2,7 +2,7 @@
 
 Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
 
-[README-pt-BR](https://github.com/jpenrici/blob/master/Miscellaneous/README-pt-BR.md)
+[README-pt-BR](https://github.com/jpenrici/Miscellaneous/blob/master/README-pt-BR.md)
 
 ## Summary
 
