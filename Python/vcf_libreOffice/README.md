@@ -1,14 +1,14 @@
 # vcf_libreOffice
 
-Exemplo de importação de VCF no LibreOffice com macro Python.
+Example of importing VCF into LibreOffice with Python macro.
 
-# Requerimento
+# Requirements
 
     python3-uno
 
-# Instalação
+# Install
 
-Copiar diretório **macro_import_vcf** para o diretório **Python Script**.
+Copy **macro_import_vcf** directory to the **Python Script** directory.
 
 **Windows:** 
 
@@ -18,10 +18,10 @@ Copiar diretório **macro_import_vcf** para o diretório **Python Script**.
 
 `$HOME/.config/libreoffice/4/user/Scripts/python`
 
-Detalhes: [Libreoffice Help](https://help.libreoffice.org/6.3/en-US/text/sbasic/python/main0000.html)
+[Libreoffice Help](https://help.libreoffice.org/6.3/en-US/text/sbasic/python/main0000.html)
 
 # Display
 
-LibreOffice
+**LibreOffice**
 
 ![display_libreOffice](https://github.com/jpenrici/Miscellaneous/blob/master/Python/vcf_libreOffice/display/display_libreOffice.png)
