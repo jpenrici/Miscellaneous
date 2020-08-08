@@ -22,6 +22,7 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
    - **csv2vcf:** Converts csv file to vcf for exporting contacts.
    - **vcf2csv:** Make the above conversion, inverted.
    - **vcf_libreOffice:** Application of Python macro studies in LibreOffice.
+   - **experience_libreOffice:** Experience with Python macros in LibreOffice.   
    - **Listar_Conteudo_Diretorio:** Lists the contents of files and directories.
 5. **VBA**
    - **Excel_VBA:** Validate table using rules indicated in CSV file.

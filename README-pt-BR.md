@@ -22,6 +22,7 @@ Pequenos códigos para pequenas funcionalidades.
    - **csv2vcf:** Faz a conversão de arquivo csv em vcf para exportação de contatos.
    - **vcf2csv:** Faz a conversão acima, de forma invertida.
    - **vcf_libreOffice:** Aplicação dos estudos de macro Python no LibreOffice.
+   - **experience_libreOffice:** Experiência com macros Python no LibreOffice.
    - **Listar_Conteudo_Diretorio:** Lista o conteúdo de arquivos e diretórios.
 5. **VBA**
    - **Excel_VBA:** Validar tabela usando regras indicadas em arquivo CSV.

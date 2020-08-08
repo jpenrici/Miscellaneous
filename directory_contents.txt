@@ -164,6 +164,16 @@
       aula-treino_excel_10000.ods
       aula-treino_excel_10000.csv
   # LibreOffice_Macros_Py
+   # experience_libreOffice
+      install_py_pkgs_libreoffice.sh
+      macro_libreOffice.ods
+      README-pt-BR.md
+      README.md
+    # macro_extra
+        macro_libreoffice_extra.py
+    # py_pkgs_libreoffice
+        modulo_principal.py
+        __init__.py
    # vcf_libreOffice
       example_in.vcf
       README.md
