@@ -278,4 +278,7 @@
     data.xlsm
     config.csv
     check.bas
+  # Word_VBA
+    cryptography_word.bas
+    enigma.docm
 

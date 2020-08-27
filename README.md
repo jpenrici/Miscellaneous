@@ -25,7 +25,8 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
    - **experience_libreOffice:** Experience with Python macros in LibreOffice.   
    - **Listar_Conteudo_Diretorio:** Lists the contents of files and directories.
 5. **VBA**
-   - **Excel_VBA:** Validate table using rules indicated in CSV file.
+   - **Excel_VBA:** macro experiments in Excel.
+   - **Word_VBA:** macro experiments in Word.
 
 ### Note
 
