@@ -16,7 +16,9 @@ Pequenos códigos para pequenas funcionalidades.
 4. **Sublime_Text**
    - **Sublime-Build**
    - **Sublime-Snippet**
-5. **Python**
+5. **Visual_Studio**
+   - **VS-Snippet**   
+6. **Python**
    - **BD_Treino:** Gerar SQL para treino de banco de dados.
    - **Excel_Treino:** Gerar CSV para treino de filtragem de dados em planilhas.
    - **csv2vcf:** Faz a conversão de arquivo csv em vcf para exportação de contatos.
@@ -24,7 +26,7 @@ Pequenos códigos para pequenas funcionalidades.
    - **vcf_libreOffice:** Aplicação dos estudos de macro Python no LibreOffice.
    - **experience_libreOffice:** Experiência com macros Python no LibreOffice.
    - **Listar_Conteudo_Diretorio:** Lista o conteúdo de arquivos e diretórios.
-5. **VBA**
+7. **VBA**
    - **Excel_VBA:** experiências com macro no Excel.
    - **Word_VBA:** experiências com macro no Word.
 

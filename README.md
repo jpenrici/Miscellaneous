@@ -16,7 +16,9 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
 4. **Sublime_Text**
    - **Sublime-Build**
    - **Sublime-Snippet**
-5. **Python**
+5. **Visual_Studio**
+   - **VS-Snippet**    
+6. **Python**
    - **BD_Treino:** Generate SQL for database training.
    - **Excel_Treino:** Generate CSV for training data filtering in spreadsheets.
    - **csv2vcf:** Converts csv file to vcf for exporting contacts.
@@ -24,7 +26,7 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
    - **vcf_libreOffice:** Application of Python macro studies in LibreOffice.
    - **experience_libreOffice:** Experience with Python macros in LibreOffice.   
    - **Listar_Conteudo_Diretorio:** Lists the contents of files and directories.
-5. **VBA**
+7. **VBA**
    - **Excel_VBA:** macro experiments in Excel.
    - **Word_VBA:** macro experiments in Word.
 
