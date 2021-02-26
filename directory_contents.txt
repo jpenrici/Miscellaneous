@@ -86,6 +86,7 @@
   list_path_files.cpp
   counter_using_vector.cpp
   count_frequency_elements.cpp
+  remove_excess_characters.cpp
   multiply_matrix.cpp
 
  # OpenBox
