@@ -14,7 +14,7 @@
 // #ifndef __NAME_DLL_H__
 // #define __NAME_DLL_H__
 //  
-// #ifdef BUILD_DLL								  // Reference shell_cmd
+// #ifdef BUILD_DLL                               // Reference shell_cmd
 //     #define DLL_EXPORT __declspec(dllexport)   // export DLL information
 // #else
 //     #define DLL_EXPORT __declspec(dllimport)   // import DLL information
