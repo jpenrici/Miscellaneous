@@ -276,6 +276,9 @@
       C++ OpenCV.sublime-build
       README.md
       run
+   # Sublime-Build-MinGW
+      MinGW32-g++ Build DLL.sublime-build
+      MinGW32-g++.sublime-build
 
  # Visual_Studio
   # VS-Snippet
