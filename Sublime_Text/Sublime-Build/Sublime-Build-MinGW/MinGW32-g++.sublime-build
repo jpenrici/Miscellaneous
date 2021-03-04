@@ -1,0 +1,12 @@
+{
+  "shell_cmd": "mingw32-g++.exe -Wall -fexceptions -g -c ${file_base_name}.cpp -o ${file_base_name}.o && mingw32-g++.exe -o ${file_base_name}.exe ${file_base_name}.o && del ${file_base_name}.o",
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "working_dir": "${file_path}",
+  "selector": "source.c, source.c++, source.cxx, source.cpp"
+}
+
+// Windows
+// Sublime Text 3.2.2
+// MinGW GCC-6.3.0
+//
+// Experimental help.
