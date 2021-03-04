@@ -10,3 +10,25 @@
 // MinGW GCC-6.3.0
 //
 // Experimental help for compiling DLLs.
+//
+// #ifndef __NAME_DLL_H__
+// #define __NAME_DLL_H__
+//  
+// #ifdef BUILD_DLL								  // Reference shell_cmd
+//     #define DLL_EXPORT __declspec(dllexport)   // export DLL information
+// #else
+//     #define DLL_EXPORT __declspec(dllimport)   // import DLL information
+// #endif
+//  
+// #ifdef __cplusplus
+// extern "C"
+// {
+// #endif
+// 
+// /*Code*/
+// 
+// #ifdef __cplusplus
+// }
+// #endif
+// 
+// #endif // __NAME_DLL_H__
