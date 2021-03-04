@@ -1,6 +1,7 @@
 # Sublime_Text
 
-Os arquivos deste diretório foram testados no **Sublime Text versão 3.2.2**, rodando em ambiente **Linux**, **Debian 9** e **OpenBox**.<br>
+Os arquivos deste diretório foram testados no **Sublime Text versão 3.2.2**.<br>
+A maioria dos scripts focam o ambiente **Linux**.<br>
 
 ## Alguns Detalhes
 
@@ -32,5 +33,5 @@ Explicando os passos:<br>
 
 ## Saiba mais:
 
-[xfce4-terminal] (https://docs.xfce.org/apps/terminal/start) (Terminal do XFCE4) <br>
-[Sublime Text] (https://www.sublimetext.com/docs/3/build_systems.html) (DOCUMENTATION Build Systems) <br>
+[xfce4-terminal](https://docs.xfce.org/apps/terminal/start) (Terminal do XFCE4) <br>
+[Sublime Text](https://www.sublimetext.com/docs/3/build_systems.html) (DOCUMENTATION Build Systems) <br>

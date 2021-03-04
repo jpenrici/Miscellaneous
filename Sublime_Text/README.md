@@ -1,6 +1,7 @@
 # Sublime_Text
 
-The files in this directory were tested on **Sublime Text version 3.2.2**, running on **Linux**, **Debian 9** and **OpenBox**.<br>
+The files in this directory were tested on **Sublime Text version 3.2.2**.<br>
+Most scripts focus on the **Linux** environment.<br>
 
 [README-pt-BR](https://github.com/jpenrici/Miscellaneous/blob/master/Sublime_Text/README-pt-BR.md)
 
