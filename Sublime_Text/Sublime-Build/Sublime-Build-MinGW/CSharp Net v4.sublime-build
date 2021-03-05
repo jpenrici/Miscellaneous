@@ -1,0 +1,11 @@
+{
+  "shell_cmd": "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\csc.exe ${file_name}",
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "working_dir": "${file_path}",
+  "selector": "source.cs"
+}
+
+// Windows
+// Sublime Text 3.2.2
+//
+// Experimental help.
