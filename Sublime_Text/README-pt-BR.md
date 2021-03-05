@@ -35,3 +35,6 @@ Explicando os passos:<br>
 
 [xfce4-terminal](https://docs.xfce.org/apps/terminal/start) (Terminal do XFCE4) <br>
 [Sublime Text](https://www.sublimetext.com/docs/3/build_systems.html) (DOCUMENTATION Build Systems) <br>
+
+**Atenção:** Estude os scripts e as referências antes executá-los.
+
