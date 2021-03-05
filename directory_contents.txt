@@ -260,24 +260,29 @@
     Python xfce4-terminal.sublime-build
     Bash xfce4-terminal.sublime-build
     R xfce4-terminal.sublime-build
+    C# cmd.sublime-build
     Lua 5.3 xfce4-terminal.sublime-build
     C GTK2.sublime-build
     C++ GTK3.sublime-build
     C++ OpenCV gcc.sublime-build
-    C++17_xfce4-terminal.sublime-build
+    C xfce4-terminal.sublime-build
     PHP 7 xfce4-terminal.sublime-build
     Ruby xfce4-terminal.sublime-build
     Perl xfce4-terminal.sublime-build
     Python 3.6 xfce4-terminal.sublime-build
+    C++17 xfce4-terminal.sublime-build
     NASM xfce4-terminal.sublime-build
-    C#_xfce4-terminal.sublime-build
+    C# xfce4-terminal.sublime-build
     C GTK3.sublime-build
+    C++17 Thread xfce4-terminal.sublime-build
    # Sublime-Build-OpenCV_Cmake
       C++ OpenCV.sublime-build
       README.md
       run
    # Sublime-Build-MinGW
+      CSharp Net v4.sublime-build
       MinGW32-g++ Build DLL.sublime-build
+      README.md
       MinGW32-g++.sublime-build
 
  # Visual_Studio
