@@ -1,0 +1,30 @@
+{
+  "selector"  : "source.cs",
+  "cmd"       : "mcs $file_name",
+  "shell"     : true,
+
+  "windows" : {
+    "cmd"  : "csc.exe $file_name"
+  },
+
+  "variants"  : [
+    {
+      "cmd"   : "mono $file_base_name.exe",
+      "name"  : "Run",
+      "shell" : true,
+
+      "windows" : {
+        "cmd": ["start", "cmd", "/k", "${file_path}/${file_base_name}.exe"]
+      }
+    },    
+    {
+      "cmd"   : "mcs $file_name && mono $file_base_name.exe",
+      "name"  : "Compile and Run",
+      "shell" : true,
+
+      "windows" : {
+         "cmd": ["csc", "$file_name", "&&", "start","cmd", "/k", "$file_base_name.exe"],
+      }
+    }
+  ]
+}
