@@ -33,7 +33,7 @@ Explaining the steps:<br>
 3. In **xfce4-terminal** another sequence of Bash commands is executed which in short will run the executable C++ file, process and at the end write "Press ENTER to continue" and wait for "ENTER". When using the keyboard, Bash removes the executable file and the object file, returning to the initial state.
 - `'bash -c \"${file_path}/${file_base_name};echo;echo;echo Compilation Completed C++17;echo Press ENTER to continue; read line; rm ${file_path}/${file_base_name}; exit` ...<br>
 
-## Know more:
+## Learn more:
 
 [xfce4-terminal](https://docs.xfce.org/apps/terminal/start) (Terminal do XFCE4) <br>
 [Sublime Text](https://www.sublimetext.com/docs/3/build_systems.html) (DOCUMENTATION Build Systems) <br>
