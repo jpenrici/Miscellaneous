@@ -99,6 +99,7 @@
     copy_package-list.sh
 
  # Python
+  maze_matrix.py
   # Excel_Treino
     aula_filtro_planilha.py
    # Dados_preparados
