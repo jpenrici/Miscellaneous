@@ -1,0 +1,16 @@
+{
+  "shell_cmd": "g++ '${file}' -w -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -o '${file_path}/${file_base_name}'",
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "working_dir": "${file_path}",
+  "selector": "source.c, source.c++, source.cxx, source.cpp",
+  "variants": 
+  [ 
+    {
+      "name": "Run",
+      "shell_cmd": "g++ '${file}' -w -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -o '${file_path}/${file_base_name}' && \"${file_path}/${file_base_name}\""  
+    } 
+  ]    
+}
+
+// All libraries must be installed.
+// SLD2, SDL2_image SDL2_ttf SDL2_mixer
