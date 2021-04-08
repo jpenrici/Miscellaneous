@@ -259,6 +259,7 @@
     Java xfce4-terminal.sublime-build
     C++ Octave.sublime-build
     Python xfce4-terminal.sublime-build
+    C++ SDL2.sublime-build
     Bash xfce4-terminal.sublime-build
     R xfce4-terminal.sublime-build
     C# cmd.sublime-build
