@@ -89,8 +89,17 @@ def prepare(data):
             # Exclude destructors.
             if i[0] == '~':
                 continue
-            # Remove internal spaces, comments and blocks ...
-            for e in [r'\s+', r'\/\/.*', r'\/\*.*', r'\{.*', r':+.*', r';.*']:
+            # Remove Regex ...
+            expr = [
+                r'\s+',        # spaces
+                r'\/\/.*',     # comment
+                r'\/\*.*',     # comment
+                r'\s*\{.*',    # block
+                r':+.*',       # constructor
+                r';.*',        # end line
+                r'operator.*'  # overload
+            ]
+            for e in expr:
                 for s in re.findall(e, i):
                     i = i.replace(s, SPACE)
         data += [i]
@@ -111,6 +120,8 @@ def prepare(data):
             # i = [ 'Type Function', 'Type Param, ...' ]
             i = i.replace(RIGHTP, EMPTY).split(LEFTP)
             func = i[0].split(SPACE)[-1]    # 'Function'
+            if len(func) == 0:
+                continue
 
             code = LEFTP
             params = EMPTY
