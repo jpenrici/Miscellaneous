@@ -1,7 +1,0 @@
-<!-- Automatically built. Update as needed! -->
-<snippet>
-    <description>getName()</description>
-    <content><![CDATA[getName${0:/* Code or () */}]]></content>
-    <tabTrigger>getName</tabTrigger>
-    <scope>source.c++</scope>
-</snippet> 
