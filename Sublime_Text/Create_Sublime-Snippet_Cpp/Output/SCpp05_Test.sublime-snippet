@@ -1,7 +1,0 @@
-<!-- Automatically built. Update as needed! -->
-<snippet>
-    <description>Test()</description>
-    <content><![CDATA[Test${0:/* Code or () */}]]></content>
-    <tabTrigger>Test</tabTrigger>
-    <scope>source.c++</scope>
-</snippet> 
