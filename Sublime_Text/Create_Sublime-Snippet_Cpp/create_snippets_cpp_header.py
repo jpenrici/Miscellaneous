@@ -1,6 +1,6 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mpythoode: nil; tab-width: 4 -*-
 #
-# Lists classes and functions of Cpp Headers for building snipptes.
+# Lists classes and functions of Cpp Headers for building snippets.
 #
 
 import re
@@ -55,7 +55,7 @@ def prepare(data):
     # Exclusive function for preparing C++ header files.
     #
     if len(data) == 0:
-        print("Empty")
+        print("Empty.")
         return
 
     # Step 1:
@@ -143,23 +143,41 @@ def prepare(data):
     return snippets
 
 
-def test():
+def create(path_cppheader, directory_snippet=""):
 
     print("Script initialized.")
 
     # Load C++ file with classes and functions
-    data = load("test.h")
+    data = load(path_cppheader)
+    if len(data) == 0:
+        print("File empty.")
+        return
 
     # Snippets
     snippets = prepare(data)
+    if len(snippets) == 0:
+        print("Nothing to do.")
+        return
 
     # Save
+    directory = "./Output" if directory_snippet == "" else directory_snippet
+    extension = ".sublime-snippet"
+    if not os.path.exists(directory):
+        print("Create " + directory)
+        os.makedirs(directory)
+    else:
+        filelist = [f for f in os.listdir(directory) if f.endswith(extension)]
+        for f in filelist:
+            if f[:4] == "SCpp":
+                print("Remove " + f)
+                os.remove(os.path.join(directory, f))
+
     csv = "Name;Function;Path;Number" + EOL
     for i in range(len(snippets)):
         name = snippets[i]['name']
         func = snippets[i]['function']
         snippet = snippets[i]['snippet']
-        path = "./Output/SCpp{:02d}_{}.sublime-snippet".format(i, name)
+        path = "{}/SCpp{:02d}_{}{}".format(directory, i, name, extension)
         
         csv += "{};{};{};{} {}".format(name, func, path, i, EOL)
         save(path, snippet)
@@ -172,4 +190,5 @@ def test():
 
 
 if __name__ == '__main__':
-    test()
+    # Test
+    create("test.h")
