@@ -252,6 +252,11 @@
       Portugol_escreva.sublime-snippet
       Portugol_se.sublime-snippet
       Portugol_para_1.sublime-snippet
+  # Create_Sublime-Snippet_Cpp
+    test.h
+    create_snippets_cpp_header.py
+   # Output
+      SCpp_4.sublime-snippet
   # Sublime-Build
     C++ OpenGL.sublime-build
     C++17.sublime-build
