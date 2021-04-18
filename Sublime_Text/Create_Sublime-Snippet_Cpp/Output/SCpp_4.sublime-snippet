@@ -1,0 +1,8 @@
+<!-- Automatically built. Update as needed! -->
+<snippet>
+    <description>get(num1,num2,num3,isOk,strVector,matrix)</description>
+    <content><![CDATA[/* string get(int num1,float num2,double num3,bool isOk,vector<string> strVector,vector<vector< double> > matrix) */
+get(${0:/* num1 */},${1:/* num2 */},${2:/* num3 */},${3:/* isOk */},${4:/* strVector */},${5:/* matrix */})]]></content>
+    <tabTrigger>get</tabTrigger>
+    <scope>source.c++</scope>
+</snippet> 
