@@ -1,0 +1,7 @@
+<!-- Automatically built. Update as needed! -->
+<snippet>
+    <description>get()</description>
+    <content><![CDATA[get${0:/* Code or () */}]]></content>
+    <tabTrigger>get</tabTrigger>
+    <scope>source.c++</scope>
+</snippet> 

@@ -105,6 +105,7 @@ def prepare(data):
     for i in data:
         if len(i) > 0:
             # i = 'Type Function ( Type Param, ... )'
+            expr = i
             comment = "/* " + i + " */" + EOL
 
             # i = [ 'Type Function', 'Type Param, ...' ]
@@ -137,9 +138,7 @@ def prepare(data):
             result = result.replace("#CODE#", code.strip(SPACE))
 
             # Output
-            snippets += [
-                {'name': func, 'function': comment, 'snippet': result}
-            ]
+            snippets += [{'name': func, 'function': expr, 'snippet': result}]
 
     return snippets
 
@@ -155,7 +154,7 @@ def test():
     snippets = prepare(data)
 
     # Save
-    csv = "Name;Path;Function;Number" + EOL
+    csv = "Name;Function;Path;Number" + EOL
     for i in range(len(snippets)):
         name = snippets[i]['name']
         func = snippets[i]['function']

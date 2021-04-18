@@ -1,0 +1,8 @@
+<!-- Automatically built. Update as needed! -->
+<snippet>
+    <description>setName(name)</description>
+    <content><![CDATA[/* void setName(string name)  */
+setName(${1:/* name */})]]></content>
+    <tabTrigger>setName</tabTrigger>
+    <scope>source.c++</scope>
+</snippet> 
