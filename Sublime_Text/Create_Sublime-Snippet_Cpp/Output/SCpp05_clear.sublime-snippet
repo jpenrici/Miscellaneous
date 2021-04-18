@@ -1,7 +1,0 @@
-<!-- Automatically built. Update as needed! -->
-<snippet>
-    <description>clear()</description>
-    <content><![CDATA[clear${0:/* Code or () */}]]></content>
-    <tabTrigger>clear</tabTrigger>
-    <scope>source.c++</scope>
-</snippet> 
