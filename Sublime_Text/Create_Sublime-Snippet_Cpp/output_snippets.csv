@@ -1,0 +1,11 @@
+Name;Path;Function;Number
+Test;/* Test(string name)   */
+;./Output/SCpp00_Test.sublime-snippet;0 
+get;/* string get(int num1,float num2,double num3,bool isOk,vector<string> strVector,vector<vector< double> > matrix)  */
+;./Output/SCpp01_get.sublime-snippet;1 
+get;;./Output/SCpp02_get.sublime-snippet;2 
+clear;;./Output/SCpp03_clear.sublime-snippet;3 
+getName;;./Output/SCpp04_getName.sublime-snippet;4 
+Test;;./Output/SCpp05_Test.sublime-snippet;5 
+setName;/* void setName(string name)  */
+;./Output/SCpp06_setName.sublime-snippet;6 
