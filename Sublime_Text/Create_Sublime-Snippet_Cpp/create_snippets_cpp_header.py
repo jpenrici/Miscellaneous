@@ -1,4 +1,4 @@
-# -*- Mode: Python; coding: utf-8; indent-tabs-mpythoode: nil; tab-width: 4 -*-
+# -*- Mode: Python3; coding: utf-8; indent-tabs-mpythoode: nil; tab-width: 4 -*-
 #
 # Lists classes and functions of Cpp Headers for building snippets.
 #
@@ -9,20 +9,32 @@ import sys
 
 EMPTY = ""
 COMMA = ','
-LEFTP = '('
-RIGHTP = ')'
 END = "#END#"
 EOL = chr(10)
 SPACE = chr(32)
+LPARENTHESES = '('
+RPARENTHESES = ')'
 
 MODEL = """<!-- Automatically built. Update as needed! -->
 <snippet>
     <description>#FUNCTION#(#PARAMS#)</description>
-    <content><![CDATA[#COMMENT##FUNCTION##CODE#]]></content>
-    <tabTrigger>#FUNCTION#</tabTrigger>
+    <content><![CDATA[#COMMENT##CODE#]]></content>
+    <tabTrigger>#TRIGGER#</tabTrigger>
     <scope>source.c++</scope>
 </snippet> 
 """
+
+# Enable comment insertion in the snippet.
+# Example:
+#   /* Type Function ( Type Param, ... ) */
+insert_comment = True
+
+# Inclusion of a general identifier.
+# Example:
+#   snippet_id = 'App_Test'
+# Result:
+#   #FUNCTION#(#PARAMS#)  ==>  'App_Test Function(Params)'
+snippet_id = EMPTY
 
 
 def load(path):
@@ -54,6 +66,8 @@ def prepare(data):
     #
     # Exclusive function for preparing C++ header files.
     #
+    global insert_comment, snippet_id
+
     if len(data) == 0:
         print("Empty.")
         return
@@ -67,22 +81,22 @@ def prepare(data):
     #          Words (
     #                 words ...
     #          )
-    text = ""
+    text = EMPTY
     for i in range(len(data)):
-        if LEFTP in data[i]:
+        if LPARENTHESES in data[i]:
             text += data[i].replace(EOL, EMPTY).strip()
-            if RIGHTP in data[i]:
+            if RPARENTHESES in data[i]:
                 text += END
                 continue
             for j in range(i + 1, len(data)):
-                if RIGHTP in data[j]:
+                if RPARENTHESES in data[j]:
                     text += data[j].replace(EOL, END).strip()
                     break
                 text += data[j].replace(EOL, EMPTY).strip()
             i = j
 
     # Step 2:
-    # Separate potential constructors and functions.
+    # Separate constructors and functions.
     data = []
     for i in text.split(END):
         if len(i) > 0:
@@ -111,50 +125,61 @@ def prepare(data):
     # Step 4:
     # Analyze and prepare output.
     snippets = []
-    for i in data:
-        if len(i) > 0:
-            # i = 'Type Function ( Type Param, ... )'
-            expr = i
-            comment = "/* " + i + " */" + EOL
+    for item in data:
+        if len(item) > 0:
+            # item = 'Type Function ( Type Param, ... )'
+            comment = "/* " + item + " */" + EOL
+            expr = item
 
-            # i = [ 'Type Function', 'Type Param, ...' ]
-            i = i.replace(RIGHTP, EMPTY).split(LEFTP)
-            func = i[0].split(SPACE)[-1]    # 'Function'
+            # item = [ 'Type Function', 'Type Param, ...' ]
+            item = item.replace(RPARENTHESES, EMPTY).split(LPARENTHESES)
+            func = item[0].split(SPACE)[-1]           # 'Function'
             if len(func) == 0:
                 continue
 
-            code = LEFTP
             params = EMPTY
-            p = i[-1].split(COMMA)          # [ 'Type Param', '...' ]
-            for j in range(len(p)):
-                p[j] = p[j].strip()
-                if p[j].replace(SPACE, EMPTY) == EMPTY:
+            code = LPARENTHESES
+            param = item[-1].split(COMMA)             # [ 'Type Param', '...' ]
+            for i in range(len(param)):
+                param[i] = param[i].strip()
+                if param[i].replace(SPACE, EMPTY) == EMPTY:
                     # Format: Word ()
-                    code = "${0:/* Code or () */}"
                     params = EMPTY
-                    comment = EMPTY
+                    code = "${0:/* Code or () */}"
                 else:
                     # Format: Word (word, word, ...)
-                    name = p[j].split(SPACE)[-1]    # [ 'Type', 'Param' ]
+                    name = param[i].split(SPACE)[-1]  # [ 'Type', 'Param' ]
                     params += name
-                    params += COMMA if j < len(p) - 1 else EMPTY
-                    code += "${" + str(j + 1) + ":/* "
+                    params += COMMA if i < len(param) - 1 else EMPTY
+                    code += "${" + str(i + 1) + ":/* "
                     code += name + " */}" if len(name) > 0 else "Code */}"
-                    code += COMMA if j < len(p) - 1 else RIGHTP          
+                    code += COMMA if i < len(param) - 1 else RPARENTHESES
+
+            # Global details
+            name = func
+            code = func + code
+            func = snippet_id + SPACE + func
+            comment = comment if insert_comment else EMPTY
 
             # Model
             result = MODEL.replace("#FUNCTION#", func.strip(SPACE))
             result = result.replace("#PARAMS#", params.strip(SPACE))
             result = result.replace("#COMMENT#", comment.strip(SPACE))
             result = result.replace("#CODE#", code.strip(SPACE))
+            result = result.replace("#TRIGGER#", name.strip(SPACE))
 
             # Output
-            snippets += [{'name': func, 'function': expr, 'snippet': result}]
+            snippets += [{'name': name, 'function': expr, 'snippet': result}]
 
     return snippets
 
 
-def create(path_cppheader, directory_snippet=""):
+def create(path_cppheader, directory_snippet=EMPTY, identifier=EMPTY,
+    comment=True):
+
+    global insert_comment, snippet_id
+    insert_comment = comment
+    snippet_id = identifier
 
     print("Script initialized.")
 
@@ -171,7 +196,7 @@ def create(path_cppheader, directory_snippet=""):
         return
 
     # Save
-    directory = "./Output" if directory_snippet == "" else directory_snippet
+    directory = "./Output" if directory_snippet == EMPTY else directory_snippet
     extension = ".sublime-snippet"
     if not os.path.exists(directory):
         print("Create " + directory)
@@ -188,8 +213,8 @@ def create(path_cppheader, directory_snippet=""):
         name = snippets[i]['name']
         func = snippets[i]['function']
         snippet = snippets[i]['snippet']
-        path = "{}/SCpp{:02d}_{}{}".format(directory, i, name, extension)
-        
+        fname = (snippet_id + name[0].upper() + name[1:]).replace(SPACE, EMPTY)
+        path = "{}/SCpp{:02d}_{}{}".format(directory, i, fname, extension)
         csv += "{};{};{};{} {}".format(name, func, path, i, EOL)
         save(path, snippet)
         # print(snippet)
@@ -202,4 +227,4 @@ def create(path_cppheader, directory_snippet=""):
 
 if __name__ == '__main__':
     # Test
-    create("test.h")
+    create(path_cppheader="test.h", identifier="Test")
