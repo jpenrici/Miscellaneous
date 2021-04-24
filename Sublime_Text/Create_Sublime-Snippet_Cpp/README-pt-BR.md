@@ -82,6 +82,6 @@ Ao final este snippet deve ser instalado no Sublime Text conforme documentação
 
 ## Learn more:
 
-[Sublime Text](https://www.sublimetext.com/docs/3/build_systems.html) (DOCUMENTATION Build Systems) <br>
+Sublime Text (Docs) <br>
 
 **Attention:** Study the scripts and references before executing them.
