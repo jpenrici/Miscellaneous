@@ -120,7 +120,7 @@ def prepare(data):
 
     # Step 3:
     # Organize ... 
-    data = list(set(data))
+    data = sorted(list(set(data)))
 
     # Step 4:
     # Analyze and prepare output.
