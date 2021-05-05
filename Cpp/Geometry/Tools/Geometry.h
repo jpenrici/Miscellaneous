@@ -10,14 +10,6 @@ using namespace std;
 #define PI               3.14159265359
 #define Radians(angle)   (angle*PI)/180.00
 
-#define Point            Vector3D
-#define Vertice          Vector3D
-
-class Vector3D;
-typedef vector<Vector3D> Points;
-typedef vector<Vector3D> Vertices;
-
-
 class Vector3D
 {
 public:
@@ -42,7 +34,7 @@ public:
     float getX() { return X; }
     float getY() { return Y; }
     float getZ() { return Z; }
-    string getLabel() { return label; }    
+    string getLabel() { return label; }
 
     void setX(float x) { X = x; }
     void setY(float y) { Y = y; }

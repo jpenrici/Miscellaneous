@@ -1,11 +1,14 @@
 /*
  *   Compile:
- *      g++ test_"NAME".cpp -o Test -I./Tools/
+ *      g++ test_basic.cpp -o Test -I./Tools/
  *
  *   Run:
  *      ./Test
 */
 #include "Geometry.h"
+
+#define Point   Vector3D
+#define Vertice Vector3D
 
 int main()
 {

@@ -2,6 +2,8 @@
 #define __Circle_H__
 
 #include "Geometry.h"
+#define Point Vector3D
+typedef vector<Vector3D> Points;
 
 class Circle
 {

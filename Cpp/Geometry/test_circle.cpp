@@ -1,6 +1,6 @@
 /*
  *   Compile:
- *      g++ test_"NAME".cpp -o Test -I./Tools/
+ *      g++ test_circle.cpp -o Test -I./Tools/
  *
  *   Run:
  *      ./Test

@@ -2,6 +2,8 @@
 #define __Triangle_H__
 
 #include "Geometry.h"
+#define Point Vector3D
+typedef vector<Vector3D> Points;
 
 class Triangle
 {
