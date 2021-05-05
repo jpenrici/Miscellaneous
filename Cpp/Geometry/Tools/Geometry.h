@@ -56,7 +56,13 @@ public:
         return  (X == v2.X) && (Y == v2.Y) && (Z == v2.Z);
     }
 
-    Vector3D polar(float radius, float angle) // Plano 2D
+    float distance(const Vector3D& v2)
+    {
+        return sqrt((X - v2.X) * (X - v2.X) + (Y - v2.Y) * (Y - v2.Y) +
+            (Z - v2.Z) * (Z - v2.Z));
+    }
+
+    Vector3D polar(float radius, float angle) // 2D
     {
         if (angle < 0)   angle += 180;
         if (angle > 360) angle = int(angle) % 360 + angle - int(angle);
@@ -66,6 +72,17 @@ public:
             X + radius * cos(Radians(angle)),
             Y + radius * sin(Radians(angle)),
             Z
+        );
+    }
+
+    Vector3D spherical(float radius, float angleZ, float angleXY) // 3D
+    {
+        if (radius < 0)  radius = 0;
+        
+        return Vector3D(
+            X + radius * sin(Radians(angleZ)) * cos(Radians(angleXY)),
+            Y + radius * sin(Radians(angleZ)) * sin(Radians(angleXY)),
+            Z + radius * cos(Radians(angleZ))
         );
     }
 
