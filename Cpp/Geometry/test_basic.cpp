@@ -9,6 +9,7 @@
 
 int main()
 {
+    // Basic
     Vector3D v1("v1");
     Vector3D v2("v2",  1,  1);
     Vector3D v3("v3", 10, 10, 10);
@@ -34,7 +35,17 @@ int main()
         item.show();
     }
 
-    cout << "v2 is equal p1: " << boolalpha << v2.isEqual(p1) << '\n';
+     // Is Equal
+    cout << boolalpha << v2.isEqual(p1) << '\n';
+
+    // Distance
+    cout << Point(7, 4, 3).distance(Point(17, 6, 2)) << '\n';
+
+    // Polar coordinate 
+    cout << Point().polar(100, 0).str() << '\n';
+
+    // Spherical coordinate
+    cout << Point().spherical(100, 90, 0).str() << '\n';
 
     return 0;
 }
