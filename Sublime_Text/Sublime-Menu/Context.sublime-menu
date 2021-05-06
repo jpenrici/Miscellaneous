@@ -1,0 +1,20 @@
+[
+    {
+      "caption": "Open Xfce4 Terminal …",
+      "id": "file",
+      "command": "exec",
+      "args": { "cmd": "xfce4-terminal" },
+      "platform": "Linux"
+    },
+]
+
+/*
+
+Test:
+ Debian 9
+ Sublime Text version 3.2.2
+ 
+Require:
+ xfce4-terminal
+
+*/
