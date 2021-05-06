@@ -14,10 +14,9 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
 3. **OpenBox**
    - Help files for the OpenBox and Debian environment.
 4. **Sublime_Text**
-   - **Sublime-Build**
-   - **Sublime-Snippet**
+   - Utilities.
 5. **Visual_Studio**
-   - **VS-Snippet**    
+   - Utilities.    
 6. **Python**
    - **BD_Treino:** Generate SQL for database training.
    - **Excel_Treino:** Generate CSV for training data filtering in spreadsheets.
