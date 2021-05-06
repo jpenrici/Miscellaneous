@@ -14,10 +14,9 @@ Pequenos códigos para pequenas funcionalidades.
 3. **OpenBox**
    - Arquivos de ajuda para o ambiente OpenBox e Debian.
 4. **Sublime_Text**
-   - **Sublime-Build**
-   - **Sublime-Snippet**
+   - Utilidades.
 5. **Visual_Studio**
-   - **VS-Snippet**   
+   - Utilidades.  
 6. **Python**
    - **BD_Treino:** Gerar SQL para treino de banco de dados.
    - **Excel_Treino:** Gerar CSV para treino de filtragem de dados em planilhas.
