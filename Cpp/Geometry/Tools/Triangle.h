@@ -33,7 +33,7 @@ public:
     Points points() { return { m_p1, m_p2, m_p3 }; }
     Points lines() { return Lines(points()).points(); }
 
-    Points poligon()
+    Points polygon()
     {
         Points p = points();
         p.push_back(p.front());

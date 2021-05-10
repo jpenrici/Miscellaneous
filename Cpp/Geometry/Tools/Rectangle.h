@@ -36,7 +36,7 @@ public:
 
     Points lines() { return Lines(points()).points(); }
 
-    Points poligon()
+    Points polygon()
     {
         Points p = points();
         p.push_back(p.front());
@@ -71,7 +71,7 @@ public:
     {
         // Case 0 - rectangle inside current rectangle
         if (contains(r2))
-            return poligon();
+            return polygon();
 
         // Current rectangle
         Points O = points();
