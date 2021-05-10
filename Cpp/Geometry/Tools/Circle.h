@@ -6,8 +6,6 @@
 #define Point Vector3D
 typedef vector<Vector3D> Points;
 
-#include <algorithm>
-
 class Circle
 {
 public:
