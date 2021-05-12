@@ -7,8 +7,8 @@
 
 using namespace std;
 
-#define PI               3.14159265359
-#define Radians(angle)   (angle*PI)/180.00
+#define PI  3.14159265359
+static inline float Radians(float angle) { return (angle * PI) / 180.00; }
 
 class Vector3D
 {
