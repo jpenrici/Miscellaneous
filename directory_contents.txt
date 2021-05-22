@@ -86,8 +86,24 @@
   list_path_files.cpp
   counter_using_vector.cpp
   count_frequency_elements.cpp
+  README.md
   remove_excess_characters.cpp
   multiply_matrix.cpp
+  # Tools
+    test_tools_basic.cpp
+    tools_basic.hpp
+  # Geometry
+    test_triangle.cpp
+    test_basic.cpp
+    test_rectangle.cpp
+    test_all.sh
+    test_circle.cpp
+   # Tools
+      Rectangle.h
+      Circle.h
+      Line.h
+      Triangle.h
+      Geometry.h
 
  # OpenBox
   feh_wallpaper.sh
@@ -253,10 +269,17 @@
       Portugol_se.sublime-snippet
       Portugol_para_1.sublime-snippet
   # Create_Sublime-Snippet_Cpp
+    README-pt-BR.md
     test.h
+    output_snippets.csv
     create_snippets_cpp_header.py
+    README.md
    # Output
-      SCpp_4.sublime-snippet
+      SCpp00_setName.sublime-snippet
+      SCpp04_Test.sublime-snippet
+      SCpp01_get.sublime-snippet
+  # Sublime-Menu
+    Context.sublime-menu
   # Sublime-Build
     C++ OpenGL.sublime-build
     C++17.sublime-build
