@@ -1,11 +1,17 @@
 [
+    { "caption": "-", "id": "file" },
     {
-      "caption": "Open Xfce4 Terminal …",
-      "id": "file",
-      "command": "exec",
-      "args": { "cmd": "xfce4-terminal" },
-      "platform": "Linux"
-    },
+        "caption": "User Tools",
+        "children":
+        [
+		    {
+		      "caption": "Open Xfce4 Terminal …",
+		      "command": "exec",
+		      "args": { "cmd": "xfce4-terminal" },
+		      "platform": "Linux"
+		    }   
+        ]
+    }
 ]
 
 /*
