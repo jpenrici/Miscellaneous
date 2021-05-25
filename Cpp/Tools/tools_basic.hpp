@@ -27,7 +27,7 @@ static const unordered_map<string, string> image_extension {
     {"png", "png"}, {"jpg", "jpg"}, {"jpeg", "jpeg"}
 };
 
-// Error message with line indication
+// Error message with line indication.
 void error(int line, const string &msg)
 {
     throw domain_error("[Line: " + to_string(line) + "]: " + msg);
@@ -70,10 +70,12 @@ string find_key(const string &key,
 
     if (map.empty()) {
         cout << "map empty\n";
+        return "";
     }
 
     if (key.empty()) {
         cout << "key empty\n";
+        return "";
     }
 
     unordered_map<std::string, std::string>::const_iterator it = map.find(key);
@@ -90,6 +92,7 @@ void view_map(const unordered_map<T_first, T_second> &map)
 {
     if (map.empty()) {
         cout << "map empty\n";
+        return;
     }
 
     for (auto it : map) {
@@ -101,7 +104,8 @@ void view_map(const unordered_map<T_first, T_second> &map)
 void to_upper(string &str)
 {
     if (str.empty()) {
-        cout << " string empty\n";
+        cout << "string empty\n";
+        return;
     }
 
     locale loc;
@@ -114,6 +118,7 @@ string upper(const string &str)
 {
     if (str.empty()) {
         cout << "string empty\n";
+        return "";
     }
 
     string str_upper(str);
@@ -126,6 +131,7 @@ void to_lower(string &str)
 {
     if (str.empty()) {
         cout << "string empty\n";
+        return;
     }
 
     locale loc;
@@ -138,6 +144,7 @@ string lower(const string &str)
 {
     if (str.empty()) {
         cout << "string empty\n";
+        return "";
     }
 
     string str_lower(str);
@@ -151,6 +158,7 @@ void split(const string &str, vector<string> &tokens,
 {
     if (str.empty()) {
         cout << "string empty\n";
+        return;
     }
 
     tokens.clear();
@@ -166,6 +174,7 @@ vector<string> split(const string &str, const char &delimiter)
 {
     if (str.empty()) {
         cout << "string empty\n";
+        return {};
     }
 
     vector<string> tokens;
@@ -179,6 +188,7 @@ vector<string> split(const string &str, const char &delimiter)
     return tokens;
 }
 
+// Checks if the key is in the position of the string.
 bool match_pos(const string &key, const string &str, unsigned pos)
 {
     if ((pos + key.length()) > str.length()) {
@@ -196,19 +206,23 @@ bool match_pos(const string &key, const string &str, unsigned pos)
     return false;
 }
 
+// Check if the string starts with the key.
 bool match(const string &key, const string &str)
 {
     return match_pos(key, str, 0);
 }
 
+// Removes the key in the string from the position.
 void remove_pos(const string &key, string &str, unsigned pos)
 {
     if ((pos + key.length()) >= str.length()) {
-        cout << "(pos + key.length) >= string.length\n";
+        cout << "key position and size >= string size\n";
+        return;
     }
 
     if (pos < 0 || pos > str.length()) {
-        cout << "pos > string.length\n";
+        cout << "position > string size\n";
+        return;
     }
 
     if (str.compare(pos, key.length(), key) == 0) {
@@ -218,6 +232,7 @@ void remove_pos(const string &key, string &str, unsigned pos)
     }
 }
 
+// Removes the key from the beginning of the string.
 void remove(const string &key, string &str)
 {
     remove_pos(key, str, 0);
@@ -228,6 +243,7 @@ void split_path(const string &path, vector<string> &tokens)
 {
     if (path.empty()) {
         cout << "path empty\n";
+        return;
     }
 
     vector<string> v_temp;
@@ -236,7 +252,7 @@ void split_path(const string &path, vector<string> &tokens)
 
     size_t len =  path.size() - filename.size();
     if (len <= 0) {
-        cout << "path < filename\n";
+        cout << "path size < filename size\n";
     }
 
     string directory = path.string::substr(0, len);
@@ -245,7 +261,7 @@ void split_path(const string &path, vector<string> &tokens)
 
     len = filename.size() - filename_extension.size();
     if (len <= 0) {
-        cout << "filename < extension\n";
+        cout << "filename size < extension size\n";
     }
 
     string name = filename.string::substr(0, len - 1);
@@ -258,6 +274,10 @@ string get_directory(const string &path)
     vector<string> tokens;
     split_path(path, tokens);
 
+    if (tokens.empty()) {
+        return "";
+    }
+
     return tokens.front();
 }
 
@@ -265,6 +285,10 @@ string get_name(const string &filename)
 {
     vector<string> tokens;
     split(filename, tokens, char(46));
+
+    if (tokens.empty()) {
+        return "";
+    }
 
     return tokens.front();
 }
@@ -274,6 +298,10 @@ string get_filename(const string &path)
     vector<string> tokens;
     split_path(path, tokens);
 
+    if (tokens.empty()) {
+        return "";
+    }
+
     return tokens[1];
 }
 
@@ -281,6 +309,10 @@ string get_filename_extension(const string &path)
 {
     vector<string> tokens;
     split_path(path, tokens);
+
+    if (tokens.empty()) {
+        return "";
+    }
 
     return tokens.back();
 }
@@ -359,13 +391,17 @@ string current_dir()
     return string(buffer);
 }
 
+// Exports vector data.
 template<typename T>
 void save(const vector<T> &v, const string &path)
 {
+    cout << "save vector in " << path << '\n';
+
     const char terminator = '\n';
 
     if (v.empty()) {
         cout << "vector empty\n";
+        return;
     }
 
     string path_temp = path;
@@ -375,6 +411,7 @@ void save(const vector<T> &v, const string &path)
 
     if (path_temp.empty()) {
         cout << "path empty\n";
+        return;
     }
 
     try {
@@ -382,6 +419,7 @@ void save(const vector<T> &v, const string &path)
 
         for (auto s : v) {
             file_out << s << terminator;
+            cout << s << '\n';
         }
 
         file_out.close();
@@ -390,6 +428,7 @@ void save(const vector<T> &v, const string &path)
     }
 }
 
+// Creates a blank file.
 void save_new_file(const string &path)
 {
     string path_temp = path;
@@ -399,6 +438,7 @@ void save_new_file(const string &path)
 
     if (path_temp.empty()) {
         cout << "path empty\n";
+        return;
     }
 
     try {
@@ -412,6 +452,8 @@ void save_new_file(const string &path)
 template<typename T>
 void write(const T &value,  const string &path)
 {
+    cout << "write in " << path << '\n';
+
     string path_temp = path;
     while (path_temp[0] == char(32)) {
         path_temp.erase(path_temp.begin());
@@ -419,6 +461,7 @@ void write(const T &value,  const string &path)
 
     if (path_temp.empty()) {
         cout << "path empty\n";
+        return;
     }
 
     try {
@@ -432,6 +475,8 @@ void write(const T &value,  const string &path)
 
 void load(const string &path, vector<string> &v_txt)
 {
+    cout << "load vector in " << path << '\n';
+
     v_txt.clear();
     string line;
 
@@ -442,6 +487,7 @@ void load(const string &path, vector<string> &v_txt)
 
     if (path_temp.empty()) {
         cout << "path empty\n";
+        return;
     }
 
     try {
@@ -458,7 +504,8 @@ void load(const string &path, vector<string> &v_txt)
     }
 }
 
-void files(vector<string> &list, const string &folder)
+// List directory files.
+void list_files(vector<string> &list, const string &folder)
 {
     try {
         list.clear();
@@ -508,7 +555,7 @@ void create_directory(const string &folder)
 {
     try {
         if (exist_path(folder)) {
-            cout << folder << " exist\n";
+            cout << "directory " << folder << " exist\n";
             return;
         }
 
@@ -520,7 +567,7 @@ void create_directory(const string &folder)
             cout << " failure" << '\n';
         }
     } catch (const exception &e) {
-        cout << "create_directory";
+        cout << "error: creating directory";
     }
 }
 } // namespace ToolsBasic
