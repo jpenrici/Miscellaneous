@@ -26,8 +26,7 @@ Pequenos códigos para pequenas funcionalidades.
    - **experience_libreOffice:** Experiência com macros Python no LibreOffice.
    - **Listar_Conteudo_Diretorio:** Lista o conteúdo de arquivos e diretórios.
 7. **VBA**
-   - **Excel_VBA:** experiências com macro no Excel.
-   - **Word_VBA:** experiências com macro no Word.
+   - Experiências com macro.
 
 ### Observação
 
