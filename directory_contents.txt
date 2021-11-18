@@ -1,328 +1,333 @@
  # Algorithms
   ler_conteudo_python3.py
   README.md
+  # algorithms_7
+    p07_ordena_selecao_direta.py
+    p07_ordena_insercao_direta.py
+    p07_ordena_bolha.py
+    p07_ordena_insercao_direta.por
+    p07_ordena_bolha.por
+    p07_ordena_selecao_direta.por
+  # algorithms_6
+    p06_pesquisa_sequencial_simples.por
+    p06_pesquisa_sequencial_ordenada.por
+    p06_pesquisa_sequencial_simples.alg
+    p06_pesquisa_sequencial_ordenada.py
+    p06_pesquisa_binaria.por
+    p06_pesquisa_sequencial_simples.py
+    p06_pesquisa_binaria.py
+  # algorithms_4
+    p04_ponteiros.cpp
+    p04_ponteiro_e_array.cpp
+    p04_converter_binario-inteiro.por
+    p04_fibonacci.por
+    p04_converter_inteiro-binario.por
+    p04_variavel_global_local.cpp
+    p04_variavel_global_local.por
+    p04_torre_hanoi.alg
+    p04_labirinto.por
+  # algorithms_5
+    p05_ponteiros_passagem_valor-e-referencia.cpp
+    p05_passagem_referencia.cpp
+    p05_passagem_valor.cpp
+  # algorithms_3
+    p03_vetor_maior-menor.por
+    p03_vetor_mes.por
+    p03_vetor_par-impar.por
+    p03_for_limites.cpp
+    p03_spoj_spttrn1_espiral.por
+    p03_vetor_detalhes.por
+    p03_matriz_detalhes.por
+   # jogo-da-velha
+      velha_tab-verdade.txt
+      velha_tab-verdade.xls
+      p03_vetor_jogo-da-velha.por
+      p03_vetor_jogo-da-velha.cpp
+  # algorithms_2
+    p02_numero-perfeito.cpp
+    p02_minimo-multiplo-comum.por
+    p02_palindromos.por
+    p02_fatorial.por
+    p02_tabela_ascii.cpp
+    p02_spoj_cpttrn8_losangos.cpp
+    p02_caso-se_mes.por
+    p02_enquanto-faca_faca-ate.por
+    p02_caso-se.por
+    p02_tabela_ascii_extendida.cpp
+    p02_spoj_cpttrn3_quadrados.por
+    po2_enquanto-faca_faca-ate.por
+    p02_spoj_cpttrn8_losangos.por
+    p02_spoj_spttrn1_espiral.cpp
+    p02_tabuada.por
+    p02_fibonacci.por
+    p02_triangulo-pascal.por
+    p02_numeros-primos.por
+    p02_inverte_numero.por
   # algorithms_1
-    p01_helloworld.cpp
-    p01_tipos_limites.cpp
-    p01_tipos_bytes.cpp
-    p01_numero_divisivel.por
-    p01_equacao_segundo_grau_bhaskara.por
     p01_variaveis_constantes.por
+    p01_numero_divisivel.por
     p01_tipagem_dinamica.py
     p01_par_impar.por
+    p01_equacao_segundo_grau_bhaskara.por
+    p01_helloworld.cpp
+    p01_tipos_bytes.cpp
+    p01_tipos_limites.cpp
    # operadores
+      p01_operadores_relacionais.por
+      p01_operadores_prioridade.por
+      p01_operadores_aritmeticos.py
       p01_operadores_logicos_bitwise.py
       p01_operadores_aritmeticos.por
       p01_operadores_logicos.por
-      p01_operadores_prioridade.por
-      p01_operadores_relacionais.por
-      p01_operadores_aritmeticos.py
-  # algorithms_3
-    p03_vetor_maior-menor.por
-    p03_for_limites.cpp
-    p03_vetor_mes.por
-    p03_vetor_detalhes.por
-    p03_vetor_par-impar.por
-    p03_spoj_spttrn1_espiral.por
-    p03_matriz_detalhes.por
-   # jogo-da-velha
-      p03_vetor_jogo-da-velha.por
-      p03_vetor_jogo-da-velha.cpp
-      velha_tab-verdade.txt
-      velha_tab-verdade.xls
-  # algorithms_2
-    p02_numeros-primos.por
-    p02_caso-se_mes.por
-    p02_spoj_spttrn1_espiral.cpp
-    p02_minimo-multiplo-comum.por
-    p02_triangulo-pascal.por
-    po2_enquanto-faca_faca-ate.por
-    p02_palindromos.por
-    p02_tabuada.por
-    p02_enquanto-faca_faca-ate.por
-    p02_fatorial.por
-    p02_tabela_ascii_extendida.cpp
-    p02_fibonacci.por
-    p02_caso-se.por
-    p02_spoj_cpttrn8_losangos.por
-    p02_numero-perfeito.cpp
-    p02_tabela_ascii.cpp
-    p02_spoj_cpttrn3_quadrados.por
-    p02_spoj_cpttrn8_losangos.cpp
-    p02_inverte_numero.por
-  # algorithms_6
-    p06_pesquisa_binaria.py
-    p06_pesquisa_sequencial_simples.py
-    p06_pesquisa_binaria.por
-    p06_pesquisa_sequencial_ordenada.py
-    p06_pesquisa_sequencial_simples.por
-    p06_pesquisa_sequencial_simples.alg
-    p06_pesquisa_sequencial_ordenada.por
-  # algorithms_7
-    p07_ordena_insercao_direta.py
-    p07_ordena_selecao_direta.py
-    p07_ordena_bolha.py
-    p07_ordena_selecao_direta.por
-    p07_ordena_insercao_direta.por
-    p07_ordena_bolha.por
-  # algorithms_5
-    p05_ponteiros_passagem_valor-e-referencia.cpp
-    p05_passagem_valor.cpp
-    p05_passagem_referencia.cpp
-  # algorithms_4
-    p04_variavel_global_local.por
-    p04_converter_binario-inteiro.por
-    p04_labirinto.por
-    p04_variavel_global_local.cpp
-    p04_converter_inteiro-binario.por
-    p04_fibonacci.por
-    p04_torre_hanoi.alg
-    p04_ponteiro_e_array.cpp
-    p04_ponteiros.cpp
 
  # Cpp
+  counter_using_vector.cpp
+  multiply_matrix.cpp
+  count_frequency_elements.cpp
   check_repeated_number_vector.cpp
   clean_dir.cpp
-  list_path_files.cpp
-  counter_using_vector.cpp
-  count_frequency_elements.cpp
-  README.md
   remove_excess_characters.cpp
-  multiply_matrix.cpp
+  list_path_files.cpp
+  README.md
   # Tools
-    test_tools_basic.cpp
     tools_basic.hpp
+    test_tools_basic.cpp
   # Geometry
+    test_rectangle.cpp
     test_triangle.cpp
     test_basic.cpp
-    test_rectangle.cpp
-    test_all.sh
     test_circle.cpp
+    test_all.sh
    # Tools
+      Triangle.h
       Rectangle.h
       Circle.h
       Line.h
-      Triangle.h
       Geometry.h
 
  # OpenBox
   feh_wallpaper.sh
   # Deb_Bkp_Package
+    reinstall_package-list.sh
+    package_list_bkp
     package_list_reinstall
     prepare_package-list.py
-    package_list_bkp
-    reinstall_package-list.sh
     copy_package-list.sh
 
  # Python
+  undoRedo.py
   maze_matrix.py
+  # Listar_Conteudo_Diretorio
+    contents.py
+    contents_miscellaneous.sh
+    contents_1.py
   # Excel_Treino
     aula_filtro_planilha.py
+   # Dados_CSV_exemplos
+      lista_frutas.csv
+      lista_nomes_masculinos.csv
+      lista_pratos_culinaria.csv
+      lista_tipos_esporte.csv
+      lista_nomes.csv
+      lista_animais.csv
+      lista_carros.csv
+      lista_municipios_brasileiros.csv
+      lista_nomes_femininos.csv
+      lista_profissoes.csv
+      lista_flores.csv
+      lista_times_brasileiros.csv
    # Dados_preparados
       aula-treino_excel_10000.ods
       aula-treino_excel_10000.csv
-   # Dados_CSV_exemplos
-      lista_nomes_masculinos.csv
-      lista_times_brasileiros.csv
-      lista_profissoes.csv
-      lista_frutas.csv
-      lista_flores.csv
-      lista_pratos_culinaria.csv
-      lista_nomes_femininos.csv
-      lista_municipios_brasileiros.csv
-      lista_tipos_esporte.csv
-      lista_carros.csv
-      lista_nomes.csv
-      lista_animais.csv
-  # LibreOffice_Macros_Py
-   # vcf_libreOffice
-      import_vcf.ods
-      README.md
-      example_in.vcf
-    # macro_import_vcf
-        vcf2spreadsheet.py
-    # display
-        display_libreOffice.png
-   # experience_libreOffice
-      macro_libreOffice.ods
-      README-pt-BR.md
-      README.md
-      install_py_pkgs_libreoffice.sh
-    # macro_extra
-        macro_libreoffice_extra.py
-    # py_pkgs_libreoffice
-        modulo_principal.py
-        __init__.py
   # BD_Treino
    # BD_Gerador_Script_SQL
       csv2sql.py
       sortear_dados.py
       manipula_arquivos.py
-    # Dados_CSV_preparados
-        sql_completo.sql
-        teste.csv
-        tab_fruta.csv
-        tab_carro.csv
-        tab_pessoa.csv
-        tab_signo.csv
-        tab_comida.csv
-        tab_localidade.csv
-        tab_pesquisa.csv
-    # Dados_CSV_exemplos
-        lista_nomes_masculinos.csv
-        lista_times_brasileiros.csv
-        lista_profissoes.csv
-        lista_frutas.csv
-        lista_flores.csv
-        lista_pratos_culinaria.csv
-        lista_nomes_femininos.csv
-        lista_municipios_brasileiros.csv
-        lista_tipos_esporte.csv
-        lista_signos.csv
-        lista_carros.csv
-        lista_nomes.csv
-        lista_animais.csv
     # Dados_SQL_prontos
+        sql_completo.sql
+        insert_pesquisa.sql
+        db_create_table_pesquisa.sql
+        db_create_table_fruta.sql
+        db_create_table_signo.sql
+        db_create_table_pessoa.sql
+        insert_pessoa.sql
+        insert_localidade.sql
+        db_create_table_carro.sql
+        teste.sql
+        db_create_table_localidade.sql
+        insert_carro.sql
+        db_create_table_comida.sql
+        db_create_database.sql
         insert_comida.sql
         insert_signo.sql
-        db_create_table_fruta.sql
-        db_create_table_pessoa.sql
-        db_create_table_pesquisa.sql
-        sql_completo.sql
         insert_fruta.sql
-        db_create_database.sql
-        db_create_table_comida.sql
-        db_create_table_carro.sql
-        db_create_table_localidade.sql
-        insert_pesquisa.sql
-        db_create_table_signo.sql
-        teste.sql
-        insert_carro.sql
-        insert_localidade.sql
-        insert_pessoa.sql
-  # Listar_Conteudo_Diretorio
-    contents_miscellaneous.sh
-    contents_1.py
-    contents.py
+    # Dados_CSV_exemplos
+        lista_frutas.csv
+        lista_nomes_masculinos.csv
+        lista_pratos_culinaria.csv
+        lista_signos.csv
+        lista_tipos_esporte.csv
+        lista_nomes.csv
+        lista_animais.csv
+        lista_carros.csv
+        lista_municipios_brasileiros.csv
+        lista_nomes_femininos.csv
+        lista_profissoes.csv
+        lista_flores.csv
+        lista_times_brasileiros.csv
+    # Dados_CSV_preparados
+        tab_signo.csv
+        sql_completo.sql
+        tab_localidade.csv
+        tab_pesquisa.csv
+        teste.csv
+        tab_pessoa.csv
+        tab_fruta.csv
+        tab_carro.csv
+        tab_comida.csv
   # VCF_CSV
-   # csv2vcf
-      example_out.vcf
-      example_in.csv
-      csv2vcf.py
    # vcf2csv
       example_out.csv
       vcf2csv.py
       example_in.vcf
+   # csv2vcf
+      example_in.csv
+      example_out.vcf
+      csv2vcf.py
+  # LibreOffice_Macros_Py
+   # vcf_libreOffice
+      import_vcf.ods
+      example_in.vcf
+      README.md
+    # macro_import_vcf
+        vcf2spreadsheet.py
+    # display
+        display_libreOffice.png
+   # experience_libreOffice
+      install_py_pkgs_libreoffice.sh
+      README-pt-BR.md
+      macro_libreOffice.ods
+      README.md
+    # macro_extra
+        macro_libreoffice_extra.py
+    # py_pkgs_libreoffice
+        modulo_principal.py
+        __init__.py
 
  # Sublime_Text
   README-pt-BR.md
   README.md
-  # Sublime-Snippet
-    C#_main_1.sublime-snippet
-    C#_consoleRead_2.sublime-snippet
-    Cpp_view-Vector_1.sublime-snippet
-    C#_switch.sublime-snippet
-    Cpp_switch.sublime-snippet
-    PHP.sublime-snippet
-    Cpp_OpenCV_basic-scope.sublime-snippet
-    C#_consoleWrite_2.sublime-snippet
-    Java_Print.sublime-snippet
-    C#_namespace_1.sublime-snippet
-    Cpp_main.sublime-snippet
-    Cpp_cout_endline.sublime-snippet
-    Gtk_main-Gtkmm_Window.sublime-snippet
-    C#_for_1.sublime-snippet
-    C#_consoleRead_1.sublime-snippet
-    Cpp_testequal.sublime-snippet
-    C#_consoleWrite_3.sublime-snippet
-    Python_modePython3.sublime-snippet
-    C#_class_1.sublime-snippet
-    Cpp_std-cout.sublime-snippet
-    C#_consoleWrite_1.sublime-snippet
-    Cpp_OpenCV_namedWindow.sublime-snippet
-    Cpp_for_2.sublime-snippet
-    C#_consoleWrite_4.sublime-snippet
-    Cpp_main(void).sublime-snippet
-    Cpp_std-cout_endline.sublime-snippet
-    C#_namespace_2.sublime-snippet
-    Java_Println.sublime-snippet
-    Python_def_init.sublime-snippet
-    Cpp_OpenCV_imshow.sublime-snippet
-    Cpp_view-Vector.sublime-snippet
-    Cpp_makefile.sublime-snippet
-    C#_for_2.sublime-snippet
-    Python_OpenCV_import.sublime-snippet
-    C#_namespace_3.sublime-snippet
-    Python_mode.sublime-snippet
-    Cpp_for_1.sublime-snippet
-    Gtk_main-Gtkmm_Application.sublime-snippet
-   # Sublime-Expiremental-Portugol
-      Portugol_escolha.sublime-snippet
-      Portugol.sublime-syntax
-      Portugol_escopo.sublime-snippet
-      Portugol_leia.sublime-snippet
-      Portugol_enquanto.sublime-snippet
-      Portugol_faca.sublime-snippet
-      Portugol_se-senao.sublime-snippet
-      Portugol_para_2.sublime-snippet
-      Portugol_escreva.sublime-snippet
-      Portugol_se.sublime-snippet
-      Portugol_para_1.sublime-snippet
   # Create_Sublime-Snippet_Cpp
+    create_snippets_cpp_header.py
     README-pt-BR.md
     test.h
     output_snippets.csv
-    create_snippets_cpp_header.py
     README.md
    # Output
       SCpp00_setName.sublime-snippet
-      SCpp04_Test.sublime-snippet
       SCpp01_get.sublime-snippet
+      SCpp04_Test.sublime-snippet
   # Sublime-Menu
     Context.sublime-menu
   # Sublime-Build
-    C++ OpenGL.sublime-build
-    C++17.sublime-build
-    JavaScript xfce4-terminal.sublime-build
-    Java xfce4-terminal.sublime-build
-    C++ Octave.sublime-build
-    Python xfce4-terminal.sublime-build
-    C++ SDL2.sublime-build
-    Bash xfce4-terminal.sublime-build
-    R xfce4-terminal.sublime-build
-    C# cmd.sublime-build
-    Lua 5.3 xfce4-terminal.sublime-build
-    C GTK2.sublime-build
     C++ GTK3.sublime-build
-    C++ OpenCV gcc.sublime-build
-    C xfce4-terminal.sublime-build
+    JavaScript xfce4-terminal.sublime-build
+    Python xfce4-terminal.sublime-build
     PHP 7 xfce4-terminal.sublime-build
-    Ruby xfce4-terminal.sublime-build
-    Perl xfce4-terminal.sublime-build
-    Python 3.6 xfce4-terminal.sublime-build
-    C++17 xfce4-terminal.sublime-build
-    NASM xfce4-terminal.sublime-build
-    C# xfce4-terminal.sublime-build
+    R xfce4-terminal.sublime-build
+    C++17.sublime-build
+    C++ OpenCV gcc.sublime-build
+    Bash xfce4-terminal.sublime-build
     C GTK3.sublime-build
+    C xfce4-terminal.sublime-build
+    C++17 xfce4-terminal.sublime-build
+    Python 3.6 xfce4-terminal.sublime-build
+    Lua 5.3 xfce4-terminal.sublime-build
+    C++ OpenGL.sublime-build
+    C# cmd.sublime-build
+    C GTK2.sublime-build
+    NASM xfce4-terminal.sublime-build
+    Java xfce4-terminal.sublime-build
+    Ruby xfce4-terminal.sublime-build
+    C# xfce4-terminal.sublime-build
+    Perl xfce4-terminal.sublime-build
+    C++ SDL2.sublime-build
+    C++ Octave.sublime-build
     C++17 Thread xfce4-terminal.sublime-build
    # Sublime-Build-OpenCV_Cmake
+      run
       C++ OpenCV.sublime-build
       README.md
-      run
    # Sublime-Build-MinGW
-      CSharp Net v4.sublime-build
       MinGW32-g++ Build DLL.sublime-build
-      README.md
+      CSharp Net v4.sublime-build
       MinGW32-g++.sublime-build
+      README.md
+  # Sublime-Snippet
+    Cpp_OpenCV_basic-scope.sublime-snippet
+    Python_def_init.sublime-snippet
+    Cpp_for_1.sublime-snippet
+    Cpp_view-Vector.sublime-snippet
+    Python_mode.sublime-snippet
+    Gtk_main-Gtkmm_Application.sublime-snippet
+    Cpp_std-cout.sublime-snippet
+    C#_for_2.sublime-snippet
+    C#_main_1.sublime-snippet
+    Cpp_std-cout_endline.sublime-snippet
+    C#_consoleWrite_3.sublime-snippet
+    Python_OpenCV_import.sublime-snippet
+    C#_consoleRead_1.sublime-snippet
+    Cpp_main(void).sublime-snippet
+    Cpp_OpenCV_namedWindow.sublime-snippet
+    Cpp_main.sublime-snippet
+    Cpp_makefile.sublime-snippet
+    Cpp_testequal.sublime-snippet
+    Python_modePython3.sublime-snippet
+    C#_namespace_3.sublime-snippet
+    Cpp_switch.sublime-snippet
+    Java_Print.sublime-snippet
+    Cpp_cout_endline.sublime-snippet
+    C#_consoleWrite_1.sublime-snippet
+    Cpp_OpenCV_imshow.sublime-snippet
+    C#_namespace_1.sublime-snippet
+    C#_consoleWrite_2.sublime-snippet
+    C#_namespace_2.sublime-snippet
+    C#_switch.sublime-snippet
+    PHP.sublime-snippet
+    C#_consoleRead_2.sublime-snippet
+    Cpp_for_2.sublime-snippet
+    C#_consoleWrite_4.sublime-snippet
+    C#_for_1.sublime-snippet
+    Java_Println.sublime-snippet
+    Cpp_view-Vector_1.sublime-snippet
+    Gtk_main-Gtkmm_Window.sublime-snippet
+    C#_class_1.sublime-snippet
+   # Sublime-Expiremental-Portugol
+      Portugol_para_1.sublime-snippet
+      Portugol_leia.sublime-snippet
+      Portugol_enquanto.sublime-snippet
+      Portugol_se.sublime-snippet
+      Portugol_se-senao.sublime-snippet
+      Portugol_escolha.sublime-snippet
+      Portugol.sublime-syntax
+      Portugol_escopo.sublime-snippet
+      Portugol_escreva.sublime-snippet
+      Portugol_faca.sublime-snippet
+      Portugol_para_2.sublime-snippet
 
  # Visual_Studio
   # VS-Snippet
     pauseConsole.snippet
 
  # VBA
+  # PowerPoint_VBA
+    Example.pptm
+    insert_textBox.bas
+    text.csv
   # Word_VBA
-    enigma.docm
     cryptography_word.bas
+    enigma.docm
   # Excel_VBA
     config.csv
     data.xlsm
