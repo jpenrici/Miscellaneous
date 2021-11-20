@@ -234,6 +234,7 @@
     C++ GTK3.sublime-build
     JavaScript xfce4-terminal.sublime-build
     Python xfce4-terminal.sublime-build
+    C++ OpenCV4 gcc.sublime-build
     PHP 7 xfce4-terminal.sublime-build
     R xfce4-terminal.sublime-build
     C++17.sublime-build
