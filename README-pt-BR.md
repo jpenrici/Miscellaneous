@@ -25,6 +25,7 @@ Pequenos códigos para pequenas funcionalidades.
    - **vcf_libreOffice:** Aplicação dos estudos de macro Python no LibreOffice.
    - **experience_libreOffice:** Experiência com macros Python no LibreOffice.
    - **Listar_Conteudo_Diretorio:** Lista o conteúdo de arquivos e diretórios.
+   - **DataOrganizer_MSTeams:** Simples experimento para organizar os dados do relatório de participação do MS Teams.
 7. **VBA**
    - Experiências com macro.
 
