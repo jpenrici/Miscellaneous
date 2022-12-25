@@ -1,0 +1,23 @@
+CMAKE Snippets
+==============
+
+: set : sources
+set(SOURCES
+    main.cpp
+    $file.h$ $file.cpp$
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)
+
+
+: set : resources
+set(RESOURCE_FILES
+    $path$
+    # font/font.ttf
+    # images/image.png
+)
+
+file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)

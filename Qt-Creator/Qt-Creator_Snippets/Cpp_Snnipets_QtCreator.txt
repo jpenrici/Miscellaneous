@@ -1,0 +1,29 @@
+C++ Snippets
+============
+
+: cout
+std::cout << $value$ << std::endl;
+
+
+: cout : string
+std::cout << "$value$" << std::endl;
+
+
+: cout : '\n'
+std::cout << $value$ << '\\n';
+
+
+: for : double
+for (int $i$ = 0; $i$ < $value$; ++$i) {
+    for (int $j$ = 0; $j$ < $value$; ++$j) {
+        $$
+    }
+}
+
+
+: main : simple
+int main()
+{
+    $$
+    return 0;
+}

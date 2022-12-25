@@ -1,0 +1,55 @@
+CMAKE Snippets - SFML
+=====================
+
+: SFML : find package
+find_package (SFML $2.5$ COMPONENTS audio graphics network system window REQUIRED)
+
+target_link_libraries (
+    \\${PROJECT_NAME} PUBLIC
+    sfml-audio
+    sfml-graphics
+    sfml-network
+    sfml-system
+    sfml-window
+)
+
+
+: SFML
+cmake_minimum_required(VERSION $3.5$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    $game.h$ $game.cpp$
+)
+
+set(RESOURCE_FILES
+    $path$
+    # font/font.ttf
+    # images/image.png
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)
+
+find_package (SFML $2.5$ COMPONENTS audio graphics network system window REQUIRED)
+
+target_link_libraries (
+    \\${PROJECT_NAME} PUBLIC
+    sfml-audio
+    sfml-graphics
+    sfml-network
+    sfml-system
+    sfml-window
+)
+
+file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})
