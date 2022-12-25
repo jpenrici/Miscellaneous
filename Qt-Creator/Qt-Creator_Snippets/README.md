@@ -13,5 +13,5 @@ Open the editorselect Edit > Preferences > Text Editor > Snippets.<br>
 Scheme:
 =======
 
-: Trigger : Trigger Variant
+: Trigger : Trigger Variant<br>
 Snippet
