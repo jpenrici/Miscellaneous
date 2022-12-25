@@ -3,15 +3,15 @@ Snippets - Qt Creator
 
 Reference:
 
-[Qt Doc](https://doc.qt.io) : The documentation pages for Qt.<br>
+[Documentation for Qt.](https://doc.qt.io)<br>
     
 Qt Creator:
 
 To add, modify, and remove snippets in the snippet editor.<br>
-Open the editorselect Edit > Preferences > Text Editor > Snippets.<br>
+Open the editor, select <b>Edit > Preferences > Text Editor > Snippets.</b><br>
 
 Scheme:
-=======
+-------
 
 : Trigger : Trigger Variant<br>
 Snippet
