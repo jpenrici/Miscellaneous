@@ -326,6 +326,16 @@
       SCpp00_setName.sublime-snippet
       SCpp01_get.sublime-snippet
 
+ # Qt-Creator
+  # Qt-Creator_Snippets
+    README.md
+    Cpp_GTKmm_Snnipets_QtCreator.txt
+    CMake_SFML_Snnipets_QtCreator.txt
+    Cpp_Snnipets_QtCreator.txt
+    CMake_Snnipets_QtCreator.txt
+    Cpp_SFML_Snnipets_QtCreator.txt
+    CMake_GTKmm_Snnipets_QtCreator.txt
+
  # Visual_Studio
   # VS-Snippet
     pauseConsole.snippet

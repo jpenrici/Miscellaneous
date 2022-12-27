@@ -16,8 +16,10 @@ Pequenos códigos para pequenas funcionalidades.
 4. **Sublime_Text**
    - Utilidades.
 5. **Visual_Studio**
+   - Utilidades. 
+6. **Qt-Creator**
    - Utilidades.  
-6. **Python**
+7. **Python**
    - **BD_Treino:** Gerar SQL para treino de banco de dados.
    - **Excel_Treino:** Gerar CSV para treino de filtragem de dados em planilhas.
    - **csv2vcf:** Faz a conversão de arquivo csv em vcf para exportação de contatos.
@@ -26,7 +28,7 @@ Pequenos códigos para pequenas funcionalidades.
    - **experience_libreOffice:** Experiência com macros Python no LibreOffice.
    - **Listar_Conteudo_Diretorio:** Lista o conteúdo de arquivos e diretórios.
    - **DataOrganizer_MSTeams:** Simples experimento para organizar os dados do relatório de participação do MS Teams.
-7. **VBA**
+8. **VBA**
    - Experiências com macro.
 
 ### Observação

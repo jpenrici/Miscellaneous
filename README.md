@@ -15,9 +15,11 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
    - Help files for the OpenBox and Debian environment.
 4. **Sublime_Text**
    - Utilities.
-5. **Visual_Studio**
+5. **Qt-Creator**
+   - Utilities.   
+6. **Visual_Studio**
    - Utilities.    
-6. **Python**
+7. **Python**
    - **BD_Treino:** Generate SQL for database training.
    - **Excel_Treino:** Generate CSV for training data filtering in spreadsheets.
    - **csv2vcf:** Converts csv file to vcf for exporting contacts.
@@ -26,7 +28,7 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
    - **experience_libreOffice:** Experience with Python macros in LibreOffice.   
    - **Listar_Conteudo_Diretorio:** Lists the contents of files and directories.
    - **DataOrganizer_MSTeams:** Simple experiment to organize MS Teams participation report data.
-7. **VBA**
+8. **VBA**
    - Macro experiments.
 
 ### Note
