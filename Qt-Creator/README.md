@@ -19,7 +19,7 @@ It's important to read the official documentation for more details!.<br>
 ## Snippets
 
 To add, modify, and remove snippets in the snippet editor.<br>
-Open the editorselect <b>Edit > Preferences > Text Editor > Snippets</b>.<br>
+Open the editor select <b>Edit > Preferences > Text Editor > Snippets</b>.<br>
 Use the txt files to help with the filling.<br>
 
 On Linux, copy the `snippets.xml` file to the path: `~/config/QtProject/qtcreator/snippets` <br>
