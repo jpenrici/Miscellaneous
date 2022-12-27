@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <snippets>
+<!-- C++ -->
     <snippet group="C++" trigger="cout" id="" complement="" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; std::endl;</snippet>
     <snippet group="C++" trigger="cout" id="" complement="'\n'" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; '\\n';</snippet>
     <snippet group="C++" trigger="cout" id="" complement="string" removed="false" modified="false">std::cout &lt;&lt; &quot;$value$&quot; &lt;&lt; std::endl;</snippet>
@@ -8,19 +9,12 @@
         $$
     }
 }</snippet>
-    <snippet group="C++" trigger="main" id="" complement="GTKmm" removed="false" modified="false">int main(int argc, char *argv[])
-{
-    auto app = Gtk::Application::create(argc, argv, &quot;$org.appName.com$&quot;);
-    
-    $Name Class$ $window$;
-    
-    return app-&gt;run($window$);
-}</snippet>
     <snippet group="C++" trigger="main" id="" complement="simple" removed="false" modified="false">int main()
 {
     $$
     return 0;
 }</snippet>
+<!-- SFML -->
     <snippet group="C++" trigger="SFML" id="" complement="loop" removed="false" modified="false">while($window$.isOpen()) {
 
     sf::Event $event$;
@@ -47,33 +41,16 @@
     $window$-&gt;clear(sf::Color(sf::Color::White));
     $window$-&gt;display();
 }</snippet>
-    <snippet group="CMake" trigger="GTKmm" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
-
-project($PROJ-NAME$ LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD $20$)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(SOURCES
-    main.cpp
-    $file.h$ $file.cpp$
-)
-
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTKMM REQUIRED gtkmm-$3.0$)
-
-add_executable(\\${PROJECT_NAME} \\${SOURCES})
-
-link_directories(\\${GTKMM_LIBRARY_DIRS})
-include_directories(include \\${GTKMM_INCLUDE_DIRS})
-
-target_link_libraries (
-    \\${PROJECT_NAME} PRIVATE
-    \\${GTKMM_LIBRARIES}
-)
-
-install(TARGETS \\${PROJECT_NAME}
-    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
+<!-- GTKmm -->
+    <snippet group="C++" trigger="main" id="" complement="GTKmm" removed="false" modified="false">int main(int argc, char *argv[])
+{
+    auto app = Gtk::Application::create(argc, argv, &quot;$org.appName.com$&quot;);
+    
+    $Name Class$ $window$;
+    
+    return app-&gt;run($window$);
+}</snippet>
+<!-- CMake - C++ -->
     <snippet group="CMake" trigger="set" id="" complement="resources" removed="false" modified="false">set(RESOURCE_FILES
     $path$
     # font/font.ttf
@@ -90,6 +67,7 @@ add_executable(
     \\${PROJECT_NAME}
     \\${SOURCES}
 )</snippet>
+<!-- CMake - SFML -->
     <snippet group="CMake" trigger="SFML" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
 
 project($PROJ-NAME$ LANGUAGES CXX)
@@ -138,4 +116,33 @@ target_link_libraries (
     sfml-system
     sfml-window
 )</snippet>
+<!-- CMake - GTKmm -->
+     <snippet group="CMake" trigger="GTKmm" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    $file.h$ $file.cpp$
+)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTKMM REQUIRED gtkmm-$3.0$)
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+link_directories(\\${GTKMM_LIBRARY_DIRS})
+include_directories(include \\${GTKMM_INCLUDE_DIRS})
+
+target_link_libraries (
+    \\${PROJECT_NAME} PRIVATE
+    \\${GTKMM_LIBRARIES}
+)
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
+<!-- End -->
 </snippets>
