@@ -1,56 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <snippets>
-<!-- C++ -->
-    <snippet group="C++" trigger="cout" id="" complement="" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; std::endl;</snippet>
-    <snippet group="C++" trigger="cout" id="" complement="'\n'" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; '\\n';</snippet>
-    <snippet group="C++" trigger="cout" id="" complement="string" removed="false" modified="false">std::cout &lt;&lt; &quot;$value$&quot; &lt;&lt; std::endl;</snippet>
-    <snippet group="C++" trigger="for" id="" complement="double" removed="false" modified="false">for (int $i$ = 0; $i$ &lt; $value$; ++$i) {
-    for (int $j$ = 0; $j$ &lt; $value$; ++$j) {
-        $$
-    }
-}</snippet>
-    <snippet group="C++" trigger="main" id="" complement="simple" removed="false" modified="false">int main()
-{
-    $$
-    return 0;
-}</snippet>
-<!-- SFML -->
-    <snippet group="C++" trigger="SFML" id="" complement="loop" removed="false" modified="false">while($window$.isOpen()) {
+    <snippet group="CMake" trigger="GTKmm" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
 
-    sf::Event $event$;
-    while($window$.pollEvent($event$)) {
-        if (($event$.type == sf::Event::Closed) ||
-                ($event$.type == sf::Event::KeyPressed &amp;&amp;
-                 $event$.key.code == sf::Keyboard::Escape))
-            $window$.close();
-    }
+project($PROJ-NAME$ LANGUAGES CXX)
 
-    $window$.clear(sf::Color(sf::Color::White));
-    $window$.display();
-}</snippet>
-    <snippet group="C++" trigger="SFML" id="" complement="loop window ptr" removed="false" modified="false">while($window$-&gt;isOpen()) {
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-    sf::Event $event$;
-    while($window$-&gt;pollEvent($event$)) {
-        if (($event$.type == sf::Event::Closed) ||
-                ($event$.type == sf::Event::KeyPressed &amp;&amp;
-                 $event$.key.code == sf::Keyboard::Escape))
-            $window$-&gt;close();
-    }
+set(SOURCES
+    main.cpp
+    $file.h$ $file.cpp$
+)
 
-    $window$-&gt;clear(sf::Color(sf::Color::White));
-    $window$-&gt;display();
-}</snippet>
-<!-- GTKmm -->
-    <snippet group="C++" trigger="main" id="" complement="GTKmm" removed="false" modified="false">int main(int argc, char *argv[])
-{
-    auto app = Gtk::Application::create(argc, argv, &quot;$org.appName.com$&quot;);
-    
-    $Name Class$ $window$;
-    
-    return app-&gt;run($window$);
-}</snippet>
-<!-- CMake - C++ -->
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTKMM REQUIRED gtkmm-$3.0$)
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+link_directories(\\${GTKMM_LIBRARY_DIRS})
+include_directories(include \\${GTKMM_INCLUDE_DIRS})
+
+target_link_libraries (
+    \\${PROJECT_NAME} PRIVATE
+    \\${GTKMM_LIBRARIES}
+)
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
     <snippet group="CMake" trigger="set" id="" complement="resources" removed="false" modified="false">set(RESOURCE_FILES
     $path$
     # font/font.ttf
@@ -67,7 +43,6 @@ add_executable(
     \\${PROJECT_NAME}
     \\${SOURCES}
 )</snippet>
-<!-- CMake - SFML -->
     <snippet group="CMake" trigger="SFML" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
 
 project($PROJ-NAME$ LANGUAGES CXX)
@@ -116,33 +91,62 @@ target_link_libraries (
     sfml-system
     sfml-window
 )</snippet>
-<!-- CMake - GTKmm -->
-     <snippet group="CMake" trigger="GTKmm" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
+    <snippet group="C++" trigger="cout" id="" complement="'\n'" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; '\\n';</snippet>
+    <snippet group="C++" trigger="cout" id="" complement="string" removed="false" modified="false">std::cout &lt;&lt; &quot;$value$&quot; &lt;&lt; std::endl;</snippet>
+    <snippet group="C++" trigger="cout" id="" complement="value" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; std::endl;</snippet>
+    <snippet group="C++" trigger="for" id="" complement="double" removed="false" modified="false">for (int $i$ = 0; $i$ &lt; $value$; ++$i) {
+    for (int $j$ = 0; $j$ &lt; $value$; ++$j) {
+        $$
+    }
+}</snippet>
+    <snippet group="C++" trigger="main" id="" complement="basic" removed="false" modified="false">int main()
+{
+    $$
+    return 0;
+}</snippet>
+    <snippet group="C++" trigger="main" id="" complement="GTKmm" removed="false" modified="false">int main(int argc, char *argv[])
+{
+    auto app = Gtk::Application::create(argc, argv, &quot;$org.appName.com$&quot;);
+    
+    $Name Class$ $window$;
+    
+    return app-&gt;run($window$);
+}</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Event" removed="false" modified="false">sf::Event $event$;
 
-project($PROJ-NAME$ LANGUAGES CXX)
+while($window$.pollEvent($event$)) {
+    if ($event$.type == sf::Event::Closed)
+        $window$.close();
+}</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Font and Text" removed="false" modified="false">sf::Font $font$;
+$font$.loadFromFile(&quot;$Resources/filename.ttf$&quot;);
 
-set(CMAKE_CXX_STANDARD $20$)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+sf::Text $text$;
+$text$.setFont($font$);
+$text$.setString(&quot;$string$&quot;);
+$text$.setPosition($x$, $y$);
+$text$.setCharacterSize($size$);
+$text$.setOutlineThickness($thickness$);</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Keyboard" removed="false" modified="false">if (sf::Keyboard::isKeyPressed(sf::Keyboard::$key$)) { $$ }</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="loop" removed="false" modified="false">while($window$.isOpen()) {
 
-set(SOURCES
-    main.cpp
-    $file.h$ $file.cpp$
-)
+    sf::Event $event$;
+    while($window$.pollEvent($event$)) {
+        if (($event$.type == sf::Event::Closed) ||
+                ($event$.type == sf::Event::KeyPressed &amp;&amp;
+                 $event$.key.code == sf::Keyboard::Escape))
+            $window$.close();
+    }
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTKMM REQUIRED gtkmm-$3.0$)
-
-add_executable(\\${PROJECT_NAME} \\${SOURCES})
-
-link_directories(\\${GTKMM_LIBRARY_DIRS})
-include_directories(include \\${GTKMM_INCLUDE_DIRS})
-
-target_link_libraries (
-    \\${PROJECT_NAME} PRIVATE
-    \\${GTKMM_LIBRARIES}
-)
-
-install(TARGETS \\${PROJECT_NAME}
-    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
-<!-- End -->
+    $window$.clear(sf::Color(sf::Color::White));
+    $$ // draw
+    $window$.display();
+}</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Mouse" removed="false" modified="false">if (sf::Mouse::isButtonPressed(sf::Mouse::$Left$))) { $$ }</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="RenderWindow" removed="false" modified="false">sf::RenderWindow $window$(sf::VideoMode($width$, $height$),
+                          &quot;$title$&quot;, sf::Style::Titlebar | sf::Style::Close);</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Window position" removed="false" modified="false">$window$.setPosition(sf::Vector2i($x$, $y$));</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Window resolution" removed="false" modified="false">sf::Vector2f $resolution$;
+$resolution$.x = sf::VideoMode::getDesktopMode().width;
+$resolution$.y = sf::VideoMode::getDesktopMode().height;</snippet>
 </snippets>
