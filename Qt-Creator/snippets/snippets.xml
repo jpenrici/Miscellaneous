@@ -1,5 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <snippets>
+    <snippet group="C++" trigger="cout" id="" complement="'\n'" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; '\\n';</snippet>
+    <snippet group="C++" trigger="cout" id="" complement="string" removed="false" modified="false">std::cout &lt;&lt; &quot;$value$&quot; &lt;&lt; std::endl;</snippet>
+    <snippet group="C++" trigger="cout" id="" complement="value" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; std::endl;</snippet>
+    <snippet group="C++" trigger="for" id="" complement="double" removed="false" modified="false">for ($int$ $i$ = 0; $i$ &lt; $value1$; ++$i$) {
+    for ($int$ $j$ = 0; $j$ &lt; $value2$; ++$j$) {
+        $$
+    }
+}</snippet>
+    <snippet group="C++" trigger="GLFW" id="" complement="glad" removed="false" modified="false">// Glad, include glad *before* glfw
+// #include &lt;glad/glad.h&gt;
+
+if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+    std::cout &lt;&lt; &quot;Failed to initialize GLAD&quot; &lt;&lt; std::endl;
+    return EXIT_FAILURE;
+}</snippet>
+    <snippet group="C++" trigger="GLFW" id="" complement="main" removed="false" modified="false">glfwInit();
+
+glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, $4$);
+glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, $6$);
+glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+
+GLFWwindow* $window$ = glfwCreateWindow($width$, $height$, &quot;$title$&quot;, NULL, NULL);
+if ($window$ == NULL) {
+    std::cout &lt;&lt; &quot;Failed to create GLFW window!&quot; &lt;&lt; std::endl;
+    glfwTerminate();
+    return EXIT_FAILURE;
+}
+
+glfwMakeContextCurrent($window$);
+
+// insert code to use Opengl loading library
+
+while(!glfwWindowShouldClose($window$))
+{
+    if (glfwGetKey($window$, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+        glfwSetWindowShouldClose($window$, true);
+    }
+    glfwSwapBuffers($window$);
+    glfwPollEvents();
+}</snippet>
+    <snippet group="C++" trigger="main" id="" complement="basic" removed="false" modified="false">int main()
+{
+    $$
+    return 0;
+}</snippet>
+    <snippet group="C++" trigger="main" id="" complement="GTKmm" removed="false" modified="false">int main(int argc, char *argv[])
+{
+    auto app = Gtk::Application::create(argc, argv, &quot;$org.appName.com$&quot;);
+    
+    $Name Class$ $window$;
+    
+    return app-&gt;run($window$);
+}</snippet>
+    <snippet group="C++" trigger="OpenGL" id="" complement="info" removed="false" modified="false">std::cout &lt;&lt; &quot;Company:&quot; &lt;&lt; glGetString(GL_VENDOR) &lt;&lt; std::endl;
+std::cout &lt;&lt; &quot;Model:&quot; &lt;&lt; glGetString(GL_RENDERER) &lt;&lt; std::endl;
+std::cout &lt;&lt; &quot;OpenGL:&quot; &lt;&lt; glGetString(GL_VERSION) &lt;&lt; std::endl;</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Event" removed="false" modified="false">sf::Event $event$;
+
+while($window$.pollEvent($event$)) {
+    if ($event$.type == sf::Event::Closed)
+        $window$.close();
+}</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Font" removed="false" modified="false">sf::Font $font$;
+$font$.loadFromFile(&quot;$Resources/filename.ttf$&quot;);</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Font and Text" removed="false" modified="false">sf::Font $font$;
+$font$.loadFromFile(&quot;$Resources/filename.ttf$&quot;);
+
+sf::Text $text$;
+$text$.setFont($font$);
+$text$.setString(&quot;$string$&quot;);
+$text$.setPosition($x$, $y$);
+$text$.setCharacterSize($size$);
+$text$.setFillColor(sf::Color::$White$);
+$text$.setOutlineThickness($thickness$);</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Keyboard" removed="false" modified="false">if ($event$.type == sf::Event::$KeyPressed$) {
+    if ($event$.key.code == sf::Keyboard::$Escape$) {
+        
+    }
+}</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Keyboard" removed="false" modified="false">if (sf::Keyboard::isKeyPressed(sf::Keyboard::$key$)) {
+    
+}</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="loop" removed="false" modified="false">while($window$.isOpen()) {
+
+    $window$.clear(sf::Color(sf::Color::White));
+    $$ // draw
+    $window$.display();
+}</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="loop" removed="false" modified="false">while($window$.isOpen()) {
+    $$
+}</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="loop" removed="false" modified="false">while($window$.isOpen()) {
+
+    sf::Event $event$;
+    while($window$.pollEvent($event$)) {
+        if (($event$.type == sf::Event::Closed) ||
+                ($event$.type == sf::Event::KeyPressed &amp;&amp;
+                 $event$.key.code == sf::Keyboard::Escape))
+            $window$.close();
+    }
+
+    $window$.clear(sf::Color(sf::Color::White));
+    $$ // draw
+    $window$.display();
+}</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Mouse" removed="false" modified="false">if (sf::Mouse::isButtonPressed(sf::Mouse::$Left$))) {
+    
+}</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="RenderWindow" removed="false" modified="false">sf::RenderWindow $window$(sf::VideoMode($width$, $height$),
+                          &quot;$title$&quot;, sf::Style::Titlebar | sf::Style::Close);</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Shape Circle" removed="false" modified="false">sf::CircleShape $circle$($radius$);
+$circle$.setFillColor(sf::Color::$White$);
+$circle$.setPosition($x1$, $y1$);
+$circle$.setOrigin(sf::Vector2f(circle.getRadius(), circle.getRadius()));</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Shape Rectangle" removed="false" modified="false">sf::RectangleShape $rect$(sf::Vector2f($x1$, $y1$));
+$rect$.setFillColor(sf::Color::$White$);
+$rect$.setPosition($x2$, $y2$);
+$rect$.setOrigin(sf::Vector2f($rect$.getSize().x / 2, $rect$.getSize().y / 2));</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Text" removed="false" modified="false">sf::Text $text$;
+$text$.setFont($font$);
+$text$.setString(&quot;$string$&quot;);
+$text$.setPosition($x$, $y$);
+$text$.setCharacterSize($size$);
+$text$.setFillColor(sf::Color::$White$);
+$text$.setOutlineThickness($thickness$);</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Window position" removed="false" modified="false">$window$.setPosition(sf::Vector2i($x$, $y$));</snippet>
+    <snippet group="C++" trigger="SFML" id="" complement="Window resolution" removed="false" modified="false">sf::Vector2f $resolution$;
+$resolution$.x = sf::VideoMode::getDesktopMode().width;
+$resolution$.y = sf::VideoMode::getDesktopMode().height;</snippet>
     <snippet group="CMake" trigger="GTKmm" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
 
 project($PROJ-NAME$ LANGUAGES CXX)
@@ -24,6 +158,84 @@ target_link_libraries (
     \\${PROJECT_NAME} PRIVATE
     \\${GTKMM_LIBRARIES}
 )
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
+    <snippet group="CMake" trigger="OpenGL" id="" complement="glfw3" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    $filename.h$ $filename.cpp$
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)
+
+find_package(OpenGL REQUIRED COMPONENTS OpenGL)
+find_package(glfw3 REQUIRED)
+
+include_directories(\\${OPENGL_INCLUDE_DIRS})
+
+target_link_libraries (
+    \\${PROJECT_NAME} PUBLIC
+    \\${OPENGL_LIBRARIES}
+    glfw
+)
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
+    <snippet group="CMake" trigger="OpenGL" id="" complement="glut, glew, glfw3, glm" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    $filename.h$ $filename.cpp$
+)
+
+set(RESOURCE_FILES
+    $path$
+    # font/font.ttf
+    # images/image.png
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)
+
+find_package(OpenGL REQUIRED COMPONENTS OpenGL)
+find_package(GLUT REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(glfw3 REQUIRED)
+find_package(glm REQUIRED)
+
+include_directories(
+    \\${OPENGL_INCLUDE_DIRS}
+    \\${GLUT_INCLUDE_DIRS}
+    \\${GLEW_INCLUDE_DIRS}
+)
+
+target_link_libraries (
+    \\${PROJECT_NAME} PUBLIC
+    \\${OPENGL_LIBRARIES}
+    \\${GLUT_LIBRARIES}
+    \\${GLEW_LIBRARIES}
+    glfw
+    glm::glm
+)
+
+file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)
 
 install(TARGETS \\${PROJECT_NAME}
     LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
@@ -91,62 +303,4 @@ target_link_libraries (
     sfml-system
     sfml-window
 )</snippet>
-    <snippet group="C++" trigger="cout" id="" complement="'\n'" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; '\\n';</snippet>
-    <snippet group="C++" trigger="cout" id="" complement="string" removed="false" modified="false">std::cout &lt;&lt; &quot;$value$&quot; &lt;&lt; std::endl;</snippet>
-    <snippet group="C++" trigger="cout" id="" complement="value" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; std::endl;</snippet>
-    <snippet group="C++" trigger="for" id="" complement="double" removed="false" modified="false">for (int $i$ = 0; $i$ &lt; $value$; ++$i) {
-    for (int $j$ = 0; $j$ &lt; $value$; ++$j) {
-        $$
-    }
-}</snippet>
-    <snippet group="C++" trigger="main" id="" complement="basic" removed="false" modified="false">int main()
-{
-    $$
-    return 0;
-}</snippet>
-    <snippet group="C++" trigger="main" id="" complement="GTKmm" removed="false" modified="false">int main(int argc, char *argv[])
-{
-    auto app = Gtk::Application::create(argc, argv, &quot;$org.appName.com$&quot;);
-    
-    $Name Class$ $window$;
-    
-    return app-&gt;run($window$);
-}</snippet>
-    <snippet group="C++" trigger="SFML" id="" complement="Event" removed="false" modified="false">sf::Event $event$;
-
-while($window$.pollEvent($event$)) {
-    if ($event$.type == sf::Event::Closed)
-        $window$.close();
-}</snippet>
-    <snippet group="C++" trigger="SFML" id="" complement="Font and Text" removed="false" modified="false">sf::Font $font$;
-$font$.loadFromFile(&quot;$Resources/filename.ttf$&quot;);
-
-sf::Text $text$;
-$text$.setFont($font$);
-$text$.setString(&quot;$string$&quot;);
-$text$.setPosition($x$, $y$);
-$text$.setCharacterSize($size$);
-$text$.setOutlineThickness($thickness$);</snippet>
-    <snippet group="C++" trigger="SFML" id="" complement="Keyboard" removed="false" modified="false">if (sf::Keyboard::isKeyPressed(sf::Keyboard::$key$)) { $$ }</snippet>
-    <snippet group="C++" trigger="SFML" id="" complement="loop" removed="false" modified="false">while($window$.isOpen()) {
-
-    sf::Event $event$;
-    while($window$.pollEvent($event$)) {
-        if (($event$.type == sf::Event::Closed) ||
-                ($event$.type == sf::Event::KeyPressed &amp;&amp;
-                 $event$.key.code == sf::Keyboard::Escape))
-            $window$.close();
-    }
-
-    $window$.clear(sf::Color(sf::Color::White));
-    $$ // draw
-    $window$.display();
-}</snippet>
-    <snippet group="C++" trigger="SFML" id="" complement="Mouse" removed="false" modified="false">if (sf::Mouse::isButtonPressed(sf::Mouse::$Left$))) { $$ }</snippet>
-    <snippet group="C++" trigger="SFML" id="" complement="RenderWindow" removed="false" modified="false">sf::RenderWindow $window$(sf::VideoMode($width$, $height$),
-                          &quot;$title$&quot;, sf::Style::Titlebar | sf::Style::Close);</snippet>
-    <snippet group="C++" trigger="SFML" id="" complement="Window position" removed="false" modified="false">$window$.setPosition(sf::Vector2i($x$, $y$));</snippet>
-    <snippet group="C++" trigger="SFML" id="" complement="Window resolution" removed="false" modified="false">sf::Vector2f $resolution$;
-$resolution$.x = sf::VideoMode::getDesktopMode().width;
-$resolution$.y = sf::VideoMode::getDesktopMode().height;</snippet>
 </snippets>

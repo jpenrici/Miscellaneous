@@ -14,8 +14,8 @@ std::cout << $value$ << '\\n';
 
 
 : for : double
-for (int $i$ = 0; $i$ < $value$; ++$i) {
-    for (int $j$ = 0; $j$ < $value$; ++$j) {
+for ($int$ $i$ = 0; $i$ < $value1$; ++$i$) {
+    for ($int$ $j$ = 0; $j$ < $value2$; ++$j$) {
         $$
     }
 }

@@ -1,0 +1,46 @@
+GLFW Snippets
+=============
+
+: GLFW : main
+glfwInit();
+
+glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, $4$);
+glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, $6$);
+glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+
+GLFWwindow* $window$ = glfwCreateWindow($width$, $height$, "$title$", NULL, NULL);
+if ($window$ == NULL) {
+    std::cout << "Failed to create GLFW window!" << std::endl;
+    glfwTerminate();
+    return EXIT_FAILURE;
+}
+
+glfwMakeContextCurrent($window$);
+
+// insert code to use OpenGL Loading Library
+
+while(!glfwWindowShouldClose($window$))
+{
+    if (glfwGetKey($window$, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+        glfwSetWindowShouldClose($window$, true);
+    }
+    glfwSwapBuffers($window$);
+    glfwPollEvents();
+}
+
+glfwTerminate();
+
+
+: GLFW : glad
+// Glad, include glad *before* glfw
+// #include <glad/glad.h>
+
+if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+    std::cout << "Failed to initialize GLAD" << std::endl;
+    return EXIT_FAILURE;
+}

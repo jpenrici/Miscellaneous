@@ -59,6 +59,21 @@ while($window$.pollEvent($event$)) {
 }
 
 
+: SFML : Font
+sf::Font $font$;
+$font$.loadFromFile("$Resources/filename.ttf$");
+
+
+: SFML : Text
+sf::Text $text$;
+$text$.setFont($font$);
+$text$.setString("$string$");
+$text$.setPosition($x$, $y$);
+$text$.setCharacterSize($size$);
+$text$.setFillColor(sf::Color::$White$);
+$text$.setOutlineThickness($thickness$);
+
+
 : SFML : Font and Text
 sf::Font $font$;
 $font$.loadFromFile("$Resources/filename.ttf$");
@@ -68,6 +83,7 @@ $text$.setFont($font$);
 $text$.setString("$string$");
 $text$.setPosition($x$, $y$);
 $text$.setCharacterSize($size$);
+$text$.setFillColor(sf::Color::$White$);
 $text$.setOutlineThickness($thickness$);
 
 
@@ -78,8 +94,8 @@ if (sf::Keyboard::isKeyPressed(sf::Keyboard::$key$)) {
 
 
 : SFML : Keyboard
-if ($e$->type == sf::Event::$KeyPressed$) {
-    if ($e$->key.code == sf::Keyboard::$Escape$) {
+if ($event$.type == sf::Event::$KeyPressed$) {
+    if ($event$.key.code == sf::Keyboard::$Escape$) {
         
     }
 }
@@ -104,4 +120,18 @@ $window$.setPosition(sf::Vector2i($x$, $y$));
 sf::Vector2f $resolution$;
 $resolution$.x = sf::VideoMode::getDesktopMode().width;
 $resolution$.y = sf::VideoMode::getDesktopMode().height;
+
+
+: SFML : RectangleShape
+sf::RectangleShape $rect$(sf::Vector2f($x1$, $y1$));
+$rect$.setFillColor(sf::Color::$White$);
+$rect$.setPosition($x2$, $y2$);
+$rect$.setOrigin(sf::Vector2f($rect$.getSize().x / 2, $rect$.getSize().y / 2));
+
+
+: SFML : CircleShape
+sf::CircleShape $circle$($radius$);
+$circle$.setFillColor(sf::Color::$White$);
+$circle$.setPosition($x1$, $y1$);
+$circle$.setOrigin(sf::Vector2f(circle.getRadius(), circle.getRadius()));
 
