@@ -5,11 +5,11 @@
 # use: ./hcpp_generator.sh filename1 filename2 ... filenameN
 #
 # result:
-#			filename.h 			filename.cpp
+#           filename.h          filename.cpp
 #
-#			# pragma once       #include "filename.h"
+#           # pragma once       #include "filename.h"
 #
-#			// code             // code
+#           // code             // code
 #
 
 filenames="$@"
@@ -25,8 +25,8 @@ fi
 for filenames
 do
     echo "$filenames: $filenames.h $filenames.cpp"
-	printf "#pragma once\n\n// Code" > $filenames.h
-	printf "#include \"$filenames.h\"\n\n// Code" > $filenames.cpp
+    printf "#pragma once\n\n// Code" > $filenames.h
+    printf "#include \"$filenames.h\"\n\n// Code" > $filenames.cpp
 done
 
 echo "Finished!"
