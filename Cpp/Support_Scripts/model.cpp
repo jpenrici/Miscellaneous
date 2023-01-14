@@ -5,7 +5,7 @@ ModelClass::ModelClass()
 
 }
 
-~ModelClass::ModelClass()
+ModelClass::~ModelClass()
 {
 
 }
