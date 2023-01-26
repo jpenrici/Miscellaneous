@@ -123,15 +123,15 @@ $resolution$.y = sf::VideoMode::getDesktopMode().height;
 
 
 : SFML : RectangleShape
-sf::RectangleShape $rect$(sf::Vector2f($x1$, $y1$));
+sf::RectangleShape $rect$(sf::Vector2f($width$, $height$));
 $rect$.setFillColor(sf::Color::$White$);
-$rect$.setPosition($x2$, $y2$);
+$rect$.setPosition($x$, $y$);
 $rect$.setOrigin(sf::Vector2f($rect$.getSize().x / 2, $rect$.getSize().y / 2));
 
 
 : SFML : CircleShape
 sf::CircleShape $circle$($radius$);
 $circle$.setFillColor(sf::Color::$White$);
-$circle$.setPosition($x1$, $y1$);
+$circle$.setPosition($x$, $y$);
 $circle$.setOrigin(sf::Vector2f(circle.getRadius(), circle.getRadius()));
 
