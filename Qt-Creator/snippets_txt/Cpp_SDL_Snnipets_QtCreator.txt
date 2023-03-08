@@ -1,0 +1,121 @@
+SDL Snippets
+=============
+
+: SDL : Init
+//#include <SDL2/SDL.h>
+
+SDL_Window* $pWindow$ = 0;
+SDL_Renderer* $pRenderer$ = 0;
+
+if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+    std::cout << "Failed to initialize SDL!\\n";
+    exit(EXIT_FAILURE);
+}
+
+$pWindow$ = SDL_CreateWindow("$title$", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                           $screen_width$, $screen_height$, SDL_WINDOW_SHOWN);
+if ($pWindow$ == NULL) {
+    std::cout << "Failed to create window!\\n";
+    exit(EXIT_FAILURE);
+}
+
+$pRenderer$ =  SDL_CreateRenderer($pWindow$, -1, 0);
+if ($pRenderer$ == NULL) {
+    std::cout << "Failed to create render!\\n";
+    exit(EXIT_FAILURE);
+}
+
+
+SDL : Events
+// Events
+SDL_Event $event$;
+
+// Process Input
+while (SDL_PollEvent(&$event$) != 0) {
+    if($event$.type == SDL_QUIT)
+    {
+        // TO DO
+    }
+    else if($event$.type == SDL_KEYDOWN)
+    {
+        switch($event$.key.keysym.sym)
+        {
+            case SDLK_UP:
+                // TO DO
+                break;
+            case SDLK_DOWN:
+                // TO DO
+                break;
+            case SDLK_LEFT:
+                // TO DO
+                break;
+            case SDLK_RIGHT:
+                // TO DO
+                break;
+            default:
+                // TO DO
+                break;  
+        }   
+    }
+}
+
+
+SDL : Render
+SDL_SetRenderDrawColor($pRenderer$, $R$, $G$, $B$, $A$);
+SDL_RenderClear($pRenderer$);
+
+// TO DO
+
+SDL_RenderPresent($pRenderer$);
+
+// Wait
+SDL_Delay($milliseconds$);
+
+
+: SDL : Terminate
+// Terminate
+TTF_CloseFont($pFont$);
+TTF_Quit();
+$pFont$ = NULL;
+
+SDL_FreeSurface($pSurface$);
+$pSurface$ = NULL;
+
+SDL_DestroyTexture($pTexture$);
+$pTexture$ = NULL;
+
+SDL_DestroyRenderer($pRenderer$);
+$pRenderer$ = NULL;
+
+SDL_DestroyWindow($pWindow$);
+$pWindow$ = NULL;
+
+SDL_Quit();
+
+
+SDL : Rect
+SDL_Rect $rect$ = {$x$, $y$, $width$, $height$};
+SDL_SetRenderDrawColor($pRenderer$, $R$, $G$, $B$, $A$);
+SDL_RenderFillRect($pRenderer$, &$rect$);
+
+
+SDL : Font
+TTF_Font *$pFont$ = 0;
+SDL_Texture *$pText_Texture$ = 0;
+SDL_Surface *$pFontSurface$ = 0;
+
+if (TTF_Init() >= 0) {
+    $pFont$ = TTF_OpenFont("$Resources/font.ttf$", $size$);
+}
+
+if ($pFont$ != NULL) {
+    SDL_Color $color$ = { $R$, $G$, $B$ };
+    $pFontSurface$ = TTF_RenderText_Solid($pFont$, "$text$", $color$);
+    if ($pFontSurface$ != NULL) {
+        $pText_Texture$ = SDL_CreateTextureFromSurface($pRenderer$, $pFontSurface$);
+    }
+    if ($pText_Texture$ != NULL) {
+        SDL_Rect $dest$ = {$x$, $y$, $pFontSurface$->w, $pFontSurface$->h};
+        SDL_RenderCopy($pRenderer$, $pText_Texture$, NULL, &$dest$);
+    }
+}

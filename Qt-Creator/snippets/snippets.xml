@@ -1,174 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <snippets>
-    <snippet group="CMake" trigger="GTKmm" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
-
-project($PROJ-NAME$ LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD $20$)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(SOURCES
-    main.cpp
-    $file.h$ $file.cpp$
-)
-
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTKMM REQUIRED gtkmm-$3.0$)
-
-add_executable(\\${PROJECT_NAME} \\${SOURCES})
-
-link_directories(\\${GTKMM_LIBRARY_DIRS})
-include_directories(include \\${GTKMM_INCLUDE_DIRS})
-
-target_link_libraries (
-    \\${PROJECT_NAME} PRIVATE
-    \\${GTKMM_LIBRARIES}
-)
-
-install(TARGETS \\${PROJECT_NAME}
-    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
-    <snippet group="CMake" trigger="OpenGL" id="" complement="glfw3" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
-
-project($PROJ-NAME$ LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD $20$)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(SOURCES
-    main.cpp
-    $filename.h$ $filename.cpp$
-)
-
-add_executable(
-    \\${PROJECT_NAME}
-    \\${SOURCES}
-)
-
-find_package(OpenGL REQUIRED COMPONENTS OpenGL)
-find_package(glfw3 REQUIRED)
-
-include_directories(\\${OPENGL_INCLUDE_DIRS})
-
-target_link_libraries (
-    \\${PROJECT_NAME} PUBLIC
-    \\${OPENGL_LIBRARIES}
-    glfw
-)
-
-install(TARGETS \\${PROJECT_NAME}
-    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
-    <snippet group="CMake" trigger="OpenGL" id="" complement="glut, glew, glfw3, glm" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
-
-project($PROJ-NAME$ LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD $20$)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(SOURCES
-    main.cpp
-    $filename.h$ $filename.cpp$
-)
-
-set(RESOURCE_FILES
-    $path$
-    # font/font.ttf
-    # images/image.png
-)
-
-add_executable(
-    \\${PROJECT_NAME}
-    \\${SOURCES}
-)
-
-find_package(OpenGL REQUIRED COMPONENTS OpenGL)
-find_package(GLUT REQUIRED)
-find_package(GLEW REQUIRED)
-find_package(glfw3 REQUIRED)
-find_package(glm REQUIRED)
-
-include_directories(
-    \\${OPENGL_INCLUDE_DIRS}
-    \\${GLUT_INCLUDE_DIRS}
-    \\${GLEW_INCLUDE_DIRS}
-)
-
-target_link_libraries (
-    \\${PROJECT_NAME} PUBLIC
-    \\${OPENGL_LIBRARIES}
-    \\${GLUT_LIBRARIES}
-    \\${GLEW_LIBRARIES}
-    glfw
-    glm::glm
-)
-
-file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)
-
-install(TARGETS \\${PROJECT_NAME}
-    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
-    <snippet group="CMake" trigger="set" id="" complement="resources" removed="false" modified="false">set(RESOURCE_FILES
-    $path$
-    # font/font.ttf
-    # images/image.png
-)
-
-file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)</snippet>
-    <snippet group="CMake" trigger="set" id="" complement="sources" removed="false" modified="false">set(SOURCES
-    main.cpp
-    $file.h$ $file.cpp$
-)
-
-add_executable(
-    \\${PROJECT_NAME}
-    \\${SOURCES}
-)</snippet>
-    <snippet group="CMake" trigger="SFML" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
-
-project($PROJ-NAME$ LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD $20$)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(SOURCES
-    main.cpp
-    $game.h$ $game.cpp$
-)
-
-set(RESOURCE_FILES
-    $path$
-    # font/font.ttf
-    # images/image.png
-)
-
-add_executable(
-    \\${PROJECT_NAME}
-    \\${SOURCES}
-)
-
-find_package (SFML $2.5$ COMPONENTS audio graphics network system window REQUIRED)
-
-target_link_libraries (
-    \\${PROJECT_NAME} PUBLIC
-    sfml-audio
-    sfml-graphics
-    sfml-network
-    sfml-system
-    sfml-window
-)
-
-file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)
-
-install(TARGETS \\${PROJECT_NAME}
-    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
-    <snippet group="CMake" trigger="SFML" id="" complement="find package" removed="false" modified="false">find_package (SFML $2.5$ COMPONENTS audio graphics network system window REQUIRED)
-
-target_link_libraries (
-    \\${PROJECT_NAME} PUBLIC
-    sfml-audio
-    sfml-graphics
-    sfml-network
-    sfml-system
-    sfml-window
-)</snippet>
     <snippet group="C++" trigger="cout" id="" complement="'\n'" removed="false" modified="false">cout &lt;&lt; $value$ &lt;&lt; '\\n';</snippet>
     <snippet group="C++" trigger="cout" id="" complement="'\n' - std::cout" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; '\\n';</snippet>
     <snippet group="C++" trigger="cout" id="" complement="string" removed="false" modified="false">cout &lt;&lt; &quot;$value$&quot; &lt;&lt; endl;</snippet>
@@ -278,6 +109,109 @@ int main()
     <snippet group="C++" trigger="OpenGL" id="" complement="info" removed="false" modified="false">std::cout &lt;&lt; &quot;Company:&quot; &lt;&lt; glGetString(GL_VENDOR) &lt;&lt; std::endl;
 std::cout &lt;&lt; &quot;Model:&quot; &lt;&lt; glGetString(GL_RENDERER) &lt;&lt; std::endl;
 std::cout &lt;&lt; &quot;OpenGL:&quot; &lt;&lt; glGetString(GL_VERSION) &lt;&lt; std::endl;</snippet>
+    <snippet group="C++" trigger="SDL" id="" complement="Events" removed="false" modified="false">// Events
+SDL_Event $event$;
+
+// Process Input
+while (SDL_PollEvent(&amp;$event$) != 0) {
+    if($event$.type == SDL_QUIT)
+    {
+        // TO DO
+    }
+    else if($event$.type == SDL_KEYDOWN)
+    {
+        switch($event$.key.keysym.sym)
+        {
+            case SDLK_UP:
+                // TO DO
+                break;
+            case SDLK_DOWN:
+                // TO DO
+                break;
+            case SDLK_LEFT:
+                // TO DO
+                break;
+            case SDLK_RIGHT:
+                // TO DO
+                break;
+            default:
+                // TO DO
+                break;  
+        }   
+    }
+}</snippet>
+    <snippet group="C++" trigger="SDL" id="" complement="Font" removed="false" modified="false">TTF_Font *$pFont$ = 0;
+SDL_Texture *$pText_Texture$ = 0;
+SDL_Surface *$pFontSurface$ = 0;
+
+if (TTF_Init() &gt;= 0) {
+    $pFont$ = TTF_OpenFont(&quot;$Resources/font.ttf$&quot;, $size$);
+}
+
+if ($pFont$ != NULL) {
+    SDL_Color $color$ = { $R$, $G$, $B$ };
+    $pFontSurface$ = TTF_RenderText_Solid($pFont$, &quot;$text$&quot;, $color$);
+    if ($pFontSurface$ != NULL) {
+        $pText_Texture$ = SDL_CreateTextureFromSurface($pRenderer$, $pFontSurface$);
+    }
+    if ($pText_Texture$ != NULL) {
+        SDL_Rect $dest$ = {$x$, $y$, $pFontSurface$-&gt;w, $pFontSurface$-&gt;h};
+        SDL_RenderCopy($pRenderer$, $pText_Texture$, NULL, &amp;$dest$);
+    }
+}</snippet>
+    <snippet group="C++" trigger="SDL" id="" complement="Init" removed="false" modified="false">//#include &lt;SDL2/SDL.h&gt;
+
+SDL_Window* $pWindow$ = 0;
+SDL_Renderer* $pRenderer$ = 0;
+
+if (SDL_Init(SDL_INIT_EVERYTHING) &lt; 0) {
+    std::cout &lt;&lt; &quot;Failed to initialize SDL!\\n&quot;;
+    exit(EXIT_FAILURE);
+}
+
+$pWindow$ = SDL_CreateWindow(&quot;$title$&quot;, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                           $screen_width$, $screen_height$, SDL_WINDOW_SHOWN);
+if ($pWindow$ == NULL) {
+    std::cout &lt;&lt; &quot;Failed to create window!\\n&quot;;
+    exit(EXIT_FAILURE);
+}
+
+$pRenderer$ =  SDL_CreateRenderer($pWindow$, -1, 0);
+if ($pRenderer$ == NULL) {
+    std::cout &lt;&lt; &quot;Failed to create render!\\n&quot;;
+    exit(EXIT_FAILURE);
+}</snippet>
+    <snippet group="C++" trigger="SDL" id="" complement="Rect" removed="false" modified="false">SDL_Rect $rect$ = {$x$, $y$, $width$, $height$};
+SDL_SetRenderDrawColor($pRenderer$, $R$, $G$, $B$, $A$);
+SDL_RenderFillRect($pRenderer$, &amp;$rect$);</snippet>
+    <snippet group="C++" trigger="SDL" id="" complement="Render" removed="false" modified="false">// Render
+SDL_SetRenderDrawColor($pRenderer$, $R$, $G$, $B$, $A$);
+SDL_RenderClear($pRenderer$);
+
+// TO DO
+
+SDL_RenderPresent($pRenderer$);
+
+// Wait
+SDL_Delay($milliseconds$);</snippet>
+    <snippet group="C++" trigger="SDL" id="" complement="Terminate" removed="false" modified="false">// Terminate
+TTF_CloseFont($pFont$);
+TTF_Quit();
+$pFont$ = NULL;
+
+SDL_FreeSurface($pSurface$);
+$pSurface$ = NULL;
+
+SDL_DestroyTexture($pTexture$);
+$pTexture$ = NULL;
+
+SDL_DestroyRenderer($pRenderer$);
+$pRenderer$ = NULL;
+
+SDL_DestroyWindow($pWindow$);
+$pWindow$ = NULL;
+
+SDL_Quit();</snippet>
     <snippet group="C++" trigger="SFML" id="" complement="Event" removed="false" modified="false">sf::Event $event$;
 
 while($window$.pollEvent($event$)) {
@@ -351,4 +285,227 @@ $text$.setOutlineThickness($thickness$);</snippet>
     <snippet group="C++" trigger="SFML" id="" complement="Window resolution" removed="false" modified="false">sf::Vector2f $resolution$;
 $resolution$.x = sf::VideoMode::getDesktopMode().width;
 $resolution$.y = sf::VideoMode::getDesktopMode().height;</snippet>
+    <snippet group="CMake" trigger="GTKmm" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    $file.h$ $file.cpp$
+)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTKMM REQUIRED gtkmm-$3.0$)
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+link_directories(\\${GTKMM_LIBRARY_DIRS})
+include_directories(include \\${GTKMM_INCLUDE_DIRS})
+
+target_link_libraries (
+    \\${PROJECT_NAME} PRIVATE
+    \\${GTKMM_LIBRARIES}
+)
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
+    <snippet group="CMake" trigger="OpenGL" id="" complement="glfw3" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    $filename.h$ $filename.cpp$
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)
+
+find_package(OpenGL REQUIRED COMPONENTS OpenGL)
+find_package(glfw3 REQUIRED)
+
+include_directories(\\${OPENGL_INCLUDE_DIRS})
+
+target_link_libraries (
+    \\${PROJECT_NAME} PUBLIC
+    \\${OPENGL_LIBRARIES}
+    glfw
+)
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
+    <snippet group="CMake" trigger="OpenGL" id="" complement="glut, glew, glfw3, glm" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    $filename.h$ $filename.cpp$
+)
+
+set(RESOURCE_FILES
+    $path$
+    # font/font.ttf
+    # images/image.png
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)
+
+find_package(OpenGL REQUIRED COMPONENTS OpenGL)
+find_package(GLUT REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(glfw3 REQUIRED)
+find_package(glm REQUIRED)
+
+include_directories(
+    \\${OPENGL_INCLUDE_DIRS}
+    \\${GLUT_INCLUDE_DIRS}
+    \\${GLEW_INCLUDE_DIRS}
+)
+
+target_link_libraries (
+    \\${PROJECT_NAME} PUBLIC
+    \\${OPENGL_LIBRARIES}
+    \\${GLUT_LIBRARIES}
+    \\${GLEW_LIBRARIES}
+    glfw
+    glm::glm
+)
+
+file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
+    <snippet group="CMake" trigger="SDL" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    $game.h$ $game.cpp$
+)
+
+set(RESOURCE_FILES
+    $path$
+    # font/font.ttf
+    # images/image.png
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)
+
+find_package(SDL2 REQUIRED)
+find_package(SDL2_ttf REQUIRED)
+
+include_directories(
+    \\${SDL2_INCLUDE_DIRS}
+    \\${SDL2_ttf_INCLUDE_DIRS}
+)
+
+target_link_libraries (
+    \\${PROJECT_NAME} PUBLIC
+    SDL2::SDL2
+    SDL2_ttf::SDL2_ttf
+)
+
+file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
+    <snippet group="CMake" trigger="SDL" id="" complement="find package" removed="false" modified="false">find_package(SDL2 REQUIRED)
+find_package(SDL2_ttf REQUIRED)
+
+include_directories(
+    \\${SDL2_INCLUDE_DIRS}
+    \\${SDL2_ttf_INCLUDE_DIRS}
+)
+
+target_link_libraries (
+    \\${PROJECT_NAME} PUBLIC
+    SDL2::SDL2
+    SDL2_ttf::SDL2_ttf
+)</snippet>
+    <snippet group="CMake" trigger="set" id="" complement="resources" removed="false" modified="false">set(RESOURCE_FILES
+    $path$
+    # font/font.ttf
+    # images/image.png
+)
+
+file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)</snippet>
+    <snippet group="CMake" trigger="set" id="" complement="sources" removed="false" modified="false">set(SOURCES
+    main.cpp
+    $file.h$ $file.cpp$
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)</snippet>
+    <snippet group="CMake" trigger="SFML" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    $game.h$ $game.cpp$
+)
+
+set(RESOURCE_FILES
+    $path$
+    # font/font.ttf
+    # images/image.png
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)
+
+find_package (SFML $2.5$ COMPONENTS audio graphics network system window REQUIRED)
+
+target_link_libraries (
+    \\${PROJECT_NAME} PUBLIC
+    sfml-audio
+    sfml-graphics
+    sfml-network
+    sfml-system
+    sfml-window
+)
+
+file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
+    <snippet group="CMake" trigger="SFML" id="" complement="find package" removed="false" modified="false">find_package (SFML $2.5$ COMPONENTS audio graphics network system window REQUIRED)
+
+target_link_libraries (
+    \\${PROJECT_NAME} PUBLIC
+    sfml-audio
+    sfml-graphics
+    sfml-network
+    sfml-system
+    sfml-window
+)</snippet>
 </snippets>
