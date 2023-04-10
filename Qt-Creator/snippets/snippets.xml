@@ -285,6 +285,60 @@ $text$.setOutlineThickness($thickness$);</snippet>
     <snippet group="C++" trigger="SFML" id="" complement="Window resolution" removed="false" modified="false">sf::Vector2f $resolution$;
 $resolution$.x = sf::VideoMode::getDesktopMode().width;
 $resolution$.y = sf::VideoMode::getDesktopMode().height;</snippet>
+    <snippet group="C++" trigger="wxWidgets" id="" complement="hello world" removed="false" modified="false">#include &lt;wx/wxprec.h&gt;
+
+#ifndef WX_PRECOMP
+#include &lt;wx/wx.h&gt;
+#endif
+
+#include &lt;iostream&gt;
+
+class $Frame$ : public wxFrame
+{
+public:
+    $Frame$(const wxString&amp; $title$)
+        : wxFrame(NULL, wxID_ANY, $title$, wxDefaultPosition, wxSize($250$, $150$))
+    {
+        Centre();
+    }
+};
+
+class $App$ : public wxApp
+{
+public:
+    bool OnInit()
+    {
+        $Frame$ *$simple$ = new Frame(wxT(&quot;$Hello World$&quot;));
+        $simple$-&gt;Show(true);
+
+        return true;
+    }
+};
+
+//////////////////////
+// Using Main method!
+//////////////////////
+
+IMPLEMENT_APP_NO_MAIN($App$)
+
+int main(int argc, char *argv[])
+{
+    wxApp *$pApp$ = new $App$();
+    $App$::SetInstance($pApp$);
+
+    if ($pApp$ != nullptr) {
+        wxEntryStart(argc, argv);
+        wxTheApp-&gt;CallOnInit();
+        wxTheApp-&gt;OnRun();
+        wxEntryCleanup();
+    }
+    else {
+        std::cerr &lt;&lt; &quot;There was something wrong\\n&quot;;
+    }
+
+    return 0;
+}
+</snippet>
     <snippet group="CMake" trigger="GTKmm" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
 
 project($PROJ-NAME$ LANGUAGES CXX)
@@ -508,4 +562,45 @@ target_link_libraries (
     sfml-system
     sfml-window
 )</snippet>
+    <snippet group="CMake" trigger="wxWidgets" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $17$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    #$file.h$ $file.cpp$
+)
+
+# WXWIN : Environment variable configured in Windows for the wxWidgets library.
+if (WIN32)
+    set(wxWidgets_ROOT_DIR \\$ENV{$WXWIN$})
+    set(wxWidgets_LIB_DIR  \\$ENV{$WXWIN$}/lib/$vc_x64_lib$)
+    set(wxWidgets_USE_LIBS ON)
+endif()
+
+find_package(wxWidgets REQUIRED COMPONENTS net core base)
+
+if (wxWidgets_FOUND)
+    include(\\${wxWidgets_USE_FILE})
+
+    message(&quot;S.O. : &quot; \\${CMAKE_SYSTEM_NAME})
+    if (WIN32)
+        message(&quot;Root Dir: &quot; \\${wxWidgets_ROOT_DIR} )
+        message(&quot;Lib dir : &quot; \\${wxWidgets_LIB_DIR} )
+    else(LINUX)
+        message(&quot;wxWidgets package found!&quot;)
+    endif()
+
+    add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+    target_link_libraries (\\${PROJECT_NAME} PUBLIC \\${wxWidgets_LIBRARIES})
+
+    install(TARGETS \\${PROJECT_NAME} LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})
+    message(&quot;Cmake completed successfully!&quot;)
+else()
+    message(FATAL_ERROR &quot;wxWidgets not found!&quot;)
+endif()</snippet>
 </snippets>

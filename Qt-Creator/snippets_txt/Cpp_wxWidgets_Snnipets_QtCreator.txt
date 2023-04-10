@@ -1,0 +1,57 @@
+wxWidgets Snippets
+==================
+
+: wxWidgets: hello world
+#include <wx/wxprec.h>
+
+#ifndef WX_PRECOMP
+#include <wx/wx.h>
+#endif
+
+#include <iostream>
+
+class $Frame$ : public wxFrame
+{
+public:
+    $Frame$(const wxString& $title$)
+        : wxFrame(NULL, wxID_ANY, $title$, wxDefaultPosition, wxSize($250$, $150$))
+    {
+        Centre();
+    }
+};
+
+class $App$ : public wxApp
+{
+public:
+    bool OnInit()
+    {
+        $Frame$ *$simple$ = new Frame(wxT("$Hello World$"));
+        $simple$->Show(true);
+
+        return true;
+    }
+};
+
+//////////////////////
+// Using Main method!
+//////////////////////
+
+IMPLEMENT_APP_NO_MAIN($App$)
+
+int main(int argc, char *argv[])
+{
+    wxApp *$pApp$ = new $App$();
+    $App$::SetInstance($pApp$);
+
+    if ($pApp$ != nullptr) {
+        wxEntryStart(argc, argv);
+        wxTheApp->CallOnInit();
+        wxTheApp->OnRun();
+        wxEntryCleanup();
+    }
+    else {
+        std::cerr << "There was something wrong\\n";
+    }
+
+    return 0;
+}
