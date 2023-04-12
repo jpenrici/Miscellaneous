@@ -285,6 +285,42 @@ $text$.setOutlineThickness($thickness$);</snippet>
     <snippet group="C++" trigger="SFML" id="" complement="Window resolution" removed="false" modified="false">sf::Vector2f $resolution$;
 $resolution$.x = sf::VideoMode::getDesktopMode().width;
 $resolution$.y = sf::VideoMode::getDesktopMode().height;</snippet>
+    <snippet group="C++" trigger="wxWidgets" id="" complement="basic" removed="false" modified="false">#include &lt;wx/wxprec.h&gt;
+
+#ifndef WX_PRECOMP
+#include &lt;wx/wx.h&gt;
+#endif
+
+class $App$ : public wxApp {
+
+public:
+    bool OnInit() override;
+
+};
+
+class $Frame$ : public wxFrame {
+
+public:
+    $Frame$(const wxString&amp; $title$);
+
+};
+
+bool $App$::OnInit()
+{
+    $Frame$ *$simple$ = new Frame(wxT(&quot;$Hello World$&quot;));
+    $simple$-&gt;Show(true);
+
+    return true;
+}
+
+$Frame$::$Frame$(const wxString&amp; $title$)
+    : wxFrame(NULL, wxID_ANY, $title$, wxDefaultPosition, wxSize($250$, $150$))
+{
+    // To do
+}
+
+// Main
+wxIMPLEMENT_APP($App$);</snippet>
     <snippet group="C++" trigger="wxWidgets" id="" complement="hello world" removed="false" modified="false">#include &lt;wx/wxprec.h&gt;
 
 #ifndef WX_PRECOMP
@@ -339,6 +375,27 @@ int main(int argc, char *argv[])
     return 0;
 }
 </snippet>
+    <snippet group="C++" trigger="wxWidgets" id="" complement="IMPLEMENT_APP_NO_MAIN" removed="false" modified="false">#include &lt;iostream&gt;
+
+IMPLEMENT_APP_NO_MAIN($App$)
+
+int main(int argc, char *argv[])
+{
+    wxApp *$pApp$ = new $App$();
+    $App$::SetInstance($pApp$);
+
+    if ($pApp$ != nullptr) {
+        wxEntryStart(argc, argv);
+        wxTheApp-&gt;CallOnInit();
+        wxTheApp-&gt;OnRun();
+        wxEntryCleanup();
+    }
+    else {
+        std::cerr &lt;&lt; &quot;There was something wrong\\n&quot;;
+    }
+
+    return 0;
+}</snippet>
     <snippet group="CMake" trigger="GTKmm" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
 
 project($PROJ-NAME$ LANGUAGES CXX)
