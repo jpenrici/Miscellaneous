@@ -30,7 +30,3 @@ Pequenos códigos para pequenas funcionalidades.
    - **DataOrganizer_MSTeams:** Simples experimento para organizar os dados do relatório de participação do MS Teams.
 8. **VBA**
    - Experiências com macro.
-
-### Observação
-
-A relação de arquivos do repositório pode ser vista no arquivo `directory_contents.txt`.

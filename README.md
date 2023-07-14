@@ -30,7 +30,3 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
    - **DataOrganizer_MSTeams:** Simple experiment to organize MS Teams participation report data.
 8. **VBA**
    - Macro experiments.
-
-### Note
-
-The list of files in the repository can be seen in the file `directory_contents.txt`.
