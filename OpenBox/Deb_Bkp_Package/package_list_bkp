@@ -1,7 +1,0 @@
-# dpkg --get-selections > list_package_bkp-2019-11-20
-# example
-# Packages:
--------------------------------
-abiword						install
-php7.0						install
--------------------------------
