@@ -3,19 +3,34 @@
 # Simple script to help reinstall packages.
 # Run when it is necessary to remember installed packages.
 # 
-# Script
+# Script:
 #   1. list installed packages.
 #   2. analyze dependencies.
 #   3. generate and save recovery list.
 #
+# Use:
+#   ./list_packages.sh <path>
 
+arg="$1"
 script=$(basename $0)
 today=$(date '+%Y-%m-%d')
-echo "Run $script ..."
 
-packageList="packageList"
-dependencyList="dependencyList"
+packageList="/tmp/packageList"
+dependencyList="/tmp/dependencyList"
 recoveryList="recoveryList-$today"
+
+echo "Run $script ..."
+if [[ "$arg" != "" ]]; then
+    if [[ ! -d "$arg" ]]; then
+        echo "Path not found!"
+        exit 0
+    fi
+    if [[ ${arg: -1} == "/" ]]; then
+        recoveryList="$arg$recoveryList"
+    else
+        recoveryList="$arg/$recoveryList"
+    fi
+fi
 
 # List of all Installed Packages
 packages=($(dpkg-query --show --showformat='${Status;7}:${Package} '))
@@ -42,12 +57,10 @@ done
 echo ""
 echo "Wait a minute ..."
 echo "apt install \\" > $recoveryList
-echo -ne "\t" >> $recoveryList
 
 # Clean and save
 packages=($(sort -u $packageList))
 dependencies=($(sort -u $dependencyList))
-counter=0; limit=10
 for package in "${packages[@]}"; do
     flag=0
     for dependency in "${dependencies[@]}"; do
@@ -56,16 +69,11 @@ for package in "${packages[@]}"; do
             break
         fi
     done
-    counter=$((counter+1))
     if [[ flag -eq 0 ]]; then
-        echo -n "$package " >> $recoveryList
-        if [[ counter -ge limit ]]; then
-            counter=0
-            echo "\\" >> $recoveryList
-            echo -ne "\t">> $recoveryList
-        fi
+        echo -e "\t$package\t\\" >> $recoveryList
     fi
 done
+echo "; # recoveryList-$today" >> $recoveryList
 
 # Finished
 echo "Saved in : $recoveryList"
