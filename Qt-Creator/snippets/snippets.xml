@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <snippets>
+    <snippet group="C++" trigger="auto" id="" complement="function" removed="false" modified="false">auto $function$ () -&gt; $type$
+{
+    $$ 
+
+    return $value$;
+}</snippet>
+    <snippet group="C++" trigger="class" id="cpp_genericclass" complement="" removed="false" modified="true">class $name$ {
+    
+public:
+    
+    $name$() {}
+};</snippet>
+    <snippet group="C++" trigger="class" id="" complement="inheritance" removed="false" modified="false">class $name$ : public $Base$ {
+
+public:
+
+    $name$() {}
+    virtual ~$name$() {}
+
+};</snippet>
+    <snippet group="C++" trigger="class" id="cpp_classtemplate" complement="template" removed="false" modified="true">template &lt;typename $T$&gt;
+class $name$ {
+public:
+    
+    $name$() {}
+};</snippet>
     <snippet group="C++" trigger="cout" id="" complement="'\n'" removed="false" modified="false">cout &lt;&lt; $value$ &lt;&lt; '\\n';</snippet>
     <snippet group="C++" trigger="cout" id="" complement="'\n' - std::cout" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; '\\n';</snippet>
     <snippet group="C++" trigger="cout" id="" complement="string" removed="false" modified="false">cout &lt;&lt; &quot;$value$&quot; &lt;&lt; endl;</snippet>
     <snippet group="C++" trigger="cout" id="" complement="string - std::cout" removed="false" modified="false">std::cout &lt;&lt; &quot;$value$&quot; &lt;&lt; std::endl;</snippet>
     <snippet group="C++" trigger="cout" id="" complement="value" removed="false" modified="false">cout &lt;&lt; $value$ &lt;&lt; endl;</snippet>
     <snippet group="C++" trigger="cout" id="" complement="value - std::cout" removed="false" modified="false">std::cout &lt;&lt; $value$ &lt;&lt; std::endl;</snippet>
+    <snippet group="C++" trigger="for" id="" complement="" removed="false" modified="false">for ($int$ $i$ = 0; $i$ &lt; $value$; ++$i$) {
+    $$
+}</snippet>
     <snippet group="C++" trigger="for" id="" complement="double" removed="false" modified="false">for ($int$ $i$ = 0; $i$ &lt; $value1$; ++$i$) {
     for ($int$ $j$ = 0; $j$ &lt; $value2$; ++$j$) {
         $$
     }
+}</snippet>
+    <snippet group="C++" trigger="for" id="cpp_for" complement="vector" removed="false" modified="true">for (const auto&amp; $var$ : $container$) {
+    $$
 }</snippet>
     <snippet group="C++" trigger="GLFW" id="" complement="check compile" removed="false" modified="false">int $success$;
 char $infoLog$[$size$];
@@ -81,6 +113,25 @@ glBindVertexArray($VAO$);
 glBindBuffer(GL_ARRAY_BUFFER, $VBO$);
 glBufferData(GL_ARRAY_BUFFER, sizeof($vertices$), $vertices$, $GL_STATIC_DRAW$);
 </snippet>
+    <snippet group="C++" trigger="main" id="cpp_main" complement="" removed="false" modified="true">int main(int argc, char *argv[])
+{
+    $$
+            
+    return 0;
+}
+</snippet>
+    <snippet group="C++" trigger="main" id="" complement="auto" removed="false" modified="false">auto main(int argc, char *argv[]) -&gt; int
+{
+    $$
+    
+    return 0;
+}</snippet>
+    <snippet group="C++" trigger="main" id="" complement="auto" removed="false" modified="false">auto main() -&gt; int
+{
+    $$
+
+    return 0;
+}</snippet>
     <snippet group="C++" trigger="main" id="" complement="basic includes" removed="false" modified="false">#include &lt;algorithm&gt;
 #include &lt;iostream&gt;
 #include &lt;string&gt;
