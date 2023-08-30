@@ -1,0 +1,20 @@
+CompileFlags:
+  Add: [-std=c++2b]
+  Remove: [-std=gnu++23, -std=c++23]
+
+InlayHints:
+  Designators: Yes
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+
+Hover:
+  ShowAKA: Yes
+
+Diagnostics:
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
+
+# Clangd setup for Qt Creator and C++ 23.
+# On Linux : install Clangd and save it in the .config/clangd directory
+# See more : https://doc.qt.io/qtcreator/creator-clang-tools.html
