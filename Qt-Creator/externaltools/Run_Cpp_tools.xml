@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Qt Creator 9.0.1-->
-<externaltool id="Run_C____external_terminal_">
+<!--Written on Thu Jul 13 14:20:42 2023 by Qt Creator 11.0.0-rc1 (10.0.84)-->
+<externaltool id="Run_Cpp_external_terminal_">
     <description>Compile and run simple files in Cpp.</description>
     <displayname>Build and Run C++</displayname>
     <category></category>
     <executable output="showinpane" error="showinpane" modifiesdocument="yes">
         <path>bash</path>
-        <arguments>-c 'g++ -std=c++2a -o %{CurrentDocument:FileBaseName} %{CurrentDocument:FilePath} &amp;&amp; ./%{CurrentDocument:FileBaseName}'</arguments>
+        <arguments>-c 'g++ -std=c++2b -o %{CurrentDocument:FileBaseName} %{CurrentDocument:FilePath} &amp;&amp; ./%{CurrentDocument:FileBaseName}'</arguments>
         <workingdirectory>%{CurrentDocument:Path}</workingdirectory>
     </executable>
 </externaltool>
