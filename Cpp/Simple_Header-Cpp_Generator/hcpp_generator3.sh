@@ -4,6 +4,8 @@
 #
 # use: ./hcpp_generator3.sh --pragmaOnce dir=destination filename1 filename2 ... filenameN
 #
+#       If the filename is main, main.cpp will be included. 
+#
 #       Attention: the destination path syntax will not be checked! 
 #
 # result with --pragmaOnce:
@@ -27,7 +29,7 @@
 
 dir="."
 args="$@"
-models=("model.h" "model.cpp")
+models=("model1.h" "model1.cpp" "modelMain.cpp")
 
 echo "H Cpp - Generator 3"
 
@@ -38,11 +40,13 @@ if [[ "$args" = "" ]]; then
 fi
 
 for model in ${models[@]}; do
+    echo -n "Load $model ... "
     if [[ ! -f $model ]]; then
         echo "Error: Model files not found!"
         echo "Finished!"
         exit 0
     fi
+    echo "Ok!"
 done
 
 arr=($args)
@@ -66,13 +70,23 @@ done
 echo "Directory: $dir"
 
 arr=($filenames)
+
+dependencies=""
+includeMainFile=0
 for filename in ${arr[@]}
 do
     hfile="$filename.h"
     cfile="$filename.cpp"
     str=${filename^}
+    
+    # main.cpp
+    if [[ "$filename" == "main" ]]; then
+        includeMainFile=1
+        continue
+    fi
 
-    echo "$filename: $hfile $cfile"
+    # dependencies
+    dependencies="$dependencies""#include \"$hfile\"\n"
 
     # header
     header="#pragma once\n"
@@ -82,17 +96,25 @@ do
         header="#ifndef "$name"_H_\n#define "$name"_H_\n"
         footer="#endif"
     fi
+
+    echo "$filename: $hfile $cfile"
     
     # copy model
     echo -e $header     >  "$dir/$hfile"
-    cat model.h         >> "$dir/$hfile"
+    cat ${models[0]}    >> "$dir/$hfile"
     echo -e "\n$footer" >> "$dir/$hfile"
-    cat model.cpp       >  "$dir/$cfile"
+    cat ${models[1]}    >  "$dir/$cfile"
     
     # replace important snippets
     sed -i "s/ModelClass/$str/g"      "$dir/$hfile"
     sed -i "s/ModelHeader.h/$hfile/g" "$dir/$cfile"
     sed -i "s/ModelClass/$str/g"      "$dir/$cfile"
 done
+
+if [[ $includeMainFile -eq 1 ]]; then
+    cat ${models[2]} > "$dir/main.cpp"
+    sed -i "s/DEPENDENCIES/$dependencies/g" "$dir/main.cpp"
+    echo "Include main.cpp"
+fi
 
 echo "Finished!"
