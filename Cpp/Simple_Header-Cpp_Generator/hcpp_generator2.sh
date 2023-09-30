@@ -16,7 +16,7 @@
 
 dir="."
 args="$@"
-models=("model.h" "model.cpp")
+models=("./models/model_1.h" "./models/model_1.cpp")
 
 echo "H Cpp - Generator 2"
 
@@ -56,8 +56,8 @@ do
     echo "$filename: $hfile $cfile"
 
     # copy model
-    cat model.h   > "$dir/$hfile"
-    cat model.cpp > "$dir/$cfile"
+    cat ${models[0]} > "$dir/$hfile"
+    cat ${models[1]} > "$dir/$cfile"
     
     # replace important snippets
     sed -i "s/ModelClass/$str/g"      "$dir/$hfile"
