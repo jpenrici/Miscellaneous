@@ -13,12 +13,22 @@ resources="$root/resources"
 # Files
 filenames="game gameobject scene level player enemy obstacle common config"
 
-echo "Game Project"
+echo $projectName
 if [[ ! -d $resources ]]; then
   echo "Create: $resources"
-  mkdir -p "$resources"
+  mkdir -p "$resources/"{fonts,sounds,sprites,textures}
 fi
 
-exec ./hcpp_generator3.sh --main --cmakelist dir="$source" $filenames
+# Generate
+./hcpp_generator3.sh --main dir="$source" $filenames 
+
+cmakelist="models/CMakeLists.txt"
+if [[ -f $cmakelist ]]; then
+  cp  $cmakelist "$root/"
+  echo "Copy: $cmakelist"
+  sed -i "s/\"\*\./\"source\/\*\./g" "$root/CMakeLists.txt"
+fi
+
+echo "Check: $root"
 
 exit 0
