@@ -21,3 +21,22 @@ set(RESOURCE_FILES
 )
 
 file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)
+
+
+: set : glob sources
+file(GLOB SOURCES
+    "*.h"
+    "*.cpp"
+)
+
+file(GLOB RESOURCE_FILES
+    "../../resources/fonts/*.ttf"
+    "../../resources/images/*.png"
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)
+
+file(COPY \\${RESOURCE_FILES} DESTINATION \\${CMAKE_BINARY_DIR}/$Resources$)
