@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <snippets>
+    <snippet group="CMake" trigger="Armadillo" id="" complement="find package" removed="false" modified="false">find_package(Armadillo REQUIRED)
+
+include_directories(\\${ARMADILLO_INCLUDE_DIRS})
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC \\${ARMADILLO_LIBRARIES})</snippet>
+    <snippet group="CMake" trigger="cereal" id="" complement="find package" removed="false" modified="false">find_package(cereal REQUIRED)
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC cereal::cereal)</snippet>
+    <snippet group="CMake" trigger="Eigen" id="" complement="find package" removed="false" modified="false">find_package (Eigen3 3.3 REQUIRED NO_MODULE)
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC Eigen3::Eigen)</snippet>
+    <snippet group="CMake" trigger="ensmallen" id="" complement="find package" removed="false" modified="false">find_package(Armadillo REQUIRED)
+find_package(ensmallen REQUIRED)
+
+include_directories(\\${ARMADILLO_INCLUDE_DIRS})
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC \\${ARMADILLO_LIBRARIES})</snippet>
     <snippet group="CMake" trigger="GTKmm" id="" complement="" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
 
 project($PROJ-NAME$ LANGUAGES CXX)
@@ -27,6 +52,14 @@ target_link_libraries (
 
 install(TARGETS \\${PROJECT_NAME}
     LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR})</snippet>
+    <snippet group="CMake" trigger="mlpack" id="" complement="find package" removed="false" modified="false">find_package(Armadillo REQUIRED)
+
+include_directories(\\${ARMADILLO_INCLUDE_DIRS})
+include_directories(\\${MLPACK_INCLUDE_DIRS})
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC \\${MLPACK_LIBRARY})</snippet>
     <snippet group="CMake" trigger="OpenGL" id="" complement="glfw3" removed="false" modified="false">cmake_minimum_required(VERSION $3.5$)
 
 project($PROJ-NAME$ LANGUAGES CXX)
