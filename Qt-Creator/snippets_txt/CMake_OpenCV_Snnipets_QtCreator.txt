@@ -1,0 +1,11 @@
+CMAKE Snippets - OpenCV
+=======================
+
+: OpenCV, find package
+find_package(OpenCV REQUIRED)
+
+include_directories(\\${OpenCV_INCLUDE_DIRS})
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC \\${OpenCV_LIBS})
