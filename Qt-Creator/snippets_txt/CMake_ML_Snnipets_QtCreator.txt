@@ -1,6 +1,6 @@
 CMAKE Snippets - Machine Learning
-Armadillo, cereal, Eigen, ensmallen, mlpack
-===========================================
+Armadillo, Boost, cereal, Dlib, Eigen, ensmallen, mlpack
+========================================================
 
 : Armadillo, find package
 find_package(Armadillo REQUIRED)
@@ -48,3 +48,18 @@ include_directories(\\${MLPACK_INCLUDE_DIRS})
 add_executable(\\${PROJECT_NAME} \\${SOURCES})
 
 target_link_libraries(\\${PROJECT_NAME} PUBLIC \\${MLPACK_LIBRARY})
+
+
+: Boost, find package
+find_package(Boost REQUIRED)
+include_directories(\\${Boost_INCLUDE_DIRS})
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+
+: Dlib, find package
+find_package (dlib REQUIRED)
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC dlib::dlib)

@@ -7,11 +7,20 @@ include_directories(\\${ARMADILLO_INCLUDE_DIRS})
 add_executable(\\${PROJECT_NAME} \\${SOURCES})
 
 target_link_libraries(\\${PROJECT_NAME} PUBLIC \\${ARMADILLO_LIBRARIES})</snippet>
+    <snippet group="CMake" trigger="Boost" id="" complement="find package" removed="false" modified="false">find_package(Boost REQUIRED)
+include_directories(\\${Boost_INCLUDE_DIRS})
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})</snippet>
     <snippet group="CMake" trigger="cereal" id="" complement="find package" removed="false" modified="false">find_package(cereal REQUIRED)
 
 add_executable(\\${PROJECT_NAME} \\${SOURCES})
 
 target_link_libraries(\\${PROJECT_NAME} PUBLIC cereal::cereal)</snippet>
+    <snippet group="CMake" trigger="Dlib" id="" complement="find package" removed="false" modified="false">find_package (dlib REQUIRED)
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC dlib::dlib)</snippet>
     <snippet group="CMake" trigger="Eigen" id="" complement="find package" removed="false" modified="false">find_package (Eigen3 3.3 REQUIRED NO_MODULE)
 
 add_executable(\\${PROJECT_NAME} \\${SOURCES})
