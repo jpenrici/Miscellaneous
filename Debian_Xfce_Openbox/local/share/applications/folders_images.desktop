@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=file-manager
+Name=HOME Imagens
+Exec=thunar /home/your-user/Images
+Terminal=false
+StartupNotify=false
+Categories=X-Folders;
+OnlyShowIn=XFCE

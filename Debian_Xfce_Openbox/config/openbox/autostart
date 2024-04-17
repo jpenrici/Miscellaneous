@@ -1,0 +1,13 @@
+# Openbox
+
+# Screensaver
+xscreensaver -nosplash &
+
+# Screen Composer
+compton &
+
+# Panel XFCE
+xfce4-panel &
+
+# Wallpaper
+bash ~/.config/openbox/scripts/feh_wallpaper.sh &

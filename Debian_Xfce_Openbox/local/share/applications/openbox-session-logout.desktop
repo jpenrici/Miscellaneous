@@ -1,0 +1,23 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=obsession-logout
+Icon=xfsm-logout
+StartupNotify=false
+Terminal=false
+Categories=System;X-XFCE;X-Xfce-Toplevel;
+OnlyShowIn=XFCE;
+Name=Log Out
+Name[en_AU]=Log Out
+Name[en_CA]=Log Out
+Name[en_GB]=Log Out
+Name[es]=Cerrar sesión
+Name[pt]=Sair
+Name[pt_BR]=Encerrar sessão
+Comment=Log out of the Xfce Desktop
+Comment[en_AU]=Log out of the Xfce Desktop
+Comment[en_CA]=Log out of the Xfce Desktop
+Comment[en_GB]=Log out of the Xfce Desktop
+Comment[es]=Cerrar sesión en el escritorio Xfce
+Comment[pt]=Sair do ambiente de trabalho Xfce
+Comment[pt_BR]=Deslogar do ambiente Xfce

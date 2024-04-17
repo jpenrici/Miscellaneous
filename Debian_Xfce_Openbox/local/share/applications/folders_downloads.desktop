@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=file-manager
+Name=HOME Downloads
+Exec=thunar /home/your-user/Downloads
+Terminal=false
+StartupNotify=false
+Categories=X-Folders;
+OnlyShowIn=XFCE
