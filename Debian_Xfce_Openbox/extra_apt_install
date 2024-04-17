@@ -1,0 +1,63 @@
+# DEBIAN XFCE4 AND OPENBOX
+# Post-installation steps performed as root user!
+
+# 1. Open terminal.
+
+# 2. Back up files that are sensitive to changes over time.
+
+cp /etc/group /etc/group_ORIGINAL_2024
+cp /etc/apt/sources.list /etc/apt/sources.list_ORIGINAL_2024
+cp /etc/fstab /etc/fstab_ORIGINAL_2024
+
+# 3. Include "non-free" and "contrib" in sources.list repositories.
+
+nano /etc/apt/sources.list
+
+Example (use ctrl-K, ctrl-U, ctrl-O, ctrl-X in nano):
+#deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware non-free contrib
+
+# 4. Update.
+
+apt update & apt upgrade
+
+# 5. Installation of some extra packages.
+
+apt install \
+  openbox obconf obsession tint2 compton compton-conf feh \
+  dbus-x11 synaptic watchdog \
+  gufw clamav \
+  gmrun bleachbit luckybackup meld \
+  lxappearance \
+  breeze-gtk-theme breeze-cursor-theme breeze-icon-theme adwaita-icon-theme-full adwaita-qt human-icon-theme \
+  htop hardinfo bless baobab gnome-system-monitor \
+  ark thunar xfce4-terminal libfuse2  \
+  xfce4-screenshooter xscreensaver xscreensaver-data-extra  \
+  gedit \
+  simplescreenrecorder vlc clementine pavucontrol winff \
+  pdftk imagemagick img2pdf eog \
+  git cmake ninja-build nodejs \
+  thunderbird \
+  ttf-mscorefonts-installer \
+  speedtest-cli
+
+# 6. Root user exit!
+
+exit
+
+# 5. Final preparation as a normal user.
+
+mkdir $HOME/WALLPAPER   # Include images later.
+
+cd $HOME/Downloads/Debian_Xfce_Openbox/local
+cp -R share $HOME/.local
+
+cd $HOME/Downloads/Debian_Xfce_Openbox/config
+cp -R icons $HOME/.config
+cp -R openbox $HOME/.config
+
+cp $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml_ORIGINAL_2024
+cp -R xfce4 $HOME/.config
+
+# 6. Reboot.
+
+# 7. Entry with Openbox session!
