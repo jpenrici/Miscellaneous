@@ -28,5 +28,6 @@ Pequenos códigos para pequenas funcionalidades.
    - **experience_libreOffice:** Experiência com macros Python no LibreOffice.
    - **Listar_Conteudo_Diretorio:** Lista o conteúdo de arquivos e diretórios.
    - **DataOrganizer_MSTeams:** Simples experimento para organizar os dados do relatório de participação do MS Teams.
+   - **HTML_Table_Generator:** Scripts para auxiliar na construção de tabelas.
 8. **VBA**
    - Experiências com macro.

@@ -28,5 +28,6 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
    - **experience_libreOffice:** Experience with Python macros in LibreOffice.   
    - **Listar_Conteudo_Diretorio:** Lists the contents of files and directories.
    - **DataOrganizer_MSTeams:** Simple experiment to organize MS Teams participation report data.
+   - **HTML_Table_Generator:** Scripts to assist in the construction of tables.
 8. **VBA**
    - Macro experiments.
