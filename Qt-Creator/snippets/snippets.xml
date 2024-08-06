@@ -16,6 +16,35 @@ add_executable(\\${PROJECT_NAME} \\${SOURCES})</snippet>
 add_executable(\\${PROJECT_NAME} \\${SOURCES})
 
 target_link_libraries(\\${PROJECT_NAME} PUBLIC cereal::cereal)</snippet>
+    <snippet group="CMake" trigger="cpp_modules" id="" complement="cmake cpp modules" removed="false" modified="false">cmake_minimum_required(VERSION $3.28$)
+
+project($PROJ-NAME$ LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD $20$)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+)
+
+add_library($MODULE-NAME$)
+target_sources($MODULE-NAME$
+    PUBLIC
+    FILE_SET CXX_MODULES FILES
+    $MODULE-NAME$.cpp
+)
+
+add_executable(
+    \\${PROJECT_NAME}
+    \\${SOURCES}
+)
+
+target_link_libraries (\\${PROJECT_NAME} PUBLIC $MODULE-NAME$)
+
+install(TARGETS \\${PROJECT_NAME}
+    LIBRARY DESTINATION \\${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION \\${CMAKE_INSTALL_BINDIR}
+)</snippet>
     <snippet group="CMake" trigger="Dlib" id="" complement="find package" removed="false" modified="false">find_package (dlib REQUIRED)
 
 add_executable(\\${PROJECT_NAME} \\${SOURCES})
