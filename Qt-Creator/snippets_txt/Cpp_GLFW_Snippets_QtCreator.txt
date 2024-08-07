@@ -1,0 +1,88 @@
+GLFW Snippets
+=============
+
+: GLFW : main
+glfwInit();
+
+glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, $4$);
+glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, $6$);
+glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+
+//glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+GLFWwindow* $window$ = glfwCreateWindow($width$, $height$, "$title$", NULL, NULL);
+if ($window$ == NULL) {
+    std::cout << "Failed to create GLFW window!" << std::endl;
+    glfwTerminate();
+    return EXIT_FAILURE;
+}
+
+glfwMakeContextCurrent($window$);
+
+// insert code to use OpenGL Loading Library
+
+while(!glfwWindowShouldClose($window$))
+{
+    if (glfwGetKey($window$, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+        glfwSetWindowShouldClose($window$, true);
+    }
+    glfwSwapBuffers($window$);
+    glfwPollEvents();
+}
+
+glfwTerminate();
+
+
+: GLFW : glad
+// Glad, include glad *before* glfw
+// #include <glad/glad.h>
+
+if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+    std::cout << "Failed to initialize GLAD" << std::endl;
+    return EXIT_FAILURE;
+}
+
+
+: GLFW : VAO, VBO
+GLuint $VBO$; // Vertex Buffer Object (VBO)
+GLuint $VAO$; // Vertex Array Object (VAO)
+glGenVertexArrays($number$, &$VAO$);
+glGenBuffers($number$, &$VBO$);
+glBindVertexArray($VAO$);
+glBindBuffer(GL_ARRAY_BUFFER, $VBO$);
+glBufferData(GL_ARRAY_BUFFER, sizeof($vertices$), $vertices$, $GL_STATIC_DRAW$);
+
+
+: GLFW : shader
+// $Name$ Shader
+GLuint $nameShader$;
+$nameShader$ = glCreateShader($GL_VERTEX_SHADER$);
+glShaderSource($nameShader$, $1$, &$nameShaderSource$, NULL);
+glCompileShader($nameShader$);
+
+
+: GLFW : shader program
+// Shader program
+GLuint $shaderProgram$;
+$shaderProgram$ = glCreateProgram();
+
+glAttachShader($shaderProgram$, $vertexShader$);
+glAttachShader($shaderProgram$, $fragmentShader$);
+glLinkProgram($shaderProgram$);
+
+glDeleteShader($vertexShader$);
+glDeleteShader($fragmentShader$);
+
+
+: GLFW : check compile
+int $success$;
+char $infoLog$[$size$];
+
+$glGetShaderiv$($vertexShader$, GL_COMPILE_STATUS, &$success$);
+if (!$success$) {
+    glGetShaderInfoLog($vertexShader$, $size$, NULL, $infoLog$);
+    std::cout << "Error: " << $infoLog$ << std::endl;
+}

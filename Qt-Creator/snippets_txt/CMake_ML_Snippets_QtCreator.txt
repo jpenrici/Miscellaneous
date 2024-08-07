@@ -1,0 +1,65 @@
+CMAKE Snippets - Machine Learning
+Armadillo, cereal, Eigen, ensmallen, mlpack
+===========================================
+
+: Armadillo, find package
+find_package(Armadillo REQUIRED)
+
+include_directories(\\${ARMADILLO_INCLUDE_DIRS})
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC \\${ARMADILLO_LIBRARIES})
+
+
+: cereal, find package
+find_package(cereal REQUIRED)
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC cereal::cereal)
+
+
+: Eigen, find package
+find_package (Eigen3 3.3 REQUIRED NO_MODULE)
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC Eigen3::Eigen)
+
+
+: ensmallen, find package
+find_package(Armadillo REQUIRED)
+find_package(ensmallen REQUIRED)
+
+include_directories(\\${ARMADILLO_INCLUDE_DIRS})
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC \\${ARMADILLO_LIBRARIES})
+
+
+: mlpack, find package
+find_package(Armadillo REQUIRED)
+
+include_directories(\\${ARMADILLO_INCLUDE_DIRS})
+include_directories(\\${MLPACK_INCLUDE_DIRS})
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC \\${MLPACK_LIBRARY})
+
+
+: Boost, find package
+find_package(Boost REQUIRED)
+include_directories(\\${Boost_INCLUDE_DIRS})
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+
+: Dlib, find package
+find_package (dlib REQUIRED)
+
+add_executable(\\${PROJECT_NAME} \\${SOURCES})
+
+target_link_libraries(\\${PROJECT_NAME} PUBLIC dlib::dlib)

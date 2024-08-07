@@ -1,0 +1,98 @@
+C++ Snippets
+============
+
+: cout : value - std::cout
+std::cout << $value$ << std::endl;
+
+: cout : value
+cout << $value$ << endl;
+
+: cout : string - std::cout
+std::cout << "$value$" << std::endl;
+
+: cout : string
+cout << "$value$" << endl;
+
+: cout : '\n' - std::cout
+std::cout << $value$ << '\\n';
+
+: cout : '\n'
+cout << $value$ << '\\n';
+
+: println : value
+std::println("{}", $value$);
+
+: print : value
+std::print("{}", $value$);
+
+: for : double
+for ($int$ $i$ = 0; $i$ < $value1$; ++$i$) {
+    for ($int$ $j$ = 0; $j$ < $value2$; ++$j$) {
+        $$
+    }
+}
+
+for : vector
+
+for (const auto& $var$ : $container$) {
+    $$
+}
+
+: main : simple
+int main()
+{
+    $$
+
+    return 0;
+}
+
+: main : basic includes
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
+
+int main()
+{
+    $$
+
+    return 0;
+}
+
+: main : auto
+
+auto main() -> int
+{
+    $$
+
+    return 0;
+}
+
+: main : auto
+
+auto main(int argc, char *argv[]) -> int
+{
+    $$
+
+    return 0;
+}
+
+: auto : function
+
+auto $function$ () -> $type$
+{
+    $$ 
+
+    return $value$;
+}
+
+: class : inheritance
+
+class $name$ : public $Base$ {
+
+public:
+
+    $name$() {}
+    virtual ~$name$() {}
+
+};
