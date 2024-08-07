@@ -518,6 +518,9 @@ int main()
     <snippet group="C++" trigger="OpenGL" id="" complement="info" removed="false" modified="false">std::cout &lt;&lt; &quot;Company:&quot; &lt;&lt; glGetString(GL_VENDOR) &lt;&lt; std::endl;
 std::cout &lt;&lt; &quot;Model:&quot; &lt;&lt; glGetString(GL_RENDERER) &lt;&lt; std::endl;
 std::cout &lt;&lt; &quot;OpenGL:&quot; &lt;&lt; glGetString(GL_VERSION) &lt;&lt; std::endl;</snippet>
+    <snippet group="C++" trigger="print" id="" complement="value" removed="false" modified="false">std::print(&quot;{}&quot;, $value$);</snippet>
+    <snippet group="C++" trigger="println" id="" complement="value" removed="false" modified="false">std::println(&quot;{}&quot;, $value$);</snippet>
+    <snippet group="C++" trigger="Q_PROPERTY" id="cpp_q_property" complement="(type name READ name WRITE setName NOTIFY nameChanged FINAL)" removed="false" modified="true">Q_PROPERTY($type$ $name$ READ $name$ WRITE set$name:c$ NOTIFY $name$Changed FINAL)</snippet>
     <snippet group="C++" trigger="SDL" id="" complement="Events" removed="false" modified="false">// Events
 SDL_Event $event$;
 
