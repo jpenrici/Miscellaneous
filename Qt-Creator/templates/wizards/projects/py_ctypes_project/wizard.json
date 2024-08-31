@@ -1,0 +1,77 @@
+{
+    "version": 1,
+    "supportedProjectTypes": [ "CMakeProjectManager.CMakeProject" ],
+    "id": "Z.Python Ctypes Application",
+    "category": "I.Projects",
+    "trDescription": "Creates a simple Python Ctypes application with no dependencies.",
+    "trDisplayName": "Python Ctypes Application",
+    "trDisplayCategory": "Non-Qt Project",
+    "icon": "consoleapplication.png",
+    "iconKind": "Themed",
+    "enabled": "%{JS: value('Plugins').indexOf('CppEditor') >= 0 && value('Plugins').indexOf('CMakeProjectManager') >= 0}",
+
+    "options":
+    [
+        { "key": "ProjectFile", "value": "%{JS: '%{CMakeFile}'}" },
+        { "key": "CMakeFile", "value": "%{ProjectDirectory}/CMakeLists.txt" },
+        { "key": "LibraryName", "value": "%{JS: Util.fileName(value('ProjectDirectory'))}" },
+        { "key": "Sources", "value": "%{JS: Util.fileName(value('ProjectDirectory') + '/src')}"},
+        { "key": "Headers", "value": "%{JS: Util.fileName(value('ProjectDirectory') + '/include')}"}
+
+    ],
+
+    "pages":
+    [
+        {
+            "trDisplayName": "Project Location",
+            "trShortTitle": "Location",
+            "typeId": "Project"
+        },
+        {
+            "trDisplayName": "Kit Selection",
+            "trShortTitle": "Kits",
+            "typeId": "Kits",
+            "enabled": "%{JS: ! %{IsSubproject}}",
+            "data": { "projectFilePath": "%{ProjectFile}" }
+        },
+        {
+            "trDisplayName": "Project Management",
+            "trShortTitle": "Summary",
+            "typeId": "Summary"
+        }
+    ],
+    "generators":
+    [
+        {
+            "typeId": "File",
+            "data":
+            [                
+                {
+                    "source": "CMakeLists.txt",
+                    "openAsProject": true,
+                    "condition": "%{JS: '%{BuildSystem}' === 'cmake'}"
+                },
+                {
+                    "source": "library.cpp",
+                    "target": "%{Sources}/%{LibraryName}.cpp",
+                    "openInEditor": true
+                },
+                {
+                    "source": "library.hpp",
+                    "target": "%{Headers}/%{LibraryName}.hpp",
+                    "openInEditor": true
+                },
+                {
+                    "source": "test.py",
+                    "target": "test.py",
+                    "openInEditor": false
+                }, 
+                {
+                    "source": "../git.ignore",
+                    "target": ".gitignore",
+                    "condition": "%{JS: ! %{IsSubproject} && '%{VersionControl}' === 'G.Git'}"
+                }
+            ]
+        }
+    ]
+}
