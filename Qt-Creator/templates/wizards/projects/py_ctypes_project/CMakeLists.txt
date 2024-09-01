@@ -9,9 +9,11 @@ set(SOURCES
     ./src/%{LibraryName}.cpp
 )
 
-add_library(%{LibraryName} SHARED \${SOURCES})
+set(LIBRARY_NAME %{LibraryName})
 
-set_target_properties(%{LibraryName} PROPERTIES
+add_library(\${LIBRARY_NAME} SHARED \${SOURCES})
+
+set_target_properties(\${LIBRARY_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY "\${PROJECT_SOURCE_DIR}/lib"
 )
 
