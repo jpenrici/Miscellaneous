@@ -370,6 +370,18 @@ public:
     
     $name$() {}
 };</snippet>
+    <snippet group="C++" trigger="class" id="" complement="constructors" removed="false" modified="false">class $name$ {
+
+public:
+    $name$() = default;
+    $name$(const $name$ &amp;) = delete;
+    $name$($name$ &amp;&amp;) = delete;
+    ~$name$() = default;
+
+    auto operator=(const $name$ &amp;) -&gt; $name$ &amp; = delete;
+    auto operator=($name$ &amp;&amp;) -&gt; $name$ &amp; = delete;
+
+};</snippet>
     <snippet group="C++" trigger="class" id="" complement="inheritance" removed="false" modified="false">class $name$ : public $Base$ {
 
 public:

@@ -96,3 +96,18 @@ public:
     virtual ~$name$() {}
 
 };
+
+: class : constructors
+
+class $name$ {
+
+public:
+    $name$() = default;
+    $name$(const $name$ &) = delete;
+    $name$($name$ &&) = delete;
+    ~$name$() = default;
+
+    auto operator=(const $name$ &) -> $name$ & = delete;
+    auto operator=($name$ &&) -> $name$ & = delete;
+
+};
