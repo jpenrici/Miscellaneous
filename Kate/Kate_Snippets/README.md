@@ -10,6 +10,6 @@ Open the Kate code editor to test.
 
 ## Learn more:
 
-[Kate Snippets] https://docs.kde.org/stable5/en/kate/kate/kate-application-plugin-snippets.html : KDE documentation site.
+[Kate Snippets](https://docs.kde.org/stable5/en/kate/kate/kate-application-plugin-snippets.html) : KDE documentation site.
 
 **Attention:** Study the scripts and references before executing them.
