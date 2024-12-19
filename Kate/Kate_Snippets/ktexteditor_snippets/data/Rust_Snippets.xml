@@ -1,4 +1,4 @@
-<snippets filetypes="Rust" authors="jpenrici" name="Rust_Snippets" license="BSD" namespace="snippets">
+<snippets license="BSD" authors="jpenrici" filetypes="Rust" name="Rust_Snippets" namespace="snippets">
  <script></script>
  <item>
   <match>main</match>
@@ -10,5 +10,9 @@
  <item>
   <match>println_variable</match>
   <fillin>println!("{}", ${variable});</fillin>
+ </item>
+ <item>
+  <match>println_string_variable</match>
+  <fillin>println!("${string} {}", ${variable});</fillin>
  </item>
 </snippets>
