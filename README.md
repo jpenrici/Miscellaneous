@@ -2,8 +2,6 @@
 
 Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
 
-[README-pt-BR](https://github.com/jpenrici/Miscellaneous/blob/master/README-pt-BR.md)
-
 ## Summary
 
 1. **Algorithms**
@@ -14,12 +12,14 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
 3. **OpenBox**
    - Help files for the OpenBox and Debian environment.
 4. **Sublime_Text**
-   - Utilities.
+   - Useful tips for the code editor Sublime Text 3.
 5. **Qt-Creator**
-   - Utilities.   
+   - Useful tips for the code editor Qt Creator.   
 6. **Visual_Studio**
-   - Utilities.    
-7. **Python**
+   - Useful tips for the code editor Visual Studio.
+7. **Kate**
+   - Useful tips for the code editor KDE Kate.  
+8. **Python**
    - **BD_Treino:** Generate SQL for database training.
    - **Excel_Treino:** Generate CSV for training data filtering in spreadsheets.
    - **csv2vcf:** Converts csv file to vcf for exporting contacts.
@@ -29,5 +29,5 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
    - **Listar_Conteudo_Diretorio:** Lists the contents of files and directories.
    - **DataOrganizer_MSTeams:** Simple experiment to organize MS Teams participation report data.
    - **HTML_Table_Generator:** Scripts to assist in the construction of tables.
-8. **VBA**
+9. **VBA**
    - Macro experiments.

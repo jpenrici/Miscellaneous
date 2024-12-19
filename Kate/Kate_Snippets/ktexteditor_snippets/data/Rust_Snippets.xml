@@ -1,0 +1,14 @@
+<snippets filetypes="Rust" authors="jpenrici" name="Rust_Snippets" license="BSD" namespace="snippets">
+ <script></script>
+ <item>
+  <match>main</match>
+  <fillin>fn main() {
+    ${code}
+    ${cursor}
+}</fillin>
+ </item>
+ <item>
+  <match>println_variable</match>
+  <fillin>println!("{}", ${variable});</fillin>
+ </item>
+</snippets>
