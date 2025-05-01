@@ -1,0 +1,49 @@
+cmake_minimum_required(VERSION 3.25)
+
+project(%{ProjectName} LANGUAGES CXX)
+
+set(PROGRAM_NAME %{ProjectName})
+
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include_directories(include)
+file(GLOB SOURCES src/*.cpp)
+
+set(RESOURCE_FILES
+# image.png # example
+)
+
+add_executable(\${PROGRAM_NAME} \${SOURCES})
+
+set(EXTERNAL_LIBRARIES
+# Lua # example
+)
+
+function(find_and_link_library LIBRARY_NAME)
+    set(PACKAGE_NAME \${LIBRARY_NAME})
+    string(TOUPPER \${LIBRARY_NAME} LIBRARY_UPPER)
+    set(INCLUDE_DIR_\${LIBRARY_UPPER} "\${${LIBRARY_UPPER}_INCLUDE_DIR}")
+    set(LIBRARIES_\${LIBRARY_UPPER} "\${\${LIBRARY_UPPER}_LIBRARIES}")
+
+    find_package(\${PACKAGE_NAME} REQUIRED)
+    if(${PACKAGE_NAME}_FOUND)
+        message(STATUS "\${LIBRARY_NAME} found:")
+        message(STATUS "  Include Directory: \${INCLUDE_DIR_\${LIBRARY_UPPER}}")
+        message(STATUS "  Libraries: \${LIBRARIES_${LIBRARY_UPPER}}")
+        include_directories(\${INCLUDE_DIR_\${LIBRARY_UPPER}})
+        target_link_libraries(\${PROGRAM_NAME} PUBLIC \${LIBRARIES_\${LIBRARY_UPPER}})
+    else()
+        message(FATAL_ERROR "\${LIBRARY_NAME} not found. Please ensure the \${LIBRARY_NAME} library is installed on your system.")
+    endif()
+endfunction()
+
+foreach(LIB \${EXTERNAL_LIBRARIES})
+    find_and_link_library(\${LIB})
+endforeach()
+
+foreach(FILE \${RESOURCE_FILES})
+  file(COPY \${FILE} DESTINATION \${CMAKE_BINARY_DIR}/Resources)
+endforeach()
+
+install(TARGETS \${PROGRAM_NAME} LIBRARY DESTINATION \${CMAKE_INSTALL_LIBDIR})
