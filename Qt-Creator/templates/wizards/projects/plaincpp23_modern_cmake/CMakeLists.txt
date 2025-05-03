@@ -7,8 +7,15 @@ set(PROGRAM_NAME %{ProjectName})
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#include_directories(include)
-file(GLOB SOURCES src/*.cpp)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/include")
+    include_directories(include)
+endif()
+
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src")
+    file(GLOB SOURCES src/*.cpp)
+else()
+    set(SOURCES main.cpp)
+endif()
 
 set(RESOURCE_FILES
 # image.png # example
