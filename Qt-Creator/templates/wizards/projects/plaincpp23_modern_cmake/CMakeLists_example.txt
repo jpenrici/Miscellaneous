@@ -7,7 +7,7 @@ set(PROGRAM_NAME %{ProjectName})
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#include_directories(include)
+include_directories(include)
 file(GLOB SOURCES src/*.cpp)
 
 set(RESOURCE_FILES

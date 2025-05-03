@@ -1,10 +1,10 @@
 {
     "version": 1,
     "supportedProjectTypes": "CMakeProjectManager.CMakeProject",
-    "id": "PMCA.Plain Modern Cpp Application",
+    "id": "PMCA2.Plain Modern Cpp Application",
     "category": "I.Projects",
     "trDescription": "Create a simple modern C++ application using Cmake.",
-    "trDisplayName": "Plain Modern C++ Application",
+    "trDisplayName": "Plain Modern C++ Application 2",
     "trDisplayCategory": "Non-Qt Project",
     "icon": "consoleapplication.png",
     "iconKind": "Themed",
@@ -33,10 +33,110 @@
         },
         {
             "trDisplayName": "Project Management",
-            "trShortTitle": "Summary",
-            "typeId": "Summary"
-        }
+            "trShortTitle": "Details",
+            "typeId": "Fields",
+            "data":
+            [         
+                {
+                    "name": "IncludeExample",
+                    "trDisplayName": "Do you want to create an 'Example' file and 'include' and 'src' directories?",
+                    "type": "CheckBox",
+                    "data":
+                    {
+                        "checkedValue": true,
+                        "uncheckedValue": "false",
+                        "checked": "false"
+                    }
+                },
+                {
+                    "name": "IncludeGitignore",
+                    "trDisplayName": "Do you want to insert the .gitignore file?",
+                    "type": "CheckBox",
+                    "data":
+                    {
+                        "checkedValue": true,
+                        "uncheckedValue": "false",
+                        "checked": "false"
+                    }
+                },
+                {
+                    "name": "Sp1",
+                    "type": "Spacer",
+                    "data":
+                    {
+                        "factor": 2
+                    }
+                },
+                {
+                    "name": "LabelPM1",
+                    "type": "Label",
+                    "span": true,
+                    "visible": true,
+                    "data":
+                    {
+                        "wordWrap": true,
+                        "trText": "Files to be added in"
+                    }
+                },
+                {
+                    "name": "LabelPM3",
+                    "type": "Label",
+                    "span": true,
+                    "visible": "%{JS: value('IncludeExample') === 'true'}",
+                    "data":
+                    {
+                        "wordWrap": true,
+                        "trText": "include/example.hpp"
+                    }
+                },
+                {
+                    "name": "LabelPM4",
+                    "type": "Label",
+                    "span": true,
+                    "visible": "%{JS: value('IncludeExample') === 'true'}",
+                    "data":
+                    {
+                        "wordWrap": true,
+                        "trText": "src/example.cpp"
+                    }
+                },
+                {
+                    "name": "LabelPM5",
+                    "type": "Label",
+                    "span": true,
+                    "visible": true,
+                    "data":
+                    {
+                        "wordWrap": true,
+                        "trText": "src/main.cpp"
+                    }
+                },
+                {
+                    "name": "LabelPM6",
+                    "type": "Label",
+                    "span": true,
+                    "visible": true,
+                    "data":
+                    {
+                        "wordWrap": true,
+                        "trText": "CMakeLists"
+                    }
+                },
+                {
+                    "name": "LabelPM7",
+                    "type": "Label",
+                    "span": true,
+                    "visible": "%{JS: value('IncludeGitignore') === 'true'}",
+                    "data":
+                    {
+                        "wordWrap": true,
+                        "trText": ".gitignore"
+                    }
+                }              
+            ]
+        }  
     ],
+
     "generators":
     [
         {
@@ -45,27 +145,46 @@
             [
                 {
                     "source": "CMakeLists.txt",
-                    "openAsProject": true
+                    "target": "CMakeLists.txt",
+                    "openAsProject": true,
+                    "condition": "%{JS: value('IncludeExample') === 'false'}"                    
                 },
+                {
+                    "source": "CMakeLists_example.txt",
+                    "target": "CMakeLists.txt",
+                    "openAsProject": true,
+                    "condition": "%{JS: value('IncludeExample') === 'true'}"                    
+                },                
                 {
                     "source": "main.cpp",
                     "target": "src/%{CppFileName}",
-                    "openInEditor": true
+                    "openInEditor": true,
+                    "condition": "%{JS: value('IncludeExample') === 'false'}"
+
                 },
+                {
+                    "source": "main_example.cpp",
+                    "target": "src/%{CppFileName}",
+                    "openInEditor": true,
+                    "condition": "%{JS: value('IncludeExample') === 'true'}"
+                },
+
                 {
                     "source": "example.cpp",
                     "target": "src/example.cpp",
-                    "openInEditor": false
-                },                  
+                    "openInEditor": false,
+                    "condition": "%{JS: value('IncludeExample') === 'true'}"
+                },
                 {
                     "source": "example.hpp",
                     "target": "include/example.hpp",
-                    "openInEditor": false
+                    "openInEditor": false,
+                    "condition": "%{JS: value('IncludeExample') === 'true'}"
                 },
                 {
                     "source": ".gitignore",
                     "target": ".gitignore",
-                    "condition": "%{JS: ! %{IsSubproject} && '%{VersionControl}' === 'G.Git'}"
+                    "condition": "%{JS: value('IncludeGitignore') === 'true'}"
                 }
             ]
         }
