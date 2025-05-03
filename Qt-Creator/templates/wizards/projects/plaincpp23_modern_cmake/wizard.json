@@ -1,10 +1,10 @@
 {
     "version": 1,
     "supportedProjectTypes": "CMakeProjectManager.CMakeProject",
-    "id": "PMCA2.Plain Modern Cpp Application",
+    "id": "PMCA.Plain Modern Cpp Application",
     "category": "I.Projects",
     "trDescription": "Create a simple modern C++ application using Cmake.",
-    "trDisplayName": "Plain Modern C++ Application 2",
+    "trDisplayName": "Plain Modern C++ Application",
     "trDisplayCategory": "Non-Qt Project",
     "icon": "consoleapplication.png",
     "iconKind": "Themed",
