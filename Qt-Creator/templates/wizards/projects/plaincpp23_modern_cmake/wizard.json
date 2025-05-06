@@ -51,8 +51,8 @@
                 },
                 {
                     "name": "ExampleFilename",
-                    "mandatory": false,
                     "type": "LineEdit",
+                    "mandatory": false,
                     "enabled": true,
                     "visible": "%{JS: value('IncludeExample') === 'true'}",
                     "data": {
@@ -61,7 +61,7 @@
                     }
                 },
                 {
-                    "name": "Label02",
+                    "name": "Label01",
                     "type": "Label",
                     "span": true,
                     "visible": true,
@@ -92,7 +92,7 @@
                 },
                 {
                     "source": "%{JS: value('IncludeExample') === 'true' ? 'main_example.cpp' : 'main.cpp'}",
-                    "target": "%{CppFileName}",
+                    "target": "src/%{CppFileName}",
                     "openInEditor": true,
                     "options": [
                         {"key": "HdrFileName", "value" : "%{JS: value('ExampleFilename') + '.hpp'}"}

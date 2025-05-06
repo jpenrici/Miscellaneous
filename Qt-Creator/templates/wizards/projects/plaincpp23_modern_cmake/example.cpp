@@ -7,6 +7,5 @@ auto test() -> bool
 
 
 /*
-  Develop the . cpp here.
-  Rename the example.hpp and example.cpp files if necessary.
+  Develop the code here.
 */
