@@ -1,13 +1,14 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.25)
 
 project(%{ProjectName} LANGUAGES CXX)
+
+set(PROGRAM_NAME %{ProjectName})
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(SOURCES
-    ./src/%{LibraryName}.cpp
-)
+include_directories(include)
+file(GLOB SOURCES src/*.cpp)
 
 set(LIBRARY_NAME %{LibraryName})
 

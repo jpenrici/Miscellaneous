@@ -1,9 +1,9 @@
 {
     "version": 1,
     "supportedProjectTypes": [ "CMakeProjectManager.CMakeProject" ],
-    "id": "Z.Python Ctypes Application",
+    "id": "PCA.Python Ctypes Application",
     "category": "I.Projects",
-    "trDescription": "Creates a simple Python Ctypes application with no dependencies.",
+    "trDescription": "Creates a simple Python Ctypes application.",
     "trDisplayName": "Python Ctypes Application",
     "trDisplayCategory": "Non-Qt Project",
     "icon": "consoleapplication.png",
@@ -48,8 +48,7 @@
             [                
                 {
                     "source": "CMakeLists.txt",
-                    "openAsProject": true,
-                    "condition": "%{JS: '%{BuildSystem}' === 'cmake'}"
+                    "openAsProject": true
                 },
                 {
                     "source": "library.cpp",
@@ -67,7 +66,7 @@
                     "openInEditor": false
                 }, 
                 {
-                    "source": "../git.ignore",
+                    "source": ".gitignore",
                     "target": ".gitignore",
                     "condition": "%{JS: ! %{IsSubproject} && '%{VersionControl}' === 'G.Git'}"
                 }

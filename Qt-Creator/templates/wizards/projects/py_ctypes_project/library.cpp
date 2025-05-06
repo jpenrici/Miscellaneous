@@ -1,3 +1,3 @@
-#include "../include/%{LibraryName}.hpp"
+#include "%{LibraryName}.hpp"
 
 // Code C++.

@@ -1,4 +1,9 @@
-# -*- Mode: Python3; coding: utf-8; indent-tabs-mpythoode: nil; tab-width: 4 -*-
+# coding: utf-8
+
+"""
+    This Python module uses the ctypes library.
+    Learn more: https://docs.python.org/3/library/ctypes.html
+"""
 
 import sys
 
