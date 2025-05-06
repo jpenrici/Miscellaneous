@@ -1,4 +1,4 @@
-#include "example.hpp"
+#include "%{HdrFileName}"
 
 auto test() -> bool
 {

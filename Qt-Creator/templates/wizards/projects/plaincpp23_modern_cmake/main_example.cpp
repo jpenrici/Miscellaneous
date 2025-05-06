@@ -1,4 +1,4 @@
-#include "example.hpp"
+#include \"%{HdrFileName}\"
 
 #include <print>
 
@@ -6,9 +6,9 @@ auto main() -> int {
   std::println("Modern C++ 23 : Hello World!");
 
   if (test()) {
-    std::println("Example is working!");
+    std::println("Test is working!");
   } else {
-    std::println("Example is not working!");
+    std::println("Test is not working!");
   }
 
   return 0;

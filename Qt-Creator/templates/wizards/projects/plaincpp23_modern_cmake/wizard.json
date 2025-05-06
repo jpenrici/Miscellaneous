@@ -14,7 +14,8 @@
     [
         { "key": "ProjectFile", "value": "%{JS: '%{CMakeFile}'}" },
         { "key": "CMakeFile", "value": "%{ProjectDirectory}/CMakeLists.txt" },
-        { "key": "CppFileName", "value": "%{JS: 'main.' + Util.preferredSuffix('text/x-c++src')}" }
+        { "key": "CppFileName", "value": "%{JS: 'main.' + Util.preferredSuffix('text/x-c++src')}" },
+        { "key": "ExFileName", "value": "example"}
     ],
 
     "pages":
@@ -49,7 +50,18 @@
                     }
                 },
                 {
-                    "name": "Label01",
+                    "name": "ExampleFilename",
+                    "mandatory": false,
+                    "type": "LineEdit",
+                    "enabled": true,
+                    "visible": "%{JS: value('IncludeExample') === 'true'}",
+                    "data": {
+                        "trText": "%{ExFileName}",
+                        "validator": "([a-zA-Z_][a-zA-Z_0-9]*)"
+                    }
+                },
+                {
+                    "name": "Label02",
                     "type": "Label",
                     "span": true,
                     "visible": true,
@@ -79,28 +91,25 @@
                     "openAsProject": true
                 },
                 {
-                    "source": "main.cpp",
+                    "source": "%{JS: value('IncludeExample') === 'true' ? 'main_example.cpp' : 'main.cpp'}",
                     "target": "%{CppFileName}",
                     "openInEditor": true,
-                    "condition": "%{JS: value('IncludeExample') === 'false'}"
-
+                    "options": [
+                        {"key": "HdrFileName", "value" : "%{JS: value('ExampleFilename') + '.hpp'}"}
+                    ]
                 },
-                {
-                    "source": "main_example.cpp",
-                    "target": "src/%{CppFileName}",
-                    "openInEditor": true,
-                    "condition": "%{JS: value('IncludeExample') === 'true'}"
-                },
-
                 {
                     "source": "example.cpp",
-                    "target": "src/example.cpp",
+                    "target": "src/%{JS: value('IncludeExample') === 'true' ? value('ExampleFilename') + '.cpp' : '%{ExFileName}.cpp'}",
                     "openInEditor": false,
-                    "condition": "%{JS: value('IncludeExample') === 'true'}"
+                    "condition": "%{JS: value('IncludeExample') === 'true'}",
+                    "options": [
+                        {"key": "HdrFileName", "value" : "%{JS: value('ExampleFilename') + '.hpp'}"}
+                    ]
                 },
                 {
                     "source": "example.hpp",
-                    "target": "include/example.hpp",
+                    "target": "include/%{JS: value('IncludeExample') === 'true' ? value('ExampleFilename') + '.hpp' : '%{ExFileName}.hpp'}",
                     "openInEditor": false,
                     "condition": "%{JS: value('IncludeExample') === 'true'}"
                 },
