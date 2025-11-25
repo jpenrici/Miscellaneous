@@ -1,0 +1,55 @@
+# --- Executables and Output Files ---
+# Ignore compiled binaries generated during the build process.
+*.exe      # Windows executables
+*.out      # Common executable name on Unix-like systems
+*.app      # macOS application bundles (sometimes)
+a.out      # Default output file name for many compilers (e.g., GCC)
+
+# --- Object Files and Libraries ---
+# Ignore intermediate object files and compiled library files.
+*.o        # Object files (Unix/Linux)
+*.obj      # Object files (Windows/Visual Studio)
+*.so       # Shared object libraries (Linux/Unix)
+*.a        # Static libraries (Linux/Unix)
+*.dll      # Dynamic-link libraries (Windows)
+*.lib      # Static or import libraries (Windows)
+
+# --- Debugging and Map Files ---
+# Ignore files used for debugging information.
+*.map      # Linker map files
+*.pdb      # Program database files (Visual Studio debug symbols)
+*.ilk      # Incremental linker files (Visual Studio)
+
+# --- Common Build Directories ---
+# Ignore standard directories where build outputs are placed.
+build/     # General build output directory
+bin/       # Binary/executable output directory
+tmp/       # Temporary files
+dist/      # Distribution directory
+
+# --- IDE/Tool-Specific Metadata (Examples) ---
+
+# Visual Studio / VS Code
+.vs/                   # Visual Studio Solution User Options
+*.sln                  # Visual Studio Solution files (often tracked, but sometimes ignored if standardized)
+*.vcxproj* # Visual C++ Project files (often tracked, but user-specific variants are ignored)
+*.suo                  # Visual Studio Solution User Options (legacy)
+*.user                 # Project-specific user options
+*.code-workspace       # VS Code workspace files (local user settings)
+
+# Qt Creator
+*.pro.user             # Qt Creator project user-specific settings
+*.qbs.user             # Qt Build Suite user-specific settings
+Makefile.* # Generated Makefiles (ignore if using CMake or QMake)
+
+# CMake Build System Files
+CMakeCache.txt         # CMake cache file (local to user/build)
+CMakeFiles/            # Directory containing generated build files and configuration
+cmake_install.cmake    # Generated installation script
+CTestTestfile.cmake    # Generated CTest files
+_CPack_Packages/       # CPack packaging directory
+
+# --- Logs and Editor Backups ---
+# Ignore various transient files and editor backup files.
+*.log      # Log files
+*~         # Editor backup files (e.g., from Vi/Vim or Emacs)

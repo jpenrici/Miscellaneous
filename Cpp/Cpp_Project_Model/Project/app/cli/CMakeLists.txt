@@ -1,4 +1,4 @@
-add_executable(${CLI_NAME} cpp/cli.cpp)
+add_executable(${CLI_NAME} cli.cpp)
 
 target_link_libraries(${CLI_NAME} PRIVATE ${LIBRARY_NAME})
 
