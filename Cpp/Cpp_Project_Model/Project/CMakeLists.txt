@@ -1,4 +1,5 @@
 # Main CMakeLists.txt
+
 cmake_minimum_required(VERSION 3.25 FATAL_ERROR)
 
 project(Project_Name VERSION 1.0.0 LANGUAGES CXX)
@@ -21,10 +22,10 @@ option(BUILD_TESTS    "Build the tests" ON)
 
 # 1. Main Library
 set(LIBRARY_NAME library)
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/lib")
-    add_subdirectory(lib)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src")
+    add_subdirectory(src)
 else()
-    message(FATAL_ERROR "The 'lib' directory was not found, so we cannot proceed!")
+    message(FATAL_ERROR "The 'src' directory was not found, so we cannot proceed!")
 endif()
 
 # 2. Command Line Interfaces (CLI)
@@ -51,12 +52,30 @@ if(BUILD_TESTS)
     add_subdirectory(tests)
 endif()
 
+# Distribution directory
+set(DIST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dist")
+if(NOT EXISTS "${DIST_DIR}")
+    message(STATUS "Make directory: ${DIST_DIR}")
+    file(MAKE_DIRECTORY "${DIST_DIR}")
+endif()
+
+set(CMAKE_INSTALL_PREFIX "${DIST_DIR}" CACHE PATH "Installation directory prefix" FORCE)
+message(STATUS "CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
+
 # Build and install
 #
+# 1. Setup
 # mkdir build
 # cd build
 # cmake ..
-# cmake .. -DBUILD_CLI=ON -DBUILD_GUI=ON -DBUILD_TESTS=OFF
+# cmake .. -DBUILD_CLI=ON -DBUILD_GUI=ON -DBUILD_TESTS=OFF -DBUILD_BINDINGS=OFF
+#
+# 2. Build
 # cmake --build .
 #
-# cmake --install . --prefix ./install_dir
+# 3. Install
+# cmake --install .
+# cmake --install . --prefix ../dist
+#
+# 4. Run
+# ./dist/bin/cli

@@ -1,3 +1,7 @@
+# tests/CMakeLists.txt
+
+message(STATUS "Setting up the test environment.")
+
 add_executable(${TEST_NAME} test.cpp)
 
 target_link_libraries(${TEST_NAME} PRIVATE ${LIBRARY_NAME})

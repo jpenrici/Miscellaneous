@@ -1,3 +1,5 @@
+# app/gui/CMakeLists.txt
+
 add_subdirectory(gtkmm4)
 
 add_subdirectory(qt6)
