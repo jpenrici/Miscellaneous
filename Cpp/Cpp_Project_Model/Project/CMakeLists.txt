@@ -21,6 +21,15 @@ option(BUILD_GUI "Build the Graphical User Interfaces" ON)
 option(BUILD_BINDINGS "Build integrations with other languages (Bindings)." ON)
 option(BUILD_TESTS "Build the tests" ON)
 
+# Distribution directory
+set(DIST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dist")
+if(NOT EXISTS "${DIST_DIR}")
+  message(STATUS "Make directory: ${DIST_DIR}")
+  file(MAKE_DIRECTORY "${DIST_DIR}/lib")
+  file(MAKE_DIRECTORY "${DIST_DIR}/bin")
+  file(MAKE_DIRECTORY "${DIST_DIR}/include")
+endif()
+
 # Add Subdirectories
 
 # 1. Main Library
@@ -54,15 +63,6 @@ set(TEST_NAME test)
 if(BUILD_TESTS)
   # enable_testing() # CTest
   add_subdirectory(tests)
-endif()
-
-# Distribution directory
-set(DIST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dist")
-if(NOT EXISTS "${DIST_DIR}")
-  message(STATUS "Make directory: ${DIST_DIR}")
-  file(MAKE_DIRECTORY "${DIST_DIR}/lib")
-  file(MAKE_DIRECTORY "${DIST_DIR}/bin")
-  file(MAKE_DIRECTORY "${DIST_DIR}/include")
 endif()
 
 set(CMAKE_INSTALL_PREFIX

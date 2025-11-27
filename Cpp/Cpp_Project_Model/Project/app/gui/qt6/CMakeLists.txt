@@ -18,10 +18,7 @@ set(QT_PROJECT_SOURCES main.cpp mainwindow.cpp mainwindow.h mainwindow.ui)
 
 qt_add_executable(${QTGUI_EXEC_NAME} ${QT_PROJECT_SOURCES})
 
-target_link_libraries(
-  ${QTGUI_EXEC_NAME} PRIVATE Qt6::Widgets
-                             # ${LIBRARY_NAME}
-)
+target_link_libraries(${QTGUI_EXEC_NAME} PRIVATE Qt6::Widgets ${LIBRARY_NAME})
 
 install(
   TARGETS ${QTGUI_EXEC_NAME}
