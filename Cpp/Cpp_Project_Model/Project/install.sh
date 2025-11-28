@@ -29,11 +29,12 @@ use_project() {
     echo "Usage: ./install.sh [Mode Option] [Build Component Options]"
     echo ""
     echo "Mode Options (mutually exclusive):"
+    echo "  --help     : Displays this usage information."
     echo "  --debug    : Configures and builds in Debug mode (default if only components are specified)."
     echo "  --release  : Configures and builds in Release (optimized) mode."
-    echo "  --install  : Installs the built project to the '$DIST_DIR' directory."
-    echo "  --clean    : Removes the build ('$BUILD_DIR') and install ('$DIST_DIR') directories."
-    echo "  --all      : Cleans, builds (Debug), and installs the project."
+    echo "  --install  : Installs the built project to the '$DIST_DIR' directory (uses last successful configuration)."
+    echo "  --clean    : Removes the build ('$BUILD_DIR') and install ('$DIST_DIR') directories (REQUIRED to change build components)."
+    echo "  --all      : Cleans, configures, builds, and installs ALL components (--cli, --gui, etc.)."
     echo ""
     echo "Build Component Options (can be combined):"
     echo "  --cli      : Enables -DBUILD_CLI=ON."
@@ -41,7 +42,20 @@ use_project() {
     echo "  --tests    : Enables -DBUILD_TESTS=ON."
     echo "  --bindings : Enables -DBUILD_BINDINGS=ON."
     echo ""
-    echo "Example: ./install.sh --release --cli --bindings"
+    echo "Examples:"
+    echo "1. Build only the CLI (in Debug mode):"
+    echo "   ./install.sh --cli"
+    echo ""
+    echo "2. Change from CLI build to GUI build (requires cleaning):"
+    echo "   ./install.sh --clean"
+    echo "   ./install.sh --gui"
+    echo ""
+    echo "3. Full Build, Clean, and Install of ALL components (in Release mode):"
+    echo "   ./install.sh --release --all"
+    echo ""
+    echo "4. Full Build of CLI and Bindings, then Install (in Release mode):"
+    echo "   ./install.sh --release --cli --bindings"
+    echo "   ./install.sh --install"
     echo ""
     exit 1
 }
@@ -66,11 +80,12 @@ build_project() {
     BUILD_PATH="$PROJECT_DIR/$BUILD_DIR"
 
     # 1. Construct the CACHE_ENTRY dynamically
-    CACHE_ENTRY="-DBUILD_CLI=$BUILD_CLI_FLAG -DBUILD_GUI=$BUILD_GUI_FLAG -DBUILD_TESTS=$BUILD_TESTS_FLAG -DBUILD_BINDINGS=$BUILD_BINDINGS_FLAG"
+    cache_entry="-DBUILD_CLI=$BUILD_CLI_FLAG -DBUILD_GUI=$BUILD_GUI_FLAG"
+    cache_entry="$cache_entry -DBUILD_TESTS=$BUILD_TESTS_FLAG -DBUILD_BINDINGS=$BUILD_BINDINGS_FLAG"
 
     echo "--- Build Configuration ---"
     echo "BUILD TYPE: $BUILD_TYPE"
-    echo "CMAKE OPTIONS: $CACHE_ENTRY"
+    echo "CMAKE OPTIONS: $cache_entry"
     echo "---------------------------"
 
     if [[ ! -d "$BUILD_PATH" ]]; then
@@ -81,7 +96,13 @@ build_project() {
     cd "$BUILD_PATH" || exit 1
 
     echo "Setting up the CMake project..."
-    cmake "$PROJECT_DIR" -DCMAKE_BUILD_TYPE="$BUILD_TYPE" -G "Unix Makefiles" "$CACHE_ENTRY"
+    cmake "$PROJECT_DIR" \
+          -DCMAKE_BUILD_TYPE="$BUILD_TYPE" \
+          -DBUILD_CLI="$BUILD_CLI_FLAG" \
+          -DBUILD_GUI="$BUILD_GUI_FLAG" \
+          -DBUILD_TESTS="$BUILD_TESTS_FLAG" \
+          -DBUILD_BINDINGS="$BUILD_BINDINGS_FLAG" \
+           -G "Unix Makefiles"
 
     if [[ $? -ne 0 ]]; then
         echo "CMake configuration failed. Exiting."
@@ -98,7 +119,7 @@ build_project() {
         exit 1
     fi
 
-    echo "Build completed successfully! Binaries should be in $BUILD_PATH/bin"
+    echo "Build completed successfully!"
     cd "$PROJECT_DIR"
 }
 
@@ -129,9 +150,10 @@ install_project() {
 
 # --- Execution Logic ---
 
-echo "PROJECT: $PROJECT_DIR"
-echo "INPUT: $@"
-echo "PARALLEL JOBS LIMIT: $NPROC_JOBS/$NPROC_AVAILABLE"
+display_header() {
+    echo "PROJECT: $PROJECT_DIR"
+    echo "PARALLEL JOBS LIMIT: $NPROC_JOBS/$NPROC_AVAILABLE"
+}
 
 DIRECTORIES_TO_CLEAN=("$BUILD_DIR" "$DIST_DIR")
 MODE_OPTION=""
@@ -141,9 +163,18 @@ MODE_OPTION=""
 while [[ $# -gt 0 ]]; do
     case "$1" in
         # Mode Options (determine the main action)
-        "--clean"|"--release"|"--debug"|"--install"|"--all")
+        "--clean"|"--release"|"--debug"|"--install"|"--help")
             MODE_OPTION="$1"
             shift # Consume the argument
+            ;;
+        "--all")
+            MODE_OPTION="$1"
+            # Ensures all flags are active
+            BUILD_CLI_FLAG="ON"
+            BUILD_GUI_FLAG="ON"
+            BUILD_TESTS_FLAG="ON"
+            BUILD_BINDINGS_FLAG="ON"
+            shift
             ;;
         # Component Options (set the build flags to ON)
         "--cli")
@@ -169,34 +200,45 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+
 # --- 2. Execute the Main Mode based on the collected options ---
 case "$MODE_OPTION" in
+    "--help")
+        use_project
+        exit 1
+        ;;
     "--clean")
+        display_header
         clean_project "${DIRECTORIES_TO_CLEAN[@]}"
         ;;
     "--release")
         BUILD_TYPE="Release"
+        display_header
         build_project
         ;;
     "--debug")
         BUILD_TYPE="Debug"
+        display_header
         build_project
         ;;
     "--install")
+        display_header
         install_project
         ;;
     "--all")
-        clean_project "${DIRECTORIES_TO_CLEAN[@]}"
-        BUILD_TYPE="Debug"
+        display_header
         build_project
         install_project
         ;;
-    "") # No explicit mode option provided (e.g., just ./install.sh --cli)
+    "")
+        if [[ $# -gt 0 ]]; then
+            echo "Error: Unknown mode option detected." 1>&2
+            use_project
+        fi
+
         # Default action is to build
         BUILD_TYPE="Debug"
+        display_header
         build_project
-        ;;
-    *)
-        use_project
         ;;
 esac

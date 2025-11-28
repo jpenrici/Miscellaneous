@@ -16,10 +16,10 @@ set(CMAKE_POSITION_INDEPENDENT_CODE True) # For shared libraries
 include(GNUInstallDirs)
 
 # Compilation Options
-option(BUILD_CLI "Build the Command Line Interfaces" ON)
-option(BUILD_GUI "Build the Graphical User Interfaces" ON)
-option(BUILD_BINDINGS "Build integrations with other languages (Bindings)." ON)
-option(BUILD_TESTS "Build the tests" ON)
+option(BUILD_CLI "Build the Command Line Interfaces" OFF)
+option(BUILD_GUI "Build the Graphical User Interfaces" OFF)
+option(BUILD_BINDINGS "Build integrations with other languages (Bindings)." OFF)
+option(BUILD_TESTS "Build the tests" OFF)
 
 # Distribution directory
 set(DIST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dist")
@@ -35,6 +35,7 @@ endif()
 # 1. Main Library
 set(LIBRARY_NAME library)
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src")
+  message(STATUS "Build Library '${LIBRARY_NAME}'...")
   add_subdirectory(src)
 else()
   message(
@@ -44,25 +45,37 @@ endif()
 # 1. Command Line Interfaces (CLI)
 set(CLI_NAME cli)
 if(BUILD_CLI)
+  message(STATUS "Build Command Line Interfaces (CLI)...")
   add_subdirectory(app/cli)
+else()
+  message(STATUS "Do not build Command Line Interfaces (CLI)...")
 endif()
 
 # 1. Graphical Interfaces (GUI)
 if(BUILD_GUI)
+  message(STATUS "Build Graphical Interfaces (GUI)...")
   add_subdirectory(app/gui)
+else()
+  message(STATUS "Do not build Graphical Interfaces (GUI)...")
 endif()
 
 # 1. Bindings
 if(BUILD_BINDINGS)
+  message(STATUS "Prepare Bindings...")
   add_subdirectory(bindings/cli)
   add_subdirectory(bindings/gui)
+else()
+  message(STATUS "Do not build Bindings...")
 endif()
 
 # 1. Tests
 set(TEST_NAME test)
 if(BUILD_TESTS)
+  message(STATUS "Build Tests...")
   # enable_testing() # CTest
   add_subdirectory(tests)
+else()
+  message(STATUS "Do not build Tests...")
 endif()
 
 set(CMAKE_INSTALL_PREFIX
@@ -87,6 +100,9 @@ message(STATUS "CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
       (Example: --prefix ../dist)
 
      4. Run
-       ./dist/bin/cli
+     ./dist/bin/cli        (Example for CLI)
+     ./dist/bin/gui_qt6    (Example for Qt 6 GUI)
+     ./dist/bin/gui_gtkmm4 (Example for GTKmm 4 GUI)
+     ./dist/bin/test       (Example for tests)
 
 ]==]
