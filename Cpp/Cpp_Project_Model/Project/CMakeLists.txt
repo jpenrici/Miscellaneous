@@ -28,6 +28,7 @@ if(NOT EXISTS "${DIST_DIR}")
   file(MAKE_DIRECTORY "${DIST_DIR}/lib")
   file(MAKE_DIRECTORY "${DIST_DIR}/bin")
   file(MAKE_DIRECTORY "${DIST_DIR}/include")
+  file(MAKE_DIRECTORY "${DIST_DIR}/bindings")
 endif()
 
 # Add Subdirectories
@@ -62,8 +63,7 @@ endif()
 # 1. Bindings
 if(BUILD_BINDINGS)
   message(STATUS "Prepare Bindings...")
-  add_subdirectory(bindings/cli)
-  add_subdirectory(bindings/gui)
+  add_subdirectory(bindings)
 else()
   message(STATUS "Do not build Bindings...")
 endif()

@@ -1,4 +1,6 @@
-# bindings/gui/CMakeLists.txt
+# bindings/python/gui/CMakeLists.txt
+
+message(STATUS "Setting up the environment for Python GUI integration...")
 
 # Configure enviroment
 include(../PythonEnvSetup.cmake)
@@ -42,4 +44,13 @@ else()
     WARNING
       "The Python Virtual Environment is required to run PySide6, but ${VENV_DIR} does not exist."
   )
+endif()
+
+set(PY_GUI_SOURCES
+  gui_pyside6.py
+)
+
+if(EXISTS "${DIST_DIR}/bindings/python")
+  message(STATUS "Copy Python files to ${DIST_DIR}/bindings/python")
+  file(COPY ${PY_GUI_SOURCES} DESTINATION "${DIST_DIR}/bindings/python")
 endif()

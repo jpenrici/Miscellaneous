@@ -1,10 +1,14 @@
-# bindings/PythonEnvSetup.cmake
+# bindings/python/PythonEnvSetup.cmake
 
 # Configure environment Venv
 
 message(STATUS "Setting up a Python environment to use .venv")
 
-set(VENV_DIR "${CMAKE_SOURCE_DIR}/.venv")
+if (NOT ${VEND_DIR})
+  set(VENV_DIR "${CMAKE_SOURCE_DIR}/.venv")
+endif()
+
+message(STATUS "Venv environment directory: ${VEND_DIR}")
 
 if(UNIX OR APPLE)
   set(PYTHON_BOOTSTRAP "python3")

@@ -8,12 +8,12 @@ from pathlib import Path
 
 
 try:
-    from ctypes import cdll, c_char_p
+    from ctypes import cdll
 except ModuleNotFoundError:
     print("Module 'cytpes' is not installed!")
     sys.exit(0)
 
-# Project/dist/lib/liblibrary.so
+# Project/dist/lib/libNAME.so
 LIBRARY_NAME: str = "liblibrary.so"
 LIBRARY_PATH: Path = Path("../../../dist/lib")
 FULL_PATH: Path = LIBRARY_PATH / LIBRARY_NAME
@@ -57,4 +57,5 @@ def view_path() -> None:
 
 
 if __name__ == '__main__':
+    # Test
     view_path()

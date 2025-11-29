@@ -1,6 +1,6 @@
 # tests/CMakeLists.txt
 
-message(STATUS "Setting up the test environment.")
+message(STATUS "Setting up the environment for C++ testing....")
 
 add_executable(${TEST_NAME} test.cpp)
 

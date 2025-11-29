@@ -1,27 +1,25 @@
 # -*- coding: utf-8 -*-
 
-# TO DO ------------------------
 import sys
-from typing import Optional, Any
-from pathlib import Path
+
 
 try:
     from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget,
                                    QVBoxLayout, QTextEdit)
-    from PySide6.QtCore import Qt
 except ModuleNotFoundError as e:
     print(f"Module 'PySide6' is not installed! Error: {e}")
     sys.exit(0)
-    
 
 try:
-    import cli_ctypes
+    # Reusing code cli_ctypes.py
+    from cli_ctypes import get_path
 except Exception as e:
     print(f"Module 'Wrapper' is not exists! Error: {e}")
     sys.exit(0)
 
 
 class MainWindow(QMainWindow):
+    
     def __init__(self, c_path_getter) -> None:
         super().__init__()
         self.c_path_getter = c_path_getter
