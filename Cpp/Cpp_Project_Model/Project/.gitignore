@@ -48,8 +48,12 @@ CMakeFiles/            # Directory containing generated build files and configur
 cmake_install.cmake    # Generated installation script
 CTestTestfile.cmake    # Generated CTest files
 _CPack_Packages/       # CPack packaging directory
+CMakeLists.txt.user    # Qt Creator configuration CMakeLists file
 
 # --- Logs and Editor Backups ---
 # Ignore various transient files and editor backup files.
 *.log      # Log files
 *~         # Editor backup files (e.g., from Vi/Vim or Emacs)
+
+# --- Virtual Environment ---
+.venv      # Python Virtual Environment Directory

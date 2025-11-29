@@ -20,9 +20,15 @@ qt_add_executable(${QTGUI_EXEC_NAME} ${QT_PROJECT_SOURCES})
 
 target_link_libraries(${QTGUI_EXEC_NAME} PRIVATE Qt6::Widgets ${LIBRARY_NAME})
 
+set_target_properties(
+  ${QTGUI_EXEC_NAME}
+  PROPERTIES RUNTIME_OUTPUT_DIRECTORY bin
+             BUILD_RPATH lib
+             INSTALL_RPATH "$ORIGIN/../lib"
+             BUILD_WITH_INSTALL_RPATH TRUE)
+
 install(
   TARGETS ${QTGUI_EXEC_NAME}
-  BUNDLE DESTINATION .
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
 
@@ -31,6 +37,3 @@ add_custom_target(
   COMMAND ${QTGUI_EXEC_NAME}
   DEPENDS ${QTGUI_EXEC_NAME}
   WORKING_DIRECTORY ${DIST_DIR})
-
-set_target_properties(${QTGUI_EXEC_NAME}
-                      PROPERTIES BUILD_RPATH lib RUNTIME_OUTPUT_DIRECTORY bin)

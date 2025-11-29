@@ -19,9 +19,15 @@ target_link_libraries(${GTKMM_EXEC_NAME} PRIVATE ${GTKMM_LIBRARIES}
 
 target_compile_options(${GTKMM_EXEC_NAME} PRIVATE ${GTKMM_CFLAGS_OTHER})
 
+set_target_properties(
+  ${GTKMM_EXEC_NAME}
+  PROPERTIES RUNTIME_OUTPUT_DIRECTORY bin
+             BUILD_RPATH lib
+             INSTALL_RPATH "$ORIGIN/../lib"
+             BUILD_WITH_INSTALL_RPATH TRUE)
+
 install(
   TARGETS ${GTKMM_EXEC_NAME}
-  BUNDLE DESTINATION .
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
 
@@ -30,6 +36,3 @@ add_custom_target(
   COMMAND ${GTKMM_EXEC_NAME}
   DEPENDS ${GTKMM_EXEC_NAME}
   WORKING_DIRECTORY ${DIST_DIR})
-
-set_target_properties(${GTKMM_EXEC_NAME}
-                      PROPERTIES BUILD_RPATH lib RUNTIME_OUTPUT_DIRECTORY bin)
