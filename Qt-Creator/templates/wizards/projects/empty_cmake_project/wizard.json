@@ -1,0 +1,59 @@
+{
+    "version": 1,
+    "supportedProjectTypes": "CMakeProjectManager.CMakeProject",
+    "id": "PMEMPTY.Empty Project",
+    "category": "I.Projects",
+    "trDescription": "Create a empty project using CMake.",
+    "trDisplayName": "Empty project",
+    "trDisplayCategory": "Non-Qt Project",
+    "icon": "consoleapplication.png",
+    "iconKind": "Themed",
+    "enabled": "%{JS: value('Plugins').indexOf('CppEditor') >= 0 && value('Plugins').indexOf('CMakeProjectManager') >= 0}",
+
+    "options":
+    [
+        { "key": "ProjectFile", "value": "%{JS: '%{CMakeFile}'}" },
+        { "key": "CMakeFile", "value": "%{ProjectDirectory}/CMakeLists.txt" }
+    ],
+
+    "pages":
+    [
+        {
+            "trDisplayName": "Project Location",
+            "trShortTitle": "Location",
+            "typeId": "Project"
+        },
+        {
+            "trDisplayName": "Kit Selection",
+            "trShortTitle": "Kits",
+            "typeId": "Kits",
+            "enabled": "%{JS: ! %{IsSubproject}}",
+            "data": { "projectFilePath": "%{ProjectFile}" }
+        },
+        {
+            "trDisplayName": "Project Management",
+            "trShortTitle": "Summary",
+            "typeId": "Summary"
+        }
+    ],
+
+    "generators":
+    [
+        {
+            "typeId": "File",
+            "data":
+            [
+                {
+                    "source": "CMakeLists.txt",
+                    "openAsProject": true,
+                    "openInEditor": true
+                },
+                {
+                    "source": ".gitignore",
+                    "target": ".gitignore",
+                    "condition": "%{JS: ! %{IsSubproject} && '%{VersionControl}' === 'G.Git'}"
+                }
+            ]
+        }
+    ]
+}
