@@ -4,11 +4,11 @@
 
 message(STATUS "Setting up a Python environment to use .venv")
 
-if (NOT ${VEND_DIR})
+if (NOT "${CMAKE_SOURCE_DIR}/.venv")
   set(VENV_DIR "${CMAKE_SOURCE_DIR}/.venv")
 endif()
 
-message(STATUS "Venv environment directory: ${VEND_DIR}")
+message(STATUS "Venv environment directory: ${VENV_DIR}")
 
 if(UNIX OR APPLE)
   set(PYTHON_BOOTSTRAP "python3")
