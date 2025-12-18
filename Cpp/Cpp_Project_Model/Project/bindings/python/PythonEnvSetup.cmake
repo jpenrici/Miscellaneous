@@ -4,7 +4,8 @@
 
 message(STATUS "Setting up a Python environment to use .venv")
 
-if (NOT "${CMAKE_SOURCE_DIR}/.venv")
+if (NOT EXISTS "${CMAKE_SOURCE_DIR}/.venv")
+  message (STATUS "Python virtual environment not found!")
   set(VENV_DIR "${CMAKE_SOURCE_DIR}/.venv")
 endif()
 
