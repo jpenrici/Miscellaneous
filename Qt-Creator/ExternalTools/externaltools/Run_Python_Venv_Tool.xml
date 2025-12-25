@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Written on Sat Sep 2 20:39:59 2023 by Qt Creator 11.0.2-->
 <externaltool id="Run_Python_external_terminal_">
-    <description>Run simple files in Python.</description>
-    <displayname>Run Python</displayname>
-    <category></category>
+    <description>Run simple files in Python by Venv.</description>
+    <displayname>Run Python Venv</displayname>
+    <category>Python</category>
     <executable output="showinpane" error="showinpane" modifiesdocument="yes">
-        <path>python3</path>
+        <path>~/.venv/bin/python3</path>
         <arguments>-u %{CurrentDocument:FilePath}</arguments>
         <workingdirectory>%{CurrentDocument:Path}</workingdirectory>
     </executable>

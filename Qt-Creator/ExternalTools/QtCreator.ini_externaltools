@@ -1,0 +1,13 @@
+[ExternalTools]
+OverrideCategories\Cobol\1\Tool=Compile_Cobol_tool
+OverrideCategories\Cobol\size=1
+OverrideCategories\Cpp\1\Tool=Run_Cpp_external_terminal
+OverrideCategories\Cppl\size=1
+OverrideCategories\Python\1\Tool=Run_Python_external_terminal
+OverrideCategories\Python\2\Tool=Fortran_Formatter
+OverrideCategories\Python\size=2
+OverrideCategories\Qt%20Quick\1\Tool=qml
+OverrideCategories\Qt%20Quick\2\Tool=qmlscene
+OverrideCategories\Qt%20Quick\size=2
+OverrideCategories\Text\1\Tool=vi
+OverrideCategories\Text\size=1

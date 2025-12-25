@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<externaltool id="Fortran_Formatter">
+    <description>This tool uses fprettify to format Fortran code.</description>
+    <displayname>Fortran Formatter</displayname>
+    <category>Fortran</category>
+    <executable output="showinpane" error="showinpane" modifiesdocument="yes">
+        <path>/home/jpenrici/.venv/bin/fprettify</path>
+        <arguments>%{CurrentDocument:FilePath}</arguments>
+        <workingdirectory>%{CurrentDocument:Path}</workingdirectory>
+    </executable>
+</externaltool>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<externaltool id="Compile_Cobol_tool">
+    <description>Compile COBOL</description>
+    <displayname>Compile COBOL</displayname>
+    <category>Cobol</category>
+    <executable output="showinpane" error="showinpane" modifiesdocument="no">
+        <path>/usr/bin/cobc</path>
+        <arguments>-x -free %{CurrentDocument:FilePath} -o %{CurrentDocument:FileBaseName}</arguments>
+        <workingdirectory>%{CurrentDocument:Path}</workingdirectory>
+    </executable>
+</externaltool>
