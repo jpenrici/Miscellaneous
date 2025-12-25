@@ -3,12 +3,6 @@ Tools - Qt Creator
 
 Some alternatives that may be useful.
 
-# Test
-
-Debian 12.<br>
-Qt Creator 11.0.2<br>
-GCC 10.3.1<br>
-
 # Reference
 
 It's important to read the official documentation for more details!.<br>
