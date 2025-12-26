@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<externaltool id="Run_Python_external_terminal_">
+<externaltool id="Run_Python_venv_external_terminal">
     <description>Run simple files in Python by Venv.</description>
     <displayname>Run Python Venv</displayname>
     <category>Python</category>

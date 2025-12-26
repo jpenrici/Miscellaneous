@@ -4,7 +4,7 @@
     <displayname>Fortran Formatter</displayname>
     <category>Fortran</category>
     <executable output="showinpane" error="showinpane" modifiesdocument="yes">
-        <path>/home/jpenrici/.venv/bin/fprettify</path>
+        <path>~/.venv/bin/fprettify</path>
         <arguments>%{CurrentDocument:FilePath}</arguments>
         <workingdirectory>%{CurrentDocument:Path}</workingdirectory>
     </executable>
