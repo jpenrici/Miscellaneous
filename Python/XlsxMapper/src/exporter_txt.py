@@ -1,0 +1,81 @@
+# -*- coding: utf-8 -*-
+
+import json
+from pathlib import Path
+from typing import List
+from analyzer import CellMetadata
+
+
+class AsciiTableExporter:
+    """
+    Converts CellMetadata (from objects or JSON) into a formatted ASCII table.
+    """
+
+    def __init__(self, output_dir: Path):
+        self.output_dir = output_dir
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+    def generate_from_objects(self, sheet_name: str, cell_data: List[CellMetadata]) -> str:
+        """Entry point for live Dataclass objects."""
+        grid = self._organize_into_grid(cell_data)
+        return self._build_ascii(sheet_name, grid)
+
+    def generate_from_json(self, sheet_name: str, json_path: Path) -> str:
+        """Entry point for persisted JSON data."""
+        if not json_path.exists():
+            raise FileNotFoundError(f"JSON metadata not found at {json_path}")
+
+        with open(json_path, "r", encoding="utf-8") as f:
+            raw_data = json.load(f)
+
+        # Convert dicts back to a simplified grid format
+        # We don't need full Dataclass conversion here, just row/col/value access
+        max_row = max(c['row'] for c in raw_data)
+        max_col = max(c['col'] for c in raw_data)
+        grid = [["" for _ in range(max_col)] for _ in range(max_row)]
+
+        for c in raw_data:
+            grid[c['row'] - 1][c['col'] - 1] = str(c['value']) if c['value'] is not None else ""
+
+        return self._build_ascii(sheet_name, grid)
+
+    def _organize_into_grid(self, cell_data: List[CellMetadata]) -> List[List[str]]:
+        """Converts CellMetadata list into a 2D grid of strings."""
+        if not cell_data:
+            return []
+
+        max_row = max(c.row for c in cell_data)
+        max_col = max(c.col for c in cell_data)
+        grid = [["" for _ in range(max_col)] for _ in range(max_row)]
+
+        for cell in cell_data:
+            val = cell.value if cell.value is not None else ""
+            grid[cell.row - 1][cell.col - 1] = str(val)
+        return grid
+
+    def _build_ascii(self, sheet_name: str, grid: List[List[str]]) -> str:
+        """Core logic to build the ASCII visual structure."""
+        if not grid or not grid[0]:
+            return ""
+
+        num_cols = len(grid[0])
+        col_widths = [max(len(str(row[i])) for row in grid) for i in range(num_cols)]
+
+        separator = "+" + "+".join("-" * (w + 2) for w in col_widths) + "+"
+        lines = [separator]
+
+        for row in grid:
+            content_line = "|" + "|".join(
+                f" {str(row[i]).ljust(col_widths[i])} " for i in range(num_cols)
+            ) + "|"
+            lines.append(content_line)
+            lines.append(separator)
+
+        table_output = "\n".join(lines)
+        self._save_to_file(sheet_name, table_output)
+        return table_output
+
+    def _save_to_file(self, sheet_name: str, content: str):
+        file_path = self.output_dir / f"table_{sheet_name}.txt"
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(content)
