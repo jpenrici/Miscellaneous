@@ -22,6 +22,8 @@ class CellMetadata:
     fill_color: Optional[str] = None   # Stored as HEX (e.g., 'FF0000')
     font_bold: bool = False
     alignment: str = "left"
+    vertical_align: str = "center"
+    text_rotation: int = 0
     formula: Optional[str] = None
     # Dictionary to store border styles: {'top': {'style': 'thin', 'color': '000000'}, ...}
     borders: Dict[str, Any] = field(default_factory=dict)
@@ -80,6 +82,42 @@ class XlsxAnalyzer:
                 dims["rows"][row_idx] = row_def.height
         return dims
 
+    def get_sheet_assets(self, sheet_name: str, output_img_dir: Path) -> List[Dict[str, Any]]:
+        """
+        Extracts images from the worksheet and saves them to the output folder.
+        """
+        ws = self.workbook[sheet_name]
+        images_metadata = []
+
+        if not hasattr(ws, '_images') or not ws._images:
+            return []
+
+        output_img_dir.mkdir(parents=True, exist_ok=True)
+
+        for i, img in enumerate(ws._images):
+            # Calculate anchor cell (from 0-indexed to 1-indexed)
+            col = img.anchor._from.col + 1
+            row = img.anchor._from.row + 1
+            anchor_coord = ws.cell(row=row, column=col).coordinate
+
+            # File naming
+            ext = img.format if hasattr(img, 'format') else 'png'
+            filename = f"asset_{sheet_name}_{i}.{ext}"
+            save_path = output_img_dir / filename
+
+            # Save binary data
+            with open(save_path, "wb") as f:
+                f.write(img._data())
+
+            images_metadata.append({
+                "anchor": anchor_coord,
+                "filename": filename,
+                "width": img.width,
+                "height": img.height
+            })
+
+        return images_metadata
+
     def get_cell_details(self, sheet_name: str) -> List[CellMetadata]:
         """
         Iterates through the worksheet and compiles a list of CellMetadata objects.
@@ -125,6 +163,8 @@ class XlsxAnalyzer:
                     font_bold=getattr(cell.font, "bold", False),
                     fill_color=self._get_hex_color(cell.fill.start_color),
                     alignment=getattr(cell.alignment, "horizontal", "left") or "left",
+                    vertical_align=getattr(cell.alignment, "vertical", "center") or "center",
+                    text_rotation=getattr(cell.alignment, "text_rotation", 0) or 0,
                     borders=self._get_borders(cell)
                 )
                 mapped_data.append(meta)
@@ -141,3 +181,7 @@ class XlsxAnalyzer:
 
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(serializable_data, f, indent=4)
+
+
+if __name__ == "__main__":
+    print("XLSX File Analysis Module.\nUse:\n\tfrom analyzer import XlsxAnalyzer")
