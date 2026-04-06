@@ -31,3 +31,5 @@ Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
    - **HTML_Table_Generator:** Scripts to assist in the construction of tables.
 9. **VBA**
    - Macro experiments.
+10. **Shell**
+   - Simple scripts.
