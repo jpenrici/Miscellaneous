@@ -75,6 +75,7 @@ _dialog_run() {
     status=$?
 
     if [[ $status -ne 0 ]]; then
+        clear
         _error "Operation cancelled"
     fi
 
@@ -163,9 +164,9 @@ _apply_template() {
     local template_dir
     template_dir="$(_resolve_template "$project_type")"
 
-    _copy_template "$template_dir" "$project_name"
+    _copy_template "$template_dir" "$target_dir"
     _apply_placeholders "$target_dir" "$(basename "$target_dir")"
-    _fix_permissions "$project_name"
+    _fix_permissions "$target_dir"
 }
 
 # -----------------------------------------------------------------------------
@@ -221,27 +222,36 @@ main() {
     if [[ -z "$PROJECT_NAME" ]]; then
         _section "Interactive mode"
 
-        name="$(_input "Enter project name:")"
-        name="${name:-$DEFAULT_PROJECT_NAME}"
+        while true; do
+            name="$(_input "Enter project name:")"
+            name="${name:-$DEFAULT_PROJECT_NAME}"
 
-        local base_path
-        base_path="$(_select_path "$PWD/")"
-        base_path="${base_path:-$PWD}"
+            default_dir="$PWD/projects/$name"
+            project_dir="$(_select_path "$default_dir")"
+            project_dir="${project_dir:-$default_dir}"
 
-        # Normalize: ensure directory
-        if [[ -f "$base_path" ]]; then
-            base_path="$(dirname "$base_path")"
-        fi
+            # Normalize: ensure directory
+            if [[ -f "$project_dir" ]]; then
+                project_dir="$(dirname "$project_dir")"
+            fi
 
-        local suffix=1
-        local original_dir="$project_dir"
+            if [[ ! -e "$project_dir" ]]; then
+                break
+            fi
 
-        while [[ -e "$project_dir" ]]; do
-            project_dir="${original_dir}_cpy${suffix}"
-            ((suffix++))
+            if _confirm "Alert" "The directory already exists. Do you want to create a copy?"; then
+                local suffix=1
+                local original_dir="$project_dir"
+
+                while [[ -e "$project_dir" ]]; do
+                    project_dir="${original_dir}_${suffix}"
+                    ((suffix++))
+                done
+
+                _notify "Info" "Using alternative path:\n$project_dir"
+                break
+            fi
         done
-
-        _notify "Info" "Using alternative path:\n$project_dir"
 
         type="$(_select_project_type)"
         type="${type:-$DEFAULT_PROJECT_TYPE}"
@@ -257,6 +267,9 @@ main() {
     _make_dir "$project_dir"
     _apply_template "$project_dir" "$type"
     _init_git "$project_dir"
+
+    _notify "Info" "Project created at: $project_dir"
+    clear
 
     _pass "Project created at: $project_dir"
 }
