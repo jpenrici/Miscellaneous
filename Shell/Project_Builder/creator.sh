@@ -21,6 +21,7 @@ set -euo pipefail
 # -----------------------------------------------------------------------------
 # Paths and Constants
 # -----------------------------------------------------------------------------
+
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly APP_NAME="project_builder"
 readonly LOG_DIR="${HOME}/.local/share/${APP_NAME}"
@@ -29,16 +30,23 @@ readonly TEMPLATES_DIR="${SCRIPT_DIR}/templates"
 
 DEFAULT_PROJECT_NAME="my_project"
 DEFAULT_PROJECT_TYPE="generic"
+DEFAULT_TUI=0 # Text User Interface : 0 - Console, 1 - Dialog, 2 - Zenity
 
 # -----------------------------------------------------------------------------
 # Import Modules
 # -----------------------------------------------------------------------------
+
 source "${COMMON_FUNCTIONS}/color.sh"
 source "${COMMON_FUNCTIONS}/helpers.sh"
 source "${COMMON_FUNCTIONS}/guard.sh"
 source "${COMMON_FUNCTIONS}/os_check.sh"
 source "${COMMON_FUNCTIONS}/dependencies_check.sh"
 source "${COMMON_FUNCTIONS}/directories_check.sh"
+source "${COMMON_FUNCTIONS}/ui_console.sh"
+source "${COMMON_FUNCTIONS}/ui_dialog.sh"
+source "${COMMON_FUNCTIONS}/ui_zenity.sh"
+source "${COMMON_FUNCTIONS}/template_logic.sh"
+source "${COMMON_FUNCTIONS}/git_initialization.sh"
 
 # -----------------------------------------------------------------------------
 # Utility Functions
@@ -56,148 +64,90 @@ _make_dir() {
 }
 
 # -----------------------------------------------------------------------------
-# Dialog UI Wrappers
-# -----------------------------------------------------------------------------
-_confirm() {
-    dialog --title "$1" --yesno "$2" 0 0
-}
-
-_notify() {
-    dialog --title "$1" --infobox "$2" 0 0
-    sleep 2
-}
-
-_dialog_run() {
-    local result
-    local status
-
-    result=$(dialog "$@" --stdout)
-    status=$?
-
-    if [[ $status -ne 0 ]]; then
-        clear
-        _error "Operation cancelled"
-    fi
-
-    echo "$result"
-}
-
-_input() {
-    _dialog_run --inputbox "$1" 0 0
-}
-
-_select_project_type() {
-    _dialog_run \
-        --title "Project Type" \
-        --menu "Select project type:" \
-        0 0 0 \
-        generic "Generic project" \
-        cpp "C++ project" \
-        python "Python project" \
-        shell "Shell project"
-}
-
-_select_path() {
-    local initial_path="${1:-$HOME/}"
-
-    _dialog_run \
-        --title "Select project location" \
-        --fselect "$initial_path" 20 70
-}
-
-# -----------------------------------------------------------------------------
-# Template Logic
-# -----------------------------------------------------------------------------
-
-# Resolve template path based on project type
-_resolve_template() {
-    local type="$1"
-    local template_path="${TEMPLATES_DIR}/${type}"
-
-    if [[ -d "$template_path" ]]; then
-        echo "$template_path"
-    else
-        _warn "Template '$type' not found. Falling back to 'generic'."
-        echo "${TEMPLATES_DIR}/generic"
-    fi
-}
-
-# Copy template into target directory
-_copy_template() {
-    local template_dir="$1"
-    local target_dir="$2"
-
-    _info "Applying template: $(basename "$template_dir")"
-
-    # Copy including hidden files
-    shopt -s dotglob
-    cp -r "$template_dir"/* "$target_dir" 2>/dev/null || true
-    shopt -u dotglob
-}
-
-# Apply simple placeholder substitution
-_apply_placeholders() {
-    local target_dir="$1"
-    local project_name="$2"
-
-    _info "Applying placeholders"
-
-    # Find all files and replace placeholder
-    while IFS= read -r -d '' file; do
-        if [[ -f "$file" ]]; then
-            sed -i "s/{{PROJECT_NAME}}/${project_name}/g" "$file" 2>/dev/null || true
-        fi
-    done < <(find "$target_dir" -type f -print0)
-}
-
-# Ensure scripts are executable (best-effort)
-_fix_permissions() {
-    local target_dir="$1"
-    find "$target_dir" -type f -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
-}
-
-# Main template application pipeline
-_apply_template() {
-    local target_dir="$1"
-    local project_type="$2"
-
-    local template_dir
-    template_dir="$(_resolve_template "$project_type")"
-
-    _copy_template "$template_dir" "$target_dir"
-    _apply_placeholders "$target_dir" "$(basename "$target_dir")"
-    _fix_permissions "$target_dir"
-}
-
-# -----------------------------------------------------------------------------
-# Git Initialization
-# -----------------------------------------------------------------------------
-
-_init_git() {
-    local base="$1"
-
-    if command -v git &>/dev/null; then
-        if _confirm "Git" "Initialize git repository?"; then
-            (cd "$base" && git init &>/dev/null)
-            _info "Git repository initialized"
-        fi
-    fi
-}
-
-# -----------------------------------------------------------------------------
 # Argument Parsing
 # -----------------------------------------------------------------------------
 
 PROJECT_NAME=""
 PROJECT_TYPE=""
 PROJECT_PATH=""
+CURRENT_TUI=$DEFAULT_TUI
 
 _parse_args() {
+    # Command Line
     if [[ $# -ge 1 ]]; then
         PROJECT_NAME="$1"
         PROJECT_TYPE="${2:-$DEFAULT_PROJECT_TYPE}"
         PROJECT_PATH="${3:-.}"
     fi
+
+    # User Interface
+    if [[ $# -eq 1 ]]; then
+        case "$1" in
+        "--dialog") CURRENT_TUI=1 ;;
+        "--zenity") CURRENT_TUI=2 ;;
+        *) CURRENT_TUI=$DEFAULT_TUI ;;
+        esac
+    fi
+
+    PROJECT_NAME=""
+    PROJECT_TYPE=""
+    PROJECT_PATH=""
+}
+
+# -----------------------------------------------------------------------------
+# UI Wrappers
+# -----------------------------------------------------------------------------
+
+UI_INPUT=""
+UI_SELECT_PATH=""
+UI_SELECT_TYPE=""
+UI_CONFIRM=""
+UI_NOTIFY=""
+
+_input() {
+    "$UI_INPUT" "$@"
+}
+
+_select_path() {
+    "$UI_SELECT_PATH" "$@"
+}
+
+_select_project_type() {
+    "$UI_SELECT_TYPE" "$@"
+}
+
+_confirm() {
+    "$UI_CONFIRM" "$@"
+}
+
+_notify() {
+    "$UI_NOTIFY" "$@"
+}
+
+_bind_ui() {
+    case "$CURRENT_TUI" in
+    1)
+        UI_INPUT=_input_dialog
+        UI_SELECT_PATH=_select_path_dialog
+        UI_SELECT_TYPE=_select_project_type_dialog
+        UI_CONFIRM=_confirm_dialog
+        UI_NOTIFY=_notify_dialog
+        ;;
+    2)
+        UI_INPUT=_input_zenity
+        UI_SELECT_PATH=_select_path_zenity
+        UI_SELECT_TYPE=_select_project_type_zenity
+        UI_CONFIRM=_confirm_zenity
+        UI_NOTIFY=_notify_zenity
+        ;;
+    *)
+        UI_INPUT=_input_console
+        UI_SELECT_PATH=_select_path_console
+        UI_SELECT_TYPE=_select_project_type_console
+        UI_CONFIRM=_confirm_console
+        UI_NOTIFY=_notify_console
+        ;;
+    esac
 }
 
 # -----------------------------------------------------------------------------
@@ -210,10 +160,15 @@ main() {
     _section "Environment checks"
     _check_not_root
     _check_os
-    _check_dependencies "dialog"
     _check_directories "${LOG_DIR}"
 
+    case "$CURRENT_TUI" in
+    1) _check_dependencies "dialog" ;;
+    2) _check_dependencies "zenity" ;;
+    esac
+
     _parse_args "$@"
+    _bind_ui
 
     local name
     local type

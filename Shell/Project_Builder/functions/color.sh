@@ -3,6 +3,7 @@
 # Enabled only when stdout is an interactive terminal with color support.
 # Falls back to empty strings — safe for log redirection and pipes.
 # -----------------------------------------------------------------------------
+
 _setup_colors() {
     if [[ -t 1 ]] && command -v tput &>/dev/null && tput colors &>/dev/null 2>&1; then
         CLR_OK="\033[0;32m"      # green      — success
