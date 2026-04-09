@@ -14,6 +14,9 @@
 #   - Avoid overengineering (no template engines, no plugins)
 #   - Fast execution
 #
+#
+# USAGE : TO DO
+#
 # =============================================================================
 
 set -euo pipefail
@@ -23,13 +26,13 @@ set -euo pipefail
 # -----------------------------------------------------------------------------
 
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-readonly APP_NAME="project_builder"
-readonly LOG_DIR="${HOME}/.local/share/${APP_NAME}"
+readonly APP_NAME="Project Builder"
 readonly COMMON_FUNCTIONS="${SCRIPT_DIR}/functions"
 readonly TEMPLATES_DIR="${SCRIPT_DIR}/templates"
 
 DEFAULT_PROJECT_NAME="my_project"
 DEFAULT_PROJECT_TYPE="generic"
+DEFAULT_PROJECT_PATH="./project"
 DEFAULT_TUI=0 # Text User Interface : 0 - Console, 1 - Dialog, 2 - Zenity
 
 # -----------------------------------------------------------------------------
@@ -77,7 +80,7 @@ _parse_args() {
     if [[ $# -ge 1 ]]; then
         PROJECT_NAME="$1"
         PROJECT_TYPE="${2:-$DEFAULT_PROJECT_TYPE}"
-        PROJECT_PATH="${3:-.}"
+        PROJECT_PATH="${3:-$DEFAULT_PROJECT_PATH}"
     fi
 
     # User Interface
@@ -151,23 +154,64 @@ _bind_ui() {
 }
 
 # -----------------------------------------------------------------------------
+# Help
+# -----------------------------------------------------------------------------
+_show_help() {
+    cat <<EOF
+
+===============================================================================
+Project Builder
+===============================================================================
+
+Interactive mode:
+
+    ./creator.sh --dialog
+    ./creator.sh --zenity
+    ./creator.sh [--console]
+
+Non-interactive mode:
+
+    ./creator.sh <project name> <project type> <project path>
+
+    Example:
+
+        ./creator.sh "My project Name" "shell" "./project/My Project"
+
+Help:
+
+    ./creator.sh --help     - shows this help
+
+===============================================================================
+
+EOF
+}
+
+# -----------------------------------------------------------------------------
 # Main
 # -----------------------------------------------------------------------------
 
 main() {
+
+    if [[ "$#" -eq 1 ]]; then
+        if [[ "$1" == "--help" ]]; then
+            __help
+            exit 0
+        fi
+    fi
+
     _setup_colors
 
     _section "Environment checks"
     _check_not_root
     _check_os
-    _check_directories "${LOG_DIR}"
+
+    _parse_args "$@"
 
     case "$CURRENT_TUI" in
     1) _check_dependencies "dialog" ;;
     2) _check_dependencies "zenity" ;;
     esac
 
-    _parse_args "$@"
     _bind_ui
 
     local name
@@ -215,6 +259,7 @@ main() {
 
         name="$PROJECT_NAME"
         type="$PROJECT_TYPE"
+        project_dir="$PROJECT_PATH"
     fi
 
     _section "Project creation"
@@ -226,7 +271,7 @@ main() {
     _notify "Info" "Project created at: $project_dir"
     clear
 
-    _pass "Project created at: $project_dir"
+    _pass "Script completed successfully!"
 }
 
 main "$@"

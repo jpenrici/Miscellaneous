@@ -17,10 +17,18 @@ _input_console() {
 }
 
 _select_project_type_console() {
-    echo "Select project type:"
+    local opt
+    PS3="Choose project type: "
+
+    echo "Select project type:" >&2
+
     select opt in generic cpp python shell; do
-        echo "$opt"
-        break
+        if [[ -n "$opt" ]]; then
+            echo "$opt"
+            break
+        else
+            echo "Invalid option" >&2
+        fi
     done
 }
 

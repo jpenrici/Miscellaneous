@@ -20,7 +20,7 @@ _dialog_run_dialog() {
 
     if [[ $status -ne 0 ]]; then
         clear
-        _error "Operation cancelled"
+        _quit "Operation cancelled"
     fi
 
     echo "$result"

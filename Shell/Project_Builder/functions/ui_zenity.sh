@@ -23,7 +23,7 @@ _input_zenity() {
     result=$(zenity --entry --title="Input" --text="$1")
 
     if [[ $? -ne 0 ]]; then
-        _error "Input cancelled"
+        _quit "Input cancelled"
     fi
 
     echo "$result"
@@ -44,7 +44,7 @@ _select_project_type_zenity() {
         --width=300)
 
     if [[ $? -ne 0 ]]; then
-        _error "Selection cancelled"
+        _quit "Selection cancelled"
     fi
 
     echo "$result"
@@ -61,7 +61,7 @@ _select_path_zenity() {
         --filename="$initial_path/")
 
     if [[ $? -ne 0 ]]; then
-        _error "Path selection cancelled"
+        _quit "Path selection cancelled"
     fi
 
     echo "$result"
