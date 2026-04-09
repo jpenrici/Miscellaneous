@@ -10,8 +10,7 @@ _resolve_template() {
     if [[ -d "$template_path" ]]; then
         echo "$template_path"
     else
-        _warn "Template '$type' not found. Falling back to 'generic'."
-        echo "${TEMPLATES_DIR}/generic"
+        _error "Template '$type' not found."
     fi
 }
 
@@ -53,6 +52,10 @@ _fix_permissions() {
 _apply_template() {
     local target_dir="$1"
     local project_type="$2"
+
+    if [[ ! -d "$target_dir" ]]; then
+        _error "'$target_dir' not found!"
+    fi
 
     local template_dir
     template_dir="$(_resolve_template "$project_type")"

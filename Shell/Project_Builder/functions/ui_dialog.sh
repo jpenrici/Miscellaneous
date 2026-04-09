@@ -31,14 +31,17 @@ _input_dialog() {
 }
 
 _select_project_type_dialog() {
+    local menu_items=()
+
+    for t in "${TEMPLATES[@]}"; do
+        menu_items+=("$t" "$t project")
+    done
+
     _dialog_run_dialog \
         --title "Project Type" \
         --menu "Select project type:" \
         0 0 0 \
-        generic "Generic project" \
-        cpp "C++ project" \
-        python "Python project" \
-        shell "Shell project"
+        "${menu_items[@]}"
 }
 
 _select_path_dialog() {

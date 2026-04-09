@@ -36,12 +36,7 @@ _select_project_type_zenity() {
         --list \
         --title="Project Type" \
         --column="Type" \
-        generic \
-        cpp \
-        python \
-        shell \
-        --height=300 \
-        --width=300)
+        "${TEMPLATES[@]}")
 
     if [[ $? -ne 0 ]]; then
         _quit "Selection cancelled"

@@ -14,8 +14,23 @@
 #   - Avoid overengineering (no template engines, no plugins)
 #   - Fast execution
 #
+# Interactive mode:
 #
-# USAGE : TO DO
+#     ./creator.sh --dialog
+#     ./creator.sh --zenity
+#     ./creator.sh [--console]
+#
+# Non-interactive mode:
+#
+#     ./creator.sh <project name> <project type> <project path>
+#
+#     Example:
+#
+#         ./creator.sh "My project Name" "shell" "./project/My Project"
+#
+# Help:
+#
+#     ./creator.sh --help     - shows this help
 #
 # =============================================================================
 
@@ -32,7 +47,7 @@ readonly TEMPLATES_DIR="${SCRIPT_DIR}/templates"
 
 DEFAULT_PROJECT_NAME="my_project"
 DEFAULT_PROJECT_TYPE="generic"
-DEFAULT_PROJECT_PATH="./project"
+DEFAULT_PROJECT_PATH="$PWD/project"
 DEFAULT_TUI=0 # Text User Interface : 0 - Console, 1 - Dialog, 2 - Zenity
 
 # -----------------------------------------------------------------------------
@@ -52,6 +67,17 @@ source "${COMMON_FUNCTIONS}/template_logic.sh"
 source "${COMMON_FUNCTIONS}/git_initialization.sh"
 
 # -----------------------------------------------------------------------------
+# Templates
+# -----------------------------------------------------------------------------
+mapfile -t TEMPLATES < <(
+    find "$TEMPLATES_DIR" -mindepth 1 -maxdepth 1 -type d -printf "%f\n" | sort
+)
+
+if [[ ${#TEMPLATES[@]} -eq 0 ]]; then
+    _error "No templates found in $TEMPLATES_DIR"
+fi
+
+# -----------------------------------------------------------------------------
 # Utility Functions
 # -----------------------------------------------------------------------------
 
@@ -59,7 +85,7 @@ _make_dir() {
     local dir="$1"
 
     if [[ ! -d "$dir" ]]; then
-        mkdir -p "$dir"
+        #         mkdir -p "$dir"
         _info "Created directory: $dir"
     else
         _warn "Directory already exists: $dir"
@@ -90,11 +116,11 @@ _parse_args() {
         "--zenity") CURRENT_TUI=2 ;;
         *) CURRENT_TUI=$DEFAULT_TUI ;;
         esac
-    fi
 
-    PROJECT_NAME=""
-    PROJECT_TYPE=""
-    PROJECT_PATH=""
+        PROJECT_NAME=""
+        PROJECT_TYPE=""
+        PROJECT_PATH=""
+    fi
 }
 
 # -----------------------------------------------------------------------------
@@ -194,7 +220,7 @@ main() {
 
     if [[ "$#" -eq 1 ]]; then
         if [[ "$1" == "--help" ]]; then
-            __help
+            _show_help
             exit 0
         fi
     fi
@@ -223,11 +249,12 @@ main() {
 
         while true; do
             name="$(_input "Enter project name:")"
+            [[ "$name" == "" ]] && _notify "Alert" "Project name empty. Use '$DEFAULT_PROJECT_NAME'."
             name="${name:-$DEFAULT_PROJECT_NAME}"
 
-            default_dir="$PWD/projects/$name"
-            project_dir="$(_select_path "$default_dir")"
-            project_dir="${project_dir:-$default_dir}"
+            project_dir="$(_select_path "$DEFAULT_PROJECT_PATH")"
+            [[ "$project_dir" == "" ]] && _notify "Alert" "Project path empty. Use default path!"
+            project_dir="${project_dir:-$DEFAULT_PROJECT_PATH}"
 
             # Normalize: ensure directory
             if [[ -f "$project_dir" ]]; then
@@ -249,6 +276,8 @@ main() {
 
                 _notify "Info" "Using alternative path:\n$project_dir"
                 break
+            else
+                _error "The directory already exists!"
             fi
         done
 

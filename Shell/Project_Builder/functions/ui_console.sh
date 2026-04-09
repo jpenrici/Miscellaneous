@@ -12,7 +12,7 @@ _notify_console() {
 }
 
 _input_console() {
-    read -rp "$1: " value
+    read -rp "$1 " value
     echo "$value"
 }
 
@@ -22,7 +22,7 @@ _select_project_type_console() {
 
     echo "Select project type:" >&2
 
-    select opt in generic cpp python shell; do
+    select opt in "${TEMPLATES[@]}"; do
         if [[ -n "$opt" ]]; then
             echo "$opt"
             break
@@ -34,5 +34,5 @@ _select_project_type_console() {
 
 _select_path_console() {
     read -rp "Enter project path: " path
-    echo "${path:-$PWD}"
+    echo "$path"
 }
