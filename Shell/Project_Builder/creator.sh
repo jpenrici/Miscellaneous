@@ -85,7 +85,7 @@ _make_dir() {
     local dir="$1"
 
     if [[ ! -d "$dir" ]]; then
-        #         mkdir -p "$dir"
+        mkdir -p "$dir"
         _info "Created directory: $dir"
     else
         _warn "Directory already exists: $dir"
