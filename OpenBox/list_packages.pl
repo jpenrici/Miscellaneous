@@ -49,7 +49,8 @@ sub main {
     }
 
     my $today         = strftime( "%Y-%m-%d", localtime );
-    my $recovery_path = $directories . $name . "_" . $today . $extension;
+    my $filename      = $name . "_" . $today . $extension;
+    my $recovery_path = $directories . $filename;
 
     # 1. List of all Installed Packages
     my @package_list;
@@ -79,7 +80,7 @@ sub main {
     open( my $fh, '>', $recovery_path )
       or die "The file could not be created.: $!";
 
-    print $fh "# $recovery_path\n";
+    print $fh "# $filename\n";
     print $fh "apt install \\\n";
 
     # Filters packages that are NOT in the dependency list of others.
@@ -89,7 +90,7 @@ sub main {
         print $fh "\t$pkg \\\n";
     }
 
-    print $fh "; # $recovery_path\n";
+    print $fh "; # $filename\n";
     close($fh);
 
     print "\nDone! List saved in: $recovery_path\n";
