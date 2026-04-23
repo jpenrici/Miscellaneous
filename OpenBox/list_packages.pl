@@ -8,7 +8,7 @@
 #   2. analyze dependencies.
 #   3. generate and save recovery list.
 
-# Adapting for Perl!
+# Adapting for Perl!!! ...
 
 use strict;
 use utf8;
@@ -45,40 +45,41 @@ sub main {
         return 1;
     }
 
+    # Run
+    print "Run $script ...\n";
+
     my $today = strftime "%Y-%m-%d", localtime();
 
     my $packageList    = "/tmp/packageList";
     my $dependencyList = "/tmp/dependencyList";
     my $recoveryList   = "recoveryList-$today";
 
-    print "Run $script ...\n";
-
     # List of all Installed Packages
-    my @packages = list_packages_ref();
-    print @packages;
+    my $packages = list_packages_ref();
+
+    # Test
+    foreach my $p (@$packages) {
+        print "$p\n";
+    }
 
     return 0;
 }
 
 sub list_packages_ref {
-    my @list;
-    my $cmd = qx{dpkg-query --show --showformat='\${Status;7}:\${Package} '};
-
-    open( my $fh, "-|", $cmd )
-      or do {
-        warn "Warning: The pipe could not be opened. $!";
-        return [];
-      };
-
-    while ( my $line = <$fh> ) {
-        push @list, split( ' ', $line );
-    }
-
-    close($fh);
+    my $cmd    = "dpkg-query --show --showformat='\${Status;7}:\${Package} '";
+    my $result = qx{$cmd 2>/dev/null};
 
     if ( $? != 0 ) {
-        warn "Warning: The command executed, but returned an error (status $?).";
+        warn
+          "Warning: The command executed, but returned an error (status $?).";
+        return [];
     }
+
+    # if the result is null or contains only spaces, it returns an empty array.
+    return [] unless $result && $result =~ /\S/;
+
+    # separate at any sequence of spaces and line breaks.
+    my @list = split( /\s+/, $result );
 
     return \@list;
 }
