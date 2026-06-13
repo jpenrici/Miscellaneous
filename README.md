@@ -1,35 +1,33 @@
 # Miscellaneous
 
-Miscellaneous code: C++, Python, Bash, Portugol, Visualg ...
+A personal collection of scripts, tools, and code snippets across multiple languages and topics — built for learning, experimentation, and occasional real-world use.
 
-## Summary
+---
 
-1. **Algorithms**
-   - Algorithms to beginners in Programming Logic.
-   - C ++, Python, Portugol and Visualg codes. 
-2. **Cpp**
-   - Simple codes.
-3. **OpenBox**
-   - Help files for the OpenBox and Debian environment.
-4. **Sublime_Text**
-   - Useful tips for the code editor Sublime Text 3.
-5. **Qt-Creator**
-   - Useful tips for the code editor Qt Creator.   
-6. **Visual_Studio**
-   - Useful tips for the code editor Visual Studio.
-7. **Kate**
-   - Useful tips for the code editor KDE Kate.  
-8. **Python**
-   - **BD_Treino:** Generate SQL for database training.
-   - **Excel_Treino:** Generate CSV for training data filtering in spreadsheets.
-   - **csv2vcf:** Converts csv file to vcf for exporting contacts.
-   - **vcf2csv:** Make the above conversion, inverted.
-   - **vcf_libreOffice:** Application of Python macro studies in LibreOffice.
-   - **experience_libreOffice:** Experience with Python macros in LibreOffice.   
-   - **Listar_Conteudo_Diretorio:** Lists the contents of files and directories.
-   - **DataOrganizer_MSTeams:** Simple experiment to organize MS Teams participation report data.
-   - **HTML_Table_Generator:** Scripts to assist in the construction of tables.
-9. **VBA**
-   - Macro experiments.
-10. **Shell**
-   - Simple scripts.
+## Contents
+
+| Folder | What's inside |
+|---|---|
+| **Algorithms** | Introductory algorithms in C++, Python, Portugol and Visualg |
+| **Scripts** | Shell and utility scripts for automation |
+| **Systems** | System-level experiments and configurations |
+| **Code_Editors** | Tips and configs for Sublime Text, Qt Creator, Visual Studio and Kate |
+
+### Highlights
+
+- **Python tools** — CSV/VCF converters, SQL/data generators, HTML table builder, LibreOffice macro experiments, MS Teams report organizer
+- **VBA macros** — Spreadsheet automation snippets
+- **Shell scripts** — Small Linux utilities
+- **OpenBox/Debian** — Desktop environment helper files
+
+---
+
+## Languages
+
+`Portugol` · `Python` · `C++` · `Shell` · `Perl` · `CMake` · `VBA`
+
+---
+
+## License
+
+[MIT](LICENSE)
