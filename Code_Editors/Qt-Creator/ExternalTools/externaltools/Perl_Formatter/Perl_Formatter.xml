@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<externaltool id="Perl_Formatter">
+    <description>This tool uses to format Perl code.</description>
+    <displayname>Perl Formatter</displayname>
+    <category>Perl</category>
+    <executable output="showinpane" error="showinpane" modifiesdocument="yes">
+        <path>/home/user/Perl_Formatter/perl_formatter.sh</path>
+        <arguments>%{CurrentDocument:NativeFilePath}</arguments>
+    </executable>
+</externaltool>
