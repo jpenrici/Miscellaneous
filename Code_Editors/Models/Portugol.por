@@ -1,0 +1,11 @@
+/*
+  Objetivo:
+*/
+
+programa
+{
+  funcao inicio()
+  {
+
+  }
+}
