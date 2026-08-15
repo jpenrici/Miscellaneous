@@ -1,4 +1,14 @@
 #!/usr/bin/env perl
+#
+# Name:        cpp_inspector.pl
+# Description: Generates a CodeQuery database (.db) for C/C++ projects by
+#              automatically running ctags, cscope, and cqmakedb on source files.
+# Usage:       perl script.pl [in=/path/to/project] [out=/path/to/output]
+# Requirements: ctags, cscope, cqmakedb
+#
+# Reference:
+#   https://ruben2020.github.io/codequery/
+#
 
 use strict;
 use warnings;
@@ -85,7 +95,7 @@ my @source_files;
 find(
     {
         wanted => sub {
-            if (/\.(cpp|cc|cxx|h|hpp)$/i) {
+            if (/\.(c|cpp|cxx|cc|h|hpp|hxx|hh)$/i) {
                 push @source_files, abs_path($_);
             }
         },
@@ -125,16 +135,16 @@ system( 'ctags', '--fields=+i', '-n', '-L', $cscope_files_path, '-f',
   or warn "Warning: ctags exited with error code ($?).\n";
 
 # Run cscope using the absolute file list (-i)
-system( 'cscope', '-b', '-q', '-i', $cscope_files_path, '-f', $cscope_out_path )
-  == 0
+system( 'cscope', '-b', '-c', '-q', '-i', $cscope_files_path, '-f',
+    $cscope_out_path ) == 0
   or warn "Warning: cscope exited with error code ($?).\n";
 
 # 4. Convert into the CodeQuery database format
 print "[4/4] Generating CodeQuery database (.db)...\n";
-system( 'cqmakedb', '-s', $db_path, '-c', $cscope_out_path, '-t', $tags_path )
-  == 0
+system( 'cqmakedb', '-s', $db_path, '-c', $cscope_out_path, '-t', $tags_path,
+    '-p' ) == 0
   or die "Critical Error: Failed to run cqmakedb.\n";
 
 print "\n[SUCCESS] Pipeline completed successfully!\n";
 print "To open the graphical user interface, run:\n";
-print "  codequery -d $db_path\n";
+print "  codequery $db_path\n";
