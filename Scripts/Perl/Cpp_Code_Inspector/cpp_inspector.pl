@@ -18,7 +18,7 @@ use feature 'say';
 
 use Cwd qw(abs_path);
 
-use File::Basename qw(basename);
+use File::Basename qw(basename dirname);
 use File::Find     qw(find);
 use File::Path     qw(make_path);
 use File::Spec;
@@ -93,7 +93,8 @@ sub main {
     my %callers_of = build_caller_map( \%definitions, $cscope_out_path );
 
     say "[8/8] Writing text, CSV and SVG reports...";
-    write_text_report( $report_path, \%definitions, \%callers_of );
+    write_text_report( $report_path, \%definitions, \%callers_of,
+        $project_dir );
     write_csv_report( $csv_path, \%callers_of );
     write_svg_call_graph( $svg_path, \%callers_of );
 
@@ -335,7 +336,8 @@ sub find_callers {
 # ----------------------------------------------------------------------
 
 sub write_text_report {
-    my ( $report_path, $definitions, $callers_of ) = @_;
+    my ( $report_path, $definitions, $callers_of, $project_dir ) = @_;
+    my $path_base = defined $project_dir ? dirname($project_dir) : undef;
 
     open my $fh, '>', $report_path
       or die "[-] Cannot open text analysis file: $!\n";
@@ -348,8 +350,19 @@ sub write_text_report {
     }
     print {$fh} ( '=' x 50 ) . "\n\n";
 
+    my %counts = count_kinds($definitions);
+    print {$fh} "SUMMARY:\n";
+    my $total = 0;
+    for my $kind (qw(f p m c)) {
+        my $n = $counts{$kind} // 0;
+        $total += $n;
+        printf {$fh} "  [%s] %-10s : %d\n", $kind, $KIND_LABEL{$kind}, $n;
+    }
+    printf {$fh} "  %-14s : %d\n", 'Total', $total;
+    print {$fh} ( '=' x 50 ) . "\n\n";
+
     for my $file ( sort keys %$definitions ) {
-        print {$fh} "FILE: $file\n";
+        print {$fh} "FILE: " . shorten_path( $file, $path_base ) . "\n";
 
         for my $name ( sorted_symbol_names( $definitions->{$file} ) ) {
             my $info = $definitions->{$file}{$name};
@@ -361,8 +374,9 @@ sub write_text_report {
             my %seen;
             for my $call ( @{ $callers_of->{$name} } ) {
                 next if $seen{ $call->{caller} }++;
+                my $call_file = shorten_path( $call->{file}, $path_base );
                 print {$fh}
-                  "      <- $call->{caller} | at $call->{file}:$call->{line}\n";
+                  "      <- $call->{caller} | at $call_file:$call->{line}\n";
             }
         }
         print {$fh} "\n" . ( '-' x 40 ) . "\n\n";
@@ -370,6 +384,25 @@ sub write_text_report {
 
     close $fh;
     return;
+}
+
+sub shorten_path {
+    my ( $path, $base_dir ) = @_;
+    return $path unless defined $path && defined $base_dir;
+
+    my $relative = eval { File::Spec->abs2rel( $path, $base_dir ) };
+    return ( defined $relative && length $relative ) ? $relative : $path;
+}
+
+sub count_kinds {
+    my ($definitions) = @_;
+    my %counts;
+    for my $file ( keys %$definitions ) {
+        for my $name ( keys %{ $definitions->{$file} } ) {
+            $counts{ $definitions->{$file}{$name}{kind} }++;
+        }
+    }
+    return %counts;
 }
 
 sub kind_description {
