@@ -18,8 +18,9 @@ use feature 'say';
 
 use Cwd qw(abs_path);
 
-use File::Find qw(find);
-use File::Path qw(make_path);
+use File::Basename qw(basename);
+use File::Find     qw(find);
+use File::Path     qw(make_path);
 use File::Spec;
 
 use Getopt::Long qw(GetOptions);
@@ -191,11 +192,15 @@ sub collect_source_files {
     find(
         {
             wanted => sub {
-                if ( -d $_ && /@{[ SKIP_DIR_RE ]}/ ) {
-                    $File::Find::prune = 1;
-                    return;
+                if ( -d $_ ) {
+                    my $dir_name = basename($_);
+                    if ( $dir_name =~ /@{[ SKIP_DIR_RE ]}/ ) {
+                        $File::Find::prune = 1;
+                        return;
+                    }
                 }
-                push @source_files, abs_path($_) if /@{[ SOURCE_EXT_RE ]}/;
+                push @source_files, abs_path($_)
+                  if -f $_ && /@{[ SOURCE_EXT_RE ]}/;
             },
             no_chdir => 1,
         },
