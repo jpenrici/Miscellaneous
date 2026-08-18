@@ -5,7 +5,8 @@
 #              a CSV call-relationship export, and an SVG call graph for
 #              C/C++ projects by automatically running ctags, cscope and
 #              cqmakedb.
-# Usage:       perl cpp_inspector.pl [--in=/path/to/project] [--out=/path/to/output]
+# Usage:       perl cpp_inspector.pl [--in=<path>] [--out=<path>]
+#                                    [--no_label] [--no_line] [--no_call]
 # Requirements: ctags, cscope, cqmakedb
 #
 # Reference:
@@ -93,8 +94,17 @@ sub main {
     my %callers_of = build_caller_map( \%definitions, $cscope_out_path );
 
     say "[8/8] Writing text, CSV and SVG reports...";
-    write_text_report( $report_path, \%definitions, \%callers_of,
-        $project_dir );
+    write_text_report(
+        $report_path,
+        \%definitions,
+        \%callers_of,
+        $project_dir,
+        {
+            hide_labels    => $opts->{no_label},
+            hide_lines     => $opts->{no_line},
+            hide_called_by => $opts->{no_call},
+        }
+    );
     write_csv_report( $csv_path, \%callers_of );
     write_svg_call_graph( $svg_path, \%callers_of );
 
@@ -116,11 +126,20 @@ sub refuse_to_run_as_root {
 sub parse_arguments {
     local @ARGV = @_;
 
-    my %opts = ( in => "", out => DEFAULT_OUTDIR );
+    my %opts = (
+        in       => "",
+        out      => DEFAULT_OUTDIR,
+        no_line  => 0,
+        no_label => 0,
+        no_call  => 0
+    );
     GetOptions(
-        'in=s'   => \$opts{in},
-        'out=s'  => \$opts{out},
-        'help|h' => sub { print usage(); exit 0; },
+        'in=s'     => \$opts{in},
+        'out=s'    => \$opts{out},
+        'no_line'  => \$opts{no_line},
+        'no_label' => \$opts{no_label},
+        'no_call'  => \$opts{no_call},
+        'help|h'   => sub { print usage(); exit 0; },
     ) or die usage();
 
     return \%opts;
@@ -132,12 +151,16 @@ Usage:
   perl $0 [options]
 
 Options:
-  --in=<path>   Path to the C++ project directory to scan (default: current directory)
-  --out=<path>  Path to the output directory where artifacts will be saved (default: @{[ DEFAULT_OUTDIR ]})
-  --help, -h    Display this help message and exit
+  --in=<path>    Path to the C++ project directory to scan (default: current directory)
+  --out=<path>   Path to the output directory where artifacts will be saved (default: @{[ DEFAULT_OUTDIR ]})
+  --no_label     Hide the [f/p/m/c] kind label for each symbol in cpp_relationships.txt
+  --no_line      Hide the "| Line: N" suffix for each symbol in cpp_relationships.txt
+  --no_call      Hide the "Called by:" section in cpp_relationships.txt
+  --help, -h     Display this help message and exit
 
-Example:
+Examples:
   perl $0 --in=/path/to/cpp/project --out=/path/to/output_folder
+  perl $0 --in=./my_project --no_label --no_line --no_call
 HELP
 }
 
@@ -336,19 +359,18 @@ sub find_callers {
 # ----------------------------------------------------------------------
 
 sub write_text_report {
-    my ( $report_path, $definitions, $callers_of, $project_dir ) = @_;
+    my ( $report_path, $definitions, $callers_of, $project_dir, $format ) = @_;
+    $format //= {};
+    my $hide_labels    = $format->{hide_labels};
+    my $hide_lines     = $format->{hide_lines};
+    my $hide_called_by = $format->{hide_called_by};
+
     my $path_base = defined $project_dir ? dirname($project_dir) : undef;
 
     open my $fh, '>', $report_path
       or die "[-] Cannot open text analysis file: $!\n";
 
     print {$fh} "=== C++ PROJECT RELATIONSHIPS OVERVIEW ===\n\n";
-    print {$fh} "LEGEND:\n";
-    for my $kind (qw(f p m c)) {
-        printf {$fh} "  [%s] %-10s - %s\n", $kind, $KIND_LABEL{$kind},
-          kind_description($kind);
-    }
-    print {$fh} ( '=' x 50 ) . "\n\n";
 
     my %counts = count_kinds($definitions);
     print {$fh} "SUMMARY:\n";
@@ -366,10 +388,17 @@ sub write_text_report {
 
         for my $name ( sorted_symbol_names( $definitions->{$file} ) ) {
             my $info = $definitions->{$file}{$name};
-            print {$fh}
-"  [$info->{kind}] $name $info->{signature} | Line: $info->{line}\n";
 
+            my @parts;
+            push @parts, "[$info->{kind}]" unless $hide_labels;
+            push @parts, $name;
+            push @parts, $info->{signature} if length $info->{signature};
+            push @parts, "| Line: $info->{line}" unless $hide_lines;
+            print {$fh} '  ' . join( ' ', @parts ) . "\n";
+
+            next if $hide_called_by;
             next unless exists $callers_of->{$name};
+
             print {$fh} "    Called by:\n";
             my %seen;
             for my $call ( @{ $callers_of->{$name} } ) {
