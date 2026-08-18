@@ -5,8 +5,9 @@
 #              a CSV call-relationship export, and an SVG call graph for
 #              C/C++ projects by automatically running ctags, cscope and
 #              cqmakedb.
-# Usage:       perl cpp_inspector.pl [--in=<path>] [--out=<path>]
-#                                    [--no_label] [--no_line] [--no_call]
+# Usage:       perl cpp_inspector.pl [--in=<path>] [--out=<path>] [--yes]
+#                                     [--kind=<letters>]
+#                                     [--no_label] [--no_line] [--no_call]
 # Requirements: ctags, cscope, cqmakedb
 #
 # Reference:
@@ -43,6 +44,9 @@ my %KIND_LABEL = (
 );
 my %KIND_PRIORITY = ( f => 1, p => 2, m => 3, c => 4 );
 
+# Canonical order for --kind selections, LEGEND, and SUMMARY output.
+my @ALL_KINDS = qw(f p m c);
+
 main();
 exit 0;
 
@@ -52,11 +56,12 @@ sub main {
 
     my $opts = parse_arguments(@ARGV);
     die usage() if ( $opts->{in} eq "" );
+    my $kind_filter = normalize_kind_selection( $opts->{kind} );
 
     require_tools_or_die(qw(ctags cscope cqmakedb));
 
     my $project_dir = resolve_project_dir( $opts->{in} );
-    my $output_dir  = resolve_output_dir( $opts->{out} );
+    my $output_dir  = resolve_output_dir( $opts->{out}, $opts->{yes} );
 
     say "[*] Scanning project directory: $project_dir";
     say "[*] Saving output artifacts to: $output_dir\n";
@@ -74,7 +79,8 @@ sub main {
     my $cscope_out_path = File::Spec->catfile( $output_dir, 'cscope.out' );
     my $db_path         = File::Spec->catfile( $output_dir, 'codequery.db' );
     my $report_path =
-      File::Spec->catfile( $output_dir, 'cpp_relationships.txt' );
+      File::Spec->catfile( $output_dir,
+        report_filename( $opts, $kind_filter ) );
     my $csv_path = File::Spec->catfile( $output_dir, 'cpp_relationships.csv' );
     my $svg_path = File::Spec->catfile( $output_dir, 'cpp_call_graph.svg' );
 
@@ -103,6 +109,7 @@ sub main {
             hide_labels    => $opts->{no_label},
             hide_lines     => $opts->{no_line},
             hide_called_by => $opts->{no_call},
+            kind           => $kind_filter,
         }
     );
     write_csv_report( $csv_path, \%callers_of );
@@ -131,7 +138,9 @@ sub parse_arguments {
         out      => DEFAULT_OUTDIR,
         no_line  => 0,
         no_label => 0,
-        no_call  => 0
+        no_call  => 0,
+        kind     => join( '', @ALL_KINDS ),    # default: fpmc (all kinds)
+        yes      => 0,
     );
     GetOptions(
         'in=s'     => \$opts{in},
@@ -139,10 +148,34 @@ sub parse_arguments {
         'no_line'  => \$opts{no_line},
         'no_label' => \$opts{no_label},
         'no_call'  => \$opts{no_call},
+        'kind=s'   => \$opts{kind},
+        'yes|y'    => \$opts{yes},
         'help|h'   => sub { print usage(); exit 0; },
     ) or die usage();
 
     return \%opts;
+}
+
+# Validates the --kind value (a string of any combination of f/p/m/c) and
+# returns an arrayref of the selected kinds in canonical order (f p m c),
+# regardless of the order/repetition the user typed them in. Dies with a
+# clear message on invalid or empty input.
+sub normalize_kind_selection {
+    my ($raw) = @_;
+
+    my %requested = map  { $_ => 1 } split //, lc( $raw // '' );
+    my @invalid   = grep { !exists $KIND_LABEL{$_} } keys %requested;
+
+    die "Error: invalid --kind value(s): "
+      . join( ', ', sort @invalid )
+      . ". Valid kinds are: "
+      . join( ' ', @ALL_KINDS ) . ".\n"
+      if @invalid;
+    die "Error: --kind must include at least one of: "
+      . join( ' ', @ALL_KINDS ) . ".\n"
+      unless %requested;
+
+    return [ grep { $requested{$_} } @ALL_KINDS ];
 }
 
 sub usage {
@@ -153,14 +186,26 @@ Usage:
 Options:
   --in=<path>    Path to the C++ project directory to scan (default: current directory)
   --out=<path>   Path to the output directory where artifacts will be saved (default: @{[ DEFAULT_OUTDIR ]})
+  --kind=<letters>  Keep only the given symbol kinds in cpp_relationships.txt (default: fpmc)
+                     f=Function  p=Prototype  m=Member  c=Class
+                     e.g. --kind=fp keeps functions and prototypes, hides members/classes
   --no_label     Hide the [f/p/m/c] kind label for each symbol in cpp_relationships.txt
   --no_line      Hide the "| Line: N" suffix for each symbol in cpp_relationships.txt
   --no_call      Hide the "Called by:" section in cpp_relationships.txt
+  --yes, -y      Skip the confirmation prompt when --out doesn't exist yet
+                  (creates it automatically - useful for scripts/CI)
   --help, -h     Display this help message and exit
+
+Note:
+  The text report filename gets a suffix for each active flag above, e.g.:
+    cpp_relationships.txt
+    cpp_relationships__kind_fp.txt
+    cpp_relationships__kind_fp__no_label__no_call.txt
 
 Examples:
   perl $0 --in=/path/to/cpp/project --out=/path/to/output_folder
-  perl $0 --in=./my_project --no_label --no_line --no_call
+  perl $0 --in=./my_project --kind=fp --no_line
+  perl $0 --in=./my_project --out=./ci_output --yes   # non-interactive (CI)
 HELP
 }
 
@@ -197,10 +242,65 @@ sub resolve_project_dir {
 }
 
 sub resolve_output_dir {
-    my ($raw_path) = @_;
+    my ( $raw_path, $auto_yes ) = @_;
     $raw_path = glob($raw_path) if defined $raw_path && $raw_path =~ /^~/;
-    make_path($raw_path) unless -d $raw_path;
+
+    unless ( -d $raw_path ) {
+
+        # Show the path as it would resolve *before* creating anything, so a
+        # typo (e.g. "~/Download/Result" instead of "~/Downloads/Result") is
+        # caught here instead of silently producing a new, empty directory.
+        my $would_be_path = File::Spec->rel2abs($raw_path);
+        confirm_or_die(
+            "[?] Output directory does not exist: $would_be_path\n"
+              . "    Create it now? [y/N] ",
+            $auto_yes
+        );
+        make_path($raw_path);
+    }
+
     return abs_path($raw_path);
+}
+
+# Prompts the user with a yes/no question and dies (aborting the whole
+# script) on anything other than an explicit "y"/"yes". Skips the prompt
+# entirely when $auto_yes is true (--yes/-y), for use in scripts/CI where
+# no interactive terminal is attached. If STDIN isn't interactive and
+# --yes wasn't given, this fails safe (treated as "no") rather than
+# hanging or silently proceeding.
+sub confirm_or_die {
+    my ( $prompt, $auto_yes ) = @_;
+    return if $auto_yes;
+
+    print $prompt;
+    my $answer = <STDIN>;
+    $answer = defined $answer ? lc($answer) : 'n';
+    chomp $answer;
+
+    die "Aborted: output directory was not created.\n"
+      unless $answer =~ /^y(es)?$/;
+    return;
+}
+
+# Builds the text report's filename, appending a suffix for each active
+# formatting flag (in a fixed order) so that runs with different flags
+# don't overwrite each other's report in the same output directory. E.g.:
+#   cpp_relationships.txt
+#   cpp_relationships__kind_fp.txt
+#   cpp_relationships__kind_fp__no_label__no_call.txt
+sub report_filename {
+    my ( $opts, $kind_filter ) = @_;
+
+    my @suffix;
+    push @suffix, 'kind_' . join( '', @$kind_filter )
+      if @$kind_filter != @ALL_KINDS;
+    push @suffix, 'no_label' if $opts->{no_label};
+    push @suffix, 'no_line'  if $opts->{no_line};
+    push @suffix, 'no_call'  if $opts->{no_call};
+
+    my $name = 'cpp_relationships';
+    $name .= '__' . join( '__', @suffix ) if @suffix;
+    return "$name.txt";
 }
 
 # ----------------------------------------------------------------------
@@ -364,6 +464,8 @@ sub write_text_report {
     my $hide_labels    = $format->{hide_labels};
     my $hide_lines     = $format->{hide_lines};
     my $hide_called_by = $format->{hide_called_by};
+    my $kind_filter    = $format->{kind} // \@ALL_KINDS;
+    my %allowed_kind   = map { $_ => 1 } @$kind_filter;
 
     my $path_base = defined $project_dir ? dirname($project_dir) : undef;
 
@@ -372,10 +474,19 @@ sub write_text_report {
 
     print {$fh} "=== C++ PROJECT RELATIONSHIPS OVERVIEW ===\n\n";
 
+    unless ($hide_labels) {
+        print {$fh} "LEGEND:\n";
+        for my $kind (@$kind_filter) {
+            printf {$fh} "  [%s] %-10s - %s\n", $kind, $KIND_LABEL{$kind},
+              kind_description($kind);
+        }
+        print {$fh} ( '=' x 50 ) . "\n\n";
+    }
+
     my %counts = count_kinds($definitions);
     print {$fh} "SUMMARY:\n";
     my $total = 0;
-    for my $kind (qw(f p m c)) {
+    for my $kind (@$kind_filter) {
         my $n = $counts{$kind} // 0;
         $total += $n;
         printf {$fh} "  [%s] %-10s : %d\n", $kind, $KIND_LABEL{$kind}, $n;
@@ -384,9 +495,14 @@ sub write_text_report {
     print {$fh} ( '=' x 50 ) . "\n\n";
 
     for my $file ( sort keys %$definitions ) {
+        my @names =
+          grep { $allowed_kind{ $definitions->{$file}{$_}{kind} } }
+          sorted_symbol_names( $definitions->{$file} );
+        next unless @names;    # skip files with nothing left after filtering
+
         print {$fh} "FILE: " . shorten_path( $file, $path_base ) . "\n";
 
-        for my $name ( sorted_symbol_names( $definitions->{$file} ) ) {
+        for my $name (@names) {
             my $info = $definitions->{$file}{$name};
 
             my @parts;
